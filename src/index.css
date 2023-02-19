@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Shantell Sans";
+  src: url("src/assets/fonts/Shantell_Sans.ttf");
+}
+
+body {
+  font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: aliceblue;
+}

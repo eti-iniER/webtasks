@@ -1,0 +1,21 @@
+.task-item {
+    display: flex;
+    padding: 10px;
+    border: 2px solid #5ba6eca1;
+    box-shadow: 0px 0px 5px 5px #bfd2eb8a;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    background-color: #f7f7e7;
+}
+
+.task-item__name {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.task-item__description {
+    font-size: 12px;
+    margin-top: 0px;
+}
