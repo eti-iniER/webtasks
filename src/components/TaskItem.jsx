@@ -9,8 +9,8 @@ const TaskItem = (props) => {
     let activeClass = "";
 
     const update = (value) => {
-        if (value == true) {
-            // for the checkbox-type of task
+        if (value === true) {
+            // for the checkbox-type of task. This is a potential bug if you don't use ===
             setBarWidth("100%");
             return
         }
