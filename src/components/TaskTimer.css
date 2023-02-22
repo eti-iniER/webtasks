@@ -9,3 +9,18 @@
     color: #3f7eb9;
     font-size: 15px;
 }
+
+.task-timer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.task-timer__timer {
+    margin-left: 10px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
