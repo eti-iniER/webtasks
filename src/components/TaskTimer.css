@@ -1,13 +1,18 @@
 .task-timer__button {
-    width: 40px;
-    height: 40px;
-    border: 2px solid #3f7eb9;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #3f7eb9;
     border-radius: 50%;
     color: #3f7eb9;
     font-size: 15px;
+}
+
+.task-timer__button.active {
+    color: white;
+    border-color: white;
 }
 
 .task-timer {

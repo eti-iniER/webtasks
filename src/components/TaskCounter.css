@@ -4,9 +4,9 @@
 }
 
 .task-counter__button {
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
+    align-items: center;
     border: 2px solid #3f7eb9;
     background-color: white;
     width: 40px;

@@ -9,6 +9,16 @@
     background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
+    transition-duration: 0.5s;
+    /* border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px; */
+    position: relative;
+}
+
+.task-item.active {
+    transition-duration: 0.5s;
+    background-color: #5ba6ec;
+    color: white;
 }
 
 .task-item__details {
@@ -32,5 +42,34 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
+    height: 40%;
+}
+
+.task-item__progress-bar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.task-item__progress-bar {
+    display: flex;
+    position: absolute;
+    width: 50%;
+    bottom: 5px;
+    height: 3px;
+    background-color: #5ba6ec50;
+}
+
+.task-item__progress-bar.active {
+    background-color: #ffffff50;
+}
+
+.task-item__progress-bar-bar {
+    transition-duration: 0.2s;
+    height: 100%;
+    width: 0%;
+    background-color: #5ba6ec;
+}
+
+.task-item__progress-bar-bar.active {
+    background-color: white;
 }

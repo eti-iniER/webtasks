@@ -6,11 +6,13 @@ const TaskCounter = (props) => {
 
     const increaseCount = () => {
         setCount(count + 1);
+        props.change(count + 1);
     };
 
     const decreaseCount = () => {
         if (count > 0) {
             setCount(count - 1);
+            props.change(count - 1);
         }
     }
     return (
