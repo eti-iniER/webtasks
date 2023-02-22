@@ -1,0 +1,3 @@
+THE TASK CONFIGURATION JSON:
+    This is more of an API thing, but I would like each TaskItem component to be configured by certain
+    properties such as color, task type, etc.

@@ -1,5 +1,6 @@
 import "./TaskItem.css";
 import TaskCounter from "./TaskCounter";
+import TaskTimer from "./TaskTimer"
 
 const TaskItem = (props) => {
     return (
@@ -10,7 +11,8 @@ const TaskItem = (props) => {
                 <p className="task-item__description">{props.data.description}</p>
             </div>
             <div className="task-item__action">
-                <TaskCounter />
+                {props.data.type == "Counter" ? <TaskCounter /> : ""}
+                {props.data.type == "Timer" ? <TaskTimer /> : ""}
             </div>
         </div>
     )

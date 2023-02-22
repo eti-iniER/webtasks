@@ -6,9 +6,9 @@
     border-radius: 10px;
     width: 200px;
     height: 200px;
-    background-color: #f7f7e7;
+    background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 0px;
+    margin: 10px;
 }
 
 .task-item__details {
