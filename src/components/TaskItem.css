@@ -1,21 +1,36 @@
 .task-item {
     display: flex;
-    padding: 10px;
+    flex-direction: column;
     border: 2px solid #5ba6eca1;
     box-shadow: 0px 0px 5px 5px #bfd2eb8a;
     border-radius: 10px;
     width: 200px;
     height: 200px;
     background-color: #f7f7e7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0px;
+}
+
+.task-item__details {
+    padding: 10px;
 }
 
 .task-item__name {
     font-size: 25px;
     font-weight: 500;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 .task-item__description {
     font-size: 12px;
     margin-top: 0px;
+    height: 40%;
+}
+
+.task-item__action {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
 }
