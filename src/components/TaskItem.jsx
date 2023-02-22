@@ -2,6 +2,7 @@ import "./TaskItem.css";
 import TaskCounter from "./TaskCounter";
 import TaskTimer from "./TaskTimer"
 import { useState } from "react";
+import TaskCheckbox from "./TaskCheckbox";
 
 const TaskItem = (props) => {
     const [active, setActive] = useState(false);
@@ -11,7 +12,8 @@ const TaskItem = (props) => {
     const update = (value) => {
         if (value === true) {
             // for the checkbox-type of task. This is a potential bug if you don't use ===
-            setBarWidth("100%");
+            console.log("The checkbox is ticked");
+            setBarWidth(100);
             return
         }
         let newBarWidth = Math.floor(value / props.data.goal * 100);
@@ -39,6 +41,7 @@ const TaskItem = (props) => {
             <div className="task-item__action">
                 {props.data.type == "Counter" ? <TaskCounter goal={props.goal} change={update} /> : ""}
                 {props.data.type == "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} /> : ""}
+                {props.data.type == "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} /> : ""}
             </div>
             <div className="task-item__progress-bar-container">
                 <div className={"task-item__progress-bar" + " " + activeClass}>

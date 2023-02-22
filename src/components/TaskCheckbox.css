@@ -1,0 +1,11 @@
+.task-checkbox__checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #3f7eb9;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #3f7eb9;
+}
