@@ -35,3 +35,13 @@
     background-color: #279e59;
     color: white;
 }
+
+.task-checkbox__checkbox.red {
+    border-color: #dd5b3b;
+    color: #dd5b3b;
+}
+
+.task-checkbox__checkbox.red.checked {
+    color: white;
+    background-color: #dd5b3b;
+}

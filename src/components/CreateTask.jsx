@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const CreateTask = (props) => {
     const [taskCreationProgress, setTaskCreationProgress] = useState(1);
-    const [animation, setAnimation] = useState("slide-in");
 
     let newTask = {};
     let buildLeftIcon = <span className="task-setup-selector-choice__icon fa-regular fa-circle-check" style={{ color: "#0a8d45" }}></span>;
@@ -15,11 +14,10 @@ const CreateTask = (props) => {
     let simpleLeftIcon = <span className="task-setup-selector-choice__icon fa-solid fa-chart-simple" style={{ color: "orangered" }}></span>;
 
     const close = () => {
-        setAnimation("slide-out");
         props.close();
     }
     return (
-        <div className="create-task" style={{ display: props.displayState, animationName: animation }}>
+        <div className="create-task" style={{ display: props.displayState }}>
             <Pagination count={3} labels={["Want", "How", "Info"]} />
             <TaskSetupSelectorChoice title="Build a habit" leftIcon={buildLeftIcon} rightIcon={rightIcon}
                 description={
