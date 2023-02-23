@@ -27,7 +27,7 @@ const TaskItemMenu = (props) => {
                         <p className="task-item-menu__action-name">Reset</p>
                     </li>
                     <li>
-                        <span className="fa-solid fa-trash"></span>
+                        <span className="fa-solid fa-trash" onClick={props.deleteTask}></span>
                         <p className="task-item-menu__action-name">Delete</p>
                     </li>
                 </ul>

@@ -12,6 +12,7 @@
 
 .task-item-menu {
     color: #2e2e2e;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,7 +22,6 @@
     width: 300px;
     box-shadow: 0px 0px 5px 5px #4e4e4e3d;
     padding: 0px;
-    position: absolute;
 }
 
 .task-item-menu__actions {
@@ -32,7 +32,8 @@
 }
 
 .task-item-menu__task-name {
-    width: min-content;
+    width: fit-content;
+    text-align: center;
     margin-bottom: 10px;
     color: #2b3149;
     border-bottom: 1px dashed #2b3149;
@@ -56,7 +57,6 @@
 }
 
 .task-item-menu li:last-child {
-    border-bottom: none;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }

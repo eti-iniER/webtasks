@@ -19,7 +19,7 @@ const secondTask = {
   name: "Code",
   description: "Build • 2h • Every day",
   type: "Timer",
-  theme: "green",
+  theme: "red",
   goal: 10,
   emoji: "💻",
 }

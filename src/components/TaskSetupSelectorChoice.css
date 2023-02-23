@@ -10,7 +10,7 @@
 }
 
 .task-setup-selector-choice__icon {
-    font-size: 30px;
+    font-size: 20px;
     margin: 10px;
     color: #2b3149;
 }
@@ -29,4 +29,5 @@
 
 .task-setup-selector-choice__description {
     margin: 0px;
+    font-size: 15px;
 }

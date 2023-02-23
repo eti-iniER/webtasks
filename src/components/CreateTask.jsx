@@ -1,6 +1,5 @@
 import "./CreateTask.css";
 import TaskSetupSelectorChoice from "./TaskSetupSelectorChoice";
-import Pagination from "./Pagination";
 import { useState } from "react";
 
 const CreateTask = (props) => {
@@ -18,7 +17,7 @@ const CreateTask = (props) => {
     }
     return (
         <div className="create-task" style={{ display: props.displayState }}>
-            <Pagination count={3} labels={["Want", "How", "Info"]} />
+            <h2 className="create-task-header">What do you want to do?</h2>
             <TaskSetupSelectorChoice title="Build a habit" leftIcon={buildLeftIcon} rightIcon={rightIcon}
                 description={
                     "Something you want to do - successful if the goal you set is reached"

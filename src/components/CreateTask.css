@@ -1,6 +1,6 @@
 .create-task {
     height: 100vh;
-    width: 30vw;
+    width: 35vw;
     position: fixed;
     right: 0px;
     top: 0px;
@@ -13,7 +13,6 @@
     animation-duration: 0.2s;
     animation-timing-function: ease-out;
     justify-content: center;
-    align-items: center;
     padding-top: 0px;
 }
 
@@ -22,6 +21,14 @@
     font-weight: bold;
     font-size: 15px;
     cursor: default;
+    text-align: center;
+}
+
+.create-task-header {
+    color: #2b3149;
+    font-size: 25px;
+    text-align: center;
+    margin: 5px;
 }
 
 @keyframes slide-in {
