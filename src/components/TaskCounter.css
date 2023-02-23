@@ -36,6 +36,11 @@
     background-color: #38bedf27;
 }
 
+.task-counter__button.green {
+    border-color: #279e59;
+    color: #279e59;
+}
+
 .task-counter__button.orange:active {
     background-color: #eebe8696;
 }

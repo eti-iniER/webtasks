@@ -15,6 +15,11 @@
     color: #da8d35;
 }
 
+.task-timer__button.green {
+    border-color: #279e59;
+    color: #279e59;
+}
+
 .task-timer__button.active {
     color: white;
     border-color: white;

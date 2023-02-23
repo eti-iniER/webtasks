@@ -21,6 +21,11 @@
     box-shadow: 0px 0px 5px 5px #ce824452;
 }
 
+.task-item.green {
+    border-color: #279e5983;
+    box-shadow: 0px 0px 5px 5px #55e28428;
+}
+
 .task-item.active {
     transition-duration: 0.5s;
     background-color: #5ba6ec;
@@ -29,6 +34,10 @@
 
 .task-item.orange.active {
     background-color: #da8d35;
+}
+
+.task-item.green.active {
+    background-color: #279e59;
 }
 
 .task-item__details {
@@ -78,6 +87,10 @@
     background-color: #da8d355d;
 }
 
+.task-item__progress-bar.green {
+    background-color: #3ad17950;
+}
+
 .task-item__progress-bar.active {
     background-color: #ffffff50;
 }
@@ -91,6 +104,10 @@
 
 .task-item__progress-bar-bar.orange {
     background-color: #e79c45;
+}
+
+.task-item__progress-bar-bar.green {
+    background-color: #1ca857c4;
 }
 
 .task-item__progress-bar-bar.active {

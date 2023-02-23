@@ -25,3 +25,13 @@
     color: white;
     background-color: #da8d35;
 }
+
+.task-checkbox__checkbox.green {
+    border-color: #279e59;
+    color: #279e59;
+}
+
+.task-checkbox__checkbox.green.checked {
+    background-color: #279e59;
+    color: white;
+}
