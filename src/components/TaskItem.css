@@ -101,7 +101,7 @@
 }
 
 .task-item__progress-bar.red {
-    background-color: #f3623d71;
+    background-color: #eb765946;
 }
 
 .task-item__progress-bar.active {
@@ -123,7 +123,7 @@
     background-color: #1ca857c4;
 }
 
-.task-item__progress-bar-bar {
+.task-item__progress-bar-bar.red {
     background-color: #db6c50d5;
 }
 
