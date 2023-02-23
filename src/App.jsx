@@ -8,7 +8,7 @@ function App() {
     description: "Build • 3h • Every day",
     type: "Counter",
     theme: "orange",
-    goal: 10,
+    goal: 5,
     emoji: "➗",
   }
 
@@ -17,7 +17,7 @@ function App() {
     description: "Build • 2h • Every day",
     type: "Timer",
     theme: "",
-    goal: 60,
+    goal: 30,
     emoji: "💻",
   }
 

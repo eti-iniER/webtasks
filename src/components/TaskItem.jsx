@@ -6,6 +6,7 @@ import TaskCheckbox from "./TaskCheckbox";
 
 const TaskItem = (props) => {
     const [active, setActive] = useState(false);
+    const [menuState, setMenuState] = useState("closed");
     const [barWidth, setBarWidth] = useState(0);
     let activeClass = "";
 
@@ -27,15 +28,25 @@ const TaskItem = (props) => {
     if (active) {
         activeClass = "active";
     }
-    else {
-        activeClass = "";
+
+    const toggleMenu = () => {
+        if (menuState === "opened") {
+            console.log("The menu is closed");
+            setMenuState("closed");
+        }
+        else {
+            console.log("The menu is now open");
+            setMenuState("opened");
+        }
     }
     return (
         <div className={"task-item" + " " + props.data.theme + " " + activeClass} >
             <div className="task-item__details">
                 <div className="task-item__emoji">{props.data.emoji}</div>
                 <h1 className="task-item__name">{props.data.name}</h1>
-                <button className="task-item__menu"><span className="fa-solid fa-ellipsis-vertical"></span></button>
+                <button className="task-item__menu" onClick={toggleMenu}>
+                    <span className="fa-solid fa-ellipsis-vertical"></span>
+                </button>
                 <p className="task-item__description">{props.data.description}</p>
             </div>
             <div className="task-item__action">

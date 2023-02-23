@@ -11,7 +11,17 @@
     transition-duration: 0.5s;
 }
 
+.task-checkbox__checkbox.checked {
+    color: white;
+    background-color: #3f7eb9;
+}
+
 .task-checkbox__checkbox.orange {
     border-color: #da8d35;
     color: #da8d35;
+}
+
+.task-checkbox__checkbox.orange.checked {
+    color: white;
+    background-color: #da8d35;
 }

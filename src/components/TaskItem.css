@@ -98,13 +98,18 @@
 }
 
 .task-item__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
     border: 0px;
     font-size: 25px;
     position: absolute;
     right: 10px;
-    top: 15px;
+    top: 10px;
     color: #2e2e2e;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .task-item.active .task-item__menu {
