@@ -30,14 +30,7 @@ const TaskItem = (props) => {
     }
 
     const toggleMenu = () => {
-        if (menuState === "opened") {
-            console.log("The menu is closed");
-            setMenuState("closed");
-        }
-        else {
-            console.log("The menu is now open");
-            setMenuState("opened");
-        }
+        props.menu(props.data)
     }
     return (
         <div className={"task-item" + " " + props.data.theme + " " + activeClass} >

@@ -1,0 +1,75 @@
+.task-item-menu__container {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: #4e4e4e81;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-item-menu {
+    color: #2e2e2e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 5px 5px #4e4e4e3d;
+    padding: 0px;
+    position: absolute;
+}
+
+.task-item-menu__actions {
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.task-item-menu__task-name {
+    width: min-content;
+    margin-bottom: 10px;
+    color: #2b3149;
+}
+
+.task-item-menu li {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    /* border-bottom: 1px solid #c7c7c7; */
+    padding-left: 20px;
+}
+
+.task-item-menu li:hover {
+    background-color: #2b3149;
+    color: white;
+}
+
+.task-item-menu li:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.task-item-menu__action-name {
+    margin-left: 10px;
+}
+
+.task-item-menu__close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 0px;
+    background-color: transparent;
+    font-size: 20px;
+    color: #2b3149;
+}
