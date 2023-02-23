@@ -45,7 +45,7 @@ const TaskTimer = (props) => {
     }
     return (
         <div className="task-timer">
-            <div className={"task-timer__button" + " " + activeClass} onClick={doTimer}>
+            <div className={"task-timer__button" + " " + activeClass + " " + props.theme} onClick={doTimer}>
                 {timerRunning ? <span className="fa-solid fa-pause"></span> : <span className="fa-solid fa-play"></span>}
             </div>
             <div className="task-timer__timer"><span>{displayTime()}</span></div>

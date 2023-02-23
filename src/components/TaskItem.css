@@ -16,10 +16,19 @@
     color: #2e2e2e;
 }
 
+.task-item.orange {
+    border-color: #da8d35b6;
+    box-shadow: 0px 0px 5px 5px #ce824452;
+}
+
 .task-item.active {
     transition-duration: 0.5s;
     background-color: #5ba6ec;
     color: white;
+}
+
+.task-item.orange.active {
+    background-color: #da8d35;
 }
 
 .task-item__details {
@@ -65,6 +74,10 @@
     background-color: #5ba6ec50;
 }
 
+.task-item__progress-bar.orange {
+    background-color: #da8d355d;
+}
+
 .task-item__progress-bar.active {
     background-color: #ffffff50;
 }
@@ -74,6 +87,10 @@
     height: 100%;
     width: 0%;
     background-color: #5ba6ec;
+}
+
+.task-item__progress-bar-bar.orange {
+    background-color: #e79c45;
 }
 
 .task-item__progress-bar-bar.active {

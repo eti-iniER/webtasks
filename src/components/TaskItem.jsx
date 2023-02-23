@@ -38,13 +38,13 @@ const TaskItem = (props) => {
                 <p className="task-item__description">{props.data.description}</p>
             </div>
             <div className="task-item__action">
-                {props.data.type === "Counter" ? <TaskCounter goal={props.goal} change={update} /> : ""}
-                {props.data.type === "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} /> : ""}
-                {props.data.type === "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} /> : ""}
+                {props.data.type === "Counter" ? <TaskCounter goal={props.goal} change={update} theme={props.data.theme} /> : ""}
+                {props.data.type === "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} theme={props.data.theme} /> : ""}
+                {props.data.type === "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} theme={props.data.theme} /> : ""}
             </div>
             <div className="task-item__progress-bar-container">
-                <div className={"task-item__progress-bar" + " " + activeClass}>
-                    <div className={"task-item__progress-bar-bar" + " " + activeClass} style={{ width: barWidth.toString() + "%" }}></div>
+                <div className={"task-item__progress-bar" + " " + props.data.theme + " " + activeClass}>
+                    <div className={"task-item__progress-bar-bar" + " " + props.data.theme + " " + activeClass} style={{ width: barWidth.toString() + "%" }}></div>
                 </div>
             </div>
         </div>

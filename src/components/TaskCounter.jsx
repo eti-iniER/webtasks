@@ -17,9 +17,9 @@ const TaskCounter = (props) => {
     }
     return (
         <div className="task-counter">
-            <button className="task-counter__button" onClick={decreaseCount}><span className="fa-solid fa-minus"></span></button>
+            <button className={"task-counter__button" + " " + props.theme} onClick={decreaseCount}><span className="fa-solid fa-minus"></span></button>
             <div className="task-counter__count"><span>{count}</span></div>
-            <button className="task-counter__button" onClick={increaseCount}><span className="fa-solid fa-plus"></span></button>
+            <button className={"task-counter__button" + " " + props.theme} onClick={increaseCount}><span className="fa-solid fa-plus"></span></button>
         </div>
     )
 }

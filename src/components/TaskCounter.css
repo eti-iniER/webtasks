@@ -16,6 +16,10 @@
     color: #3f7eb9;
 }
 
+.task-counter__button.orange {
+    border-color: #da8d35;
+    color: #da8d35;
+}
 
 .task-counter__count {
     display: flex;
@@ -30,4 +34,8 @@
 
 .task-counter__button:active {
     background-color: #38bedf27;
+}
+
+.task-counter__button.orange:active {
+    background-color: #eebe8696;
 }

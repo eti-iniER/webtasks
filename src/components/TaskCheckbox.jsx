@@ -10,7 +10,7 @@ const TaskCheckbox = (props) => {
     }
     return (
         <div className="task-checkbox">
-            <div type="checkbox" className="task-checkbox__checkbox" onClick={mark}>
+            <div className={"task-checkbox__checkbox" + " " + props.theme} onClick={mark}>
                 {checkbox ? <span className="fa-solid fa-check"></span> : ""}
             </div>
         </div>

@@ -10,6 +10,11 @@
     font-size: 15px;
 }
 
+.task-timer__button.orange {
+    border-color: #da8d35;
+    color: #da8d35;
+}
+
 .task-timer__button.active {
     color: white;
     border-color: white;

@@ -6,7 +6,7 @@ function App() {
     name: "Math",
     description: "Build • 3h • Every day",
     type: "Counter",
-    theme: "",
+    theme: "orange",
     goal: 10,
     emoji: "➗",
   }
