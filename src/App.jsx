@@ -1,3 +1,4 @@
+import CreateTask from "./components/CreateTask";
 import TaskItem from "./components/TaskItem";
 import TaskItemMenu from "./components/TaskItemMenu";
 import TaskCreateButton from "./components/UI/TaskCreateButton";
@@ -9,8 +10,8 @@ const firstTask = {
   name: "Math",
   description: "Build • 3h • Every day",
   type: "Counter",
-  theme: "orange",
-  goal: 5,
+  theme: "",
+  goal: 10,
   emoji: "➗",
 }
 
@@ -19,7 +20,7 @@ const secondTask = {
   description: "Build • 2h • Every day",
   type: "Timer",
   theme: "",
-  goal: 30,
+  goal: 10,
   emoji: "💻",
 }
 
@@ -34,6 +35,7 @@ const thirdTask = {
 
 function App() {
   const [menuState, setMenuState] = useState("none");
+  const [createMenuDisplayState, setCreateMenuDisplayState] = useState("none");
   const [currentTask, setCurrentTask] = useState(firstTask);
 
   const toggleMenu = () => {
@@ -42,6 +44,15 @@ function App() {
     }
     else {
       setMenuState("flex")
+    }
+  }
+
+  const toggleCreateMenu = () => {
+    if (createMenuDisplayState === "flex") {
+      setCreateMenuDisplayState("none")
+    }
+    else {
+      setCreateMenuDisplayState("flex")
     }
   }
 
@@ -56,8 +67,9 @@ function App() {
         <TaskItem data={secondTask} menu={showMenu} />
         <TaskItem data={thirdTask} menu={showMenu} />
       </TaskGrid>
-      <TaskCreateButton />
+      <TaskCreateButton toggleCreateMenu={toggleCreateMenu} />
       <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} />
+      <CreateTask displayState={createMenuDisplayState} close={toggleCreateMenu} />
     </div>
   )
 }

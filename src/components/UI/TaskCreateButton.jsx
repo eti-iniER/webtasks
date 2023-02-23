@@ -1,9 +1,9 @@
 import "./TaskCreateButton.css";
 
-const TaskCreateButton = () => {
+const TaskCreateButton = (props) => {
 
     return (
-        <button className="task-create-button">
+        <button className="task-create-button" onClick={props.toggleCreateMenu}>
             <span className="fa-solid fa-plus"></span>
         </button>
     )

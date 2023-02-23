@@ -1,0 +1,32 @@
+.task-setup-selector-choice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 5px 5px #4e4e4e1e;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.task-setup-selector-choice__icon {
+    font-size: 30px;
+    margin: 10px;
+    color: #2b3149;
+}
+
+.task-setup-selector-choice__details {
+    margin: 10px;
+    float: left;
+}
+
+.task-setup-selector-choice__title {
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    color: #2b3149;
+}
+
+.task-setup-selector-choice__description {
+    margin: 0px;
+}

@@ -35,6 +35,7 @@
     width: min-content;
     margin-bottom: 10px;
     color: #2b3149;
+    border-bottom: 1px dashed #2b3149;
 }
 
 .task-item-menu li {
@@ -72,4 +73,8 @@
     background-color: transparent;
     font-size: 20px;
     color: #2b3149;
+}
+
+.task-item-menu__close-button:hover {
+    color: tomato;
 }
