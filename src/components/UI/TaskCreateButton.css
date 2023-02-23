@@ -1,0 +1,23 @@
+.task-create-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    outline: none;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 50%;
+    border: 0px;
+    background: linear-gradient(180deg, #084b3a, #064133);
+    color: white;
+    box-shadow: 0px 0px 5px 5px #d3d3d39d;
+}
+
+.task-create-button:active {
+    transition-duration: 0.2s;
+    background: linear-gradient(90deg, #115f4c, #115f4c);
+}

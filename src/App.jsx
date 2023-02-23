@@ -1,4 +1,5 @@
 import TaskItem from "./components/TaskItem";
+import TaskCreateButton from "./components/UI/TaskCreateButton";
 import TaskGrid from "./components/UI/TaskGrid";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <TaskItem data={secondTask} />
         <TaskItem data={thirdTask} />
       </TaskGrid>
+      <TaskCreateButton />
     </div>
   )
 }
