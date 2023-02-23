@@ -13,6 +13,7 @@
     /* border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px; */
     position: relative;
+    color: #2e2e2e;
 }
 
 .task-item.active {
@@ -22,19 +23,24 @@
 }
 
 .task-item__details {
-    padding: 10px;
+    padding: 12px;
+    padding-bottom: 0px;
+}
+
+.task-item__emoji {
+    font-size: 20px;
 }
 
 .task-item__name {
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0px;
 }
 
 .task-item__description {
-    font-size: 12px;
+    font-size: 15px;
     margin-top: 0px;
-    height: 40%;
+    height: 20%;
 }
 
 .task-item__action {
@@ -53,7 +59,7 @@
 .task-item__progress-bar {
     display: flex;
     position: absolute;
-    width: 50%;
+    width: 70%;
     bottom: 5px;
     height: 3px;
     background-color: #5ba6ec50;

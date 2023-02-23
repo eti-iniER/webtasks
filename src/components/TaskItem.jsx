@@ -12,12 +12,11 @@ const TaskItem = (props) => {
     const update = (value) => {
         if (value === true) {
             // for the checkbox-type of task. This is a potential bug if you don't use ===
-            console.log("The checkbox is ticked");
             setBarWidth(100);
             return
         }
         let newBarWidth = Math.floor(value / props.data.goal * 100);
-        console.log(`Bar width is ${newBarWidth}`);
+        // console.log(`Bar width is ${newBarWidth}`);
         setBarWidth(newBarWidth);
     }
 
@@ -34,14 +33,14 @@ const TaskItem = (props) => {
     return (
         <div className={"task-item" + " " + props.data.theme + " " + activeClass} >
             <div className="task-item__details">
-                <div className="task-item__emoji">&#128261;</div>
+                <div className="task-item__emoji">{props.data.emoji}</div>
                 <h1 className="task-item__name">{props.data.name}</h1>
                 <p className="task-item__description">{props.data.description}</p>
             </div>
             <div className="task-item__action">
-                {props.data.type == "Counter" ? <TaskCounter goal={props.goal} change={update} /> : ""}
-                {props.data.type == "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} /> : ""}
-                {props.data.type == "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} /> : ""}
+                {props.data.type === "Counter" ? <TaskCounter goal={props.goal} change={update} /> : ""}
+                {props.data.type === "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} /> : ""}
+                {props.data.type === "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} /> : ""}
             </div>
             <div className="task-item__progress-bar-container">
                 <div className={"task-item__progress-bar" + " " + activeClass}>

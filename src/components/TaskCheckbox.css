@@ -8,4 +8,5 @@
     border-radius: 50%;
     font-size: 20px;
     color: #3f7eb9;
+    transition-duration: 0.5s;
 }

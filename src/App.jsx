@@ -8,6 +8,7 @@ function App() {
     type: "Counter",
     theme: "",
     goal: 10,
+    emoji: "➗",
   }
 
   const secondTask = {
@@ -16,14 +17,16 @@ function App() {
     type: "Timer",
     theme: "",
     goal: 60,
+    emoji: "💻",
   }
 
   const thirdTask = {
-    name: "Brush teeth",
+    name: "Dance",
     description: "Every day",
     type: "Checkbox",
     theme: "",
     goal: true,
+    emoji: "🕺"
   }
 
   return (
