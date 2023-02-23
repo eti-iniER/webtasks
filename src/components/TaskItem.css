@@ -96,3 +96,18 @@
 .task-item__progress-bar-bar.active {
     background-color: white;
 }
+
+.task-item__menu {
+    background-color: transparent;
+    border: 0px;
+    font-size: 25px;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    color: #2e2e2e;
+}
+
+.task-item.active .task-item__menu {
+    transition-duration: 0.5s;
+    display: none;
+}

@@ -1,4 +1,5 @@
 .task-grid {
     display: flex;
     flex-direction: row;
+    width: 60%;
 }
