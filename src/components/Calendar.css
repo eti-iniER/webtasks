@@ -1,12 +1,3 @@
-.calendar-container {
-    width: 50vw;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    z-index: -1;
-}
-
 .calendar-main-container {
     height: fit-content;
     width: 50vw;
@@ -18,10 +9,11 @@
 .calendar {
     display: flex;
     flex-direction: row;
-    z-index: -1;
+    width: 50vw;
+    overflow-x: hidden;
 }
 
-.calendar-box {
+.calendar-container {
     width: min-content;
     display: flex;
     justify-content: center;
@@ -32,7 +24,7 @@
     border: 0px;
     font-size: 20px;
     color: #2b3149;
-    position: fixed;
+    position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -45,13 +37,11 @@
 }
 
 .calendar-scroll__left {
-    position: absolute;
     left: 0px;
     margin-left: 0px;
 }
 
 .calendar-scroll__right {
     margin-right: 0px;
-    position: absolute;
     right: 0px;
 }

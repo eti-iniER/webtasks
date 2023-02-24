@@ -10,6 +10,10 @@
     border-radius: 5px;
 }
 
+.calendar-day:hover {
+    background-color: gainsboro;
+}
+
 .calendar-day__weekday {
     font-weight: 400;
     color: #666666;

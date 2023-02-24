@@ -47,8 +47,8 @@ const Calendar = (props) => {
         <div className="calendar-main-container">
             <button className="calendar-scroll calendar-scroll__left" onMouseEnter={scrollLeft} onMouseLeave={clearScrollLeft}><span className="fa-solid fa-chevron-left"></span></button>
             <button className="calendar-scroll calendar-scroll__right" onMouseEnter={scrollRight} onMouseLeave={clearScrollRight}><span className="fa-solid fa-chevron-right"></span></button>
-            <div className="calendar-container" ref={calendar}>
-                <div className="calendar" onLoad={centerCalendar}>
+            <div className="calendar-container">
+                <div className="calendar" onLoad={centerCalendar} ref={calendar}>
                     {days}
                 </div>
             </div>
