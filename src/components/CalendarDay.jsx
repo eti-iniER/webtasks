@@ -1,7 +1,6 @@
 import "./CalendarDay.css";
 
 const CalendarDay = (props) => {
-    console.log(props.date);
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let activeClass = "";
 

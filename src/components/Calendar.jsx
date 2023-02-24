@@ -1,23 +1,58 @@
+import { useRef } from "react";
 import "./Calendar.css";
 import CalendarDay from "./CalendarDay";
 
 const Calendar = (props) => {
     const DAY = 86400000;
+    const MAXDAYS = 20;
+    let calendar = useRef();
     let days = [];
     let today = new Date();
+    let leftScroll = null;
+    let rightScroll = null;
 
-    for (let i = -10; i < 11; i++) {
+    for (let i = -MAXDAYS; i < MAXDAYS + 1; i++) {
         let thisDate = new Date(today.getTime() + (DAY * i));
         let thisDay = <CalendarDay date={thisDate} key={i + 10} isToday={i === 0} />
         days.push(thisDay);
     }
 
+    const scrollLeft = () => {
+        console.log("scrolling left");
+        leftScroll = setInterval(() => {
+            calendar.current.scrollLeft -= 2;
+        }, 10)
+        console.log(calendar.current.scrollLeft);
+    };
+
+    const scrollRight = () => {
+        console.log("scrolling right");
+        rightScroll = setInterval(() => {
+            calendar.current.scrollLeft += 2;
+        }, 10)
+        console.log(calendar.current.scrollLeft);
+    }
+
+    const clearScrollLeft = () => {
+        clearInterval(leftScroll);
+    }
+    const clearScrollRight = () => {
+        clearInterval(rightScroll);
+    }
+
+    const centerCalendar = () => {
+        calendar.current.scrollLeft = -10;
+    }
     return (
-        <div className="calendar-container">
-            <div className="calendar">
-                {days}
+        <div className="calendar-main-container">
+            <button className="calendar-scroll calendar-scroll__left" onMouseEnter={scrollLeft} onMouseLeave={clearScrollLeft}><span className="fa-solid fa-chevron-left"></span></button>
+            <button className="calendar-scroll calendar-scroll__right" onMouseEnter={scrollRight} onMouseLeave={clearScrollRight}><span className="fa-solid fa-chevron-right"></span></button>
+            <div className="calendar-container" ref={calendar}>
+                <div className="calendar" onLoad={centerCalendar}>
+                    {days}
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 

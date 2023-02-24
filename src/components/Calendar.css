@@ -1,9 +1,57 @@
 .calendar-container {
     width: 50vw;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: -1;
+}
+
+.calendar-main-container {
+    height: fit-content;
+    width: 50vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .calendar {
     display: flex;
     flex-direction: row;
+    z-index: -1;
+}
+
+.calendar-box {
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-scroll {
+    border: 0px;
+    font-size: 20px;
+    color: #2b3149;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #2b314996;
+    color: white;
+}
+
+.calendar-scroll:hover {
+    background-color: #2b3149;
+}
+
+.calendar-scroll__left {
+    position: absolute;
+    left: 0px;
+    margin-left: 0px;
+}
+
+.calendar-scroll__right {
+    margin-right: 0px;
+    position: absolute;
+    right: 0px;
 }
