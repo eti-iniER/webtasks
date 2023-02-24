@@ -3,7 +3,7 @@ import "./TaskItemMenu.css"
 const TaskItemMenu = (props) => {
 
     return (
-        <div className="task-item-menu__container" style={{ display: props.displayState }}>
+        <div className="task-item-menu__container" style={{ display: props.displayState }} onClick={props.close}>
             <div className="task-item-menu">
                 <h1 className="task-item-menu__task-name">{props.task.name}</h1>
                 <button className="task-item-menu__close-button" onClick={props.close}>

@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import "./Calendar.css";
 import CalendarDay from "./CalendarDay";
 
 const Calendar = (props) => {
     const DAY = 86400000;
+    const [showResetButton, setShowResetButton] = useState("none");
     const MAXDAYS = 20;
     let calendar = useRef();
     let days = [];
@@ -40,15 +41,15 @@ const Calendar = (props) => {
         clearInterval(rightScroll);
     }
 
-    const centerCalendar = () => {
-        calendar.current.scrollLeft = -10;
+    const centerCalendar = (event) => {
+        console.log(event);
     }
     return (
         <div className="calendar-main-container">
             <button className="calendar-scroll calendar-scroll__left" onMouseEnter={scrollLeft} onMouseLeave={clearScrollLeft}><span className="fa-solid fa-chevron-left"></span></button>
             <button className="calendar-scroll calendar-scroll__right" onMouseEnter={scrollRight} onMouseLeave={clearScrollRight}><span className="fa-solid fa-chevron-right"></span></button>
             <div className="calendar-container">
-                <div className="calendar" onLoad={centerCalendar} ref={calendar}>
+                <div className="calendar" onFocus={(event) => { centerCalendar(event) }} ref={calendar} >
                     {days}
                 </div>
             </div>

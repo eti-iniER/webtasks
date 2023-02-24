@@ -4,12 +4,14 @@
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .calendar {
     display: flex;
     flex-direction: row;
     width: 50vw;
+    justify-content: center;
     overflow-x: hidden;
 }
 
@@ -44,4 +46,22 @@
 .calendar-scroll__right {
     margin-right: 0px;
     right: 0px;
+}
+
+.calendar-reset {
+    display: none;
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    border: 0px;
+    color: white;
+    background-color: #064133b0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    text-align: center;
+}
+
+.calendar-reset:hover {
+    background-color: #064133;
 }
