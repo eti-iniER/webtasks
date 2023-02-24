@@ -3,6 +3,8 @@ import TaskItem from "./components/TaskItem";
 import TaskItemMenu from "./components/TaskItemMenu";
 import TaskCreateButton from "./components/UI/TaskCreateButton";
 import TaskGrid from "./components/UI/TaskGrid";
+import Calendar from "./components/Calendar";
+
 import { useState } from "react";
 
 
@@ -10,7 +12,7 @@ const firstTask = {
   name: "Math",
   description: "Build • 3h • Every day",
   type: "Counter",
-  theme: "",
+  theme: "orange",
   goal: 10,
   emoji: "➗",
 }
@@ -19,7 +21,7 @@ const secondTask = {
   name: "Code",
   description: "Build • 2h • Every day",
   type: "Timer",
-  theme: "red",
+  theme: "",
   goal: 10,
   emoji: "💻",
 }
@@ -28,7 +30,7 @@ const thirdTask = {
   name: "Dance",
   description: "Every day",
   type: "Checkbox",
-  theme: "red",
+  theme: "green",
   goal: true,
   emoji: "🕺"
 }
@@ -62,6 +64,7 @@ function App() {
   }
   return (
     <div className="App">
+      <Calendar />
       <TaskGrid>
         <TaskItem data={firstTask} menu={showMenu} />
         <TaskItem data={secondTask} menu={showMenu} />

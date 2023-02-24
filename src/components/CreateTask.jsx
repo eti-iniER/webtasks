@@ -1,4 +1,4 @@
-import CalendarDay from "./CalendarDay";
+import Calendar from "./Calendar";
 import "./CreateTask.css";
 import TaskSetupSelectorChoice from "./TaskSetupSelectorChoice";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const CreateTask = (props) => {
         <div className="create-task" style={{ display: props.displayState }}>
             {/* <h2 className="create-task-header">What do you want to do?</h2> */}
 
-            <CalendarDay day={0} date={23} isToday={true} />
+            <Calendar />
 
 
 

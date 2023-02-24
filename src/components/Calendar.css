@@ -1,0 +1,9 @@
+.calendar-container {
+    width: 50vw;
+    overflow-x: scroll;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: row;
+}

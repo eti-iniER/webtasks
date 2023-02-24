@@ -1,16 +1,17 @@
 import "./CalendarDay.css";
 
 const CalendarDay = (props) => {
+    console.log(props.date);
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let activeClass = "";
 
     if (props.isToday) {
-        activeClass = "today"
+        activeClass = "today";
     }
     return (
         <div className={"calendar-day" + " " + activeClass}>
-            <span className="calendar-day__weekday">{days[props.day]}</span>
-            <span className="calendar-day__date">{props.date}</span>
+            <span className="calendar-day__weekday">{days[props.date.getDay()]}</span>
+            <span className="calendar-day__date">{props.date.getDate()}</span>
         </div>
     )
 }
