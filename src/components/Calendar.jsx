@@ -1,22 +1,27 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Calendar.css";
 import CalendarDay from "./CalendarDay";
 
 const Calendar = (props) => {
     const DAY = 86400000;
     const [showResetButton, setShowResetButton] = useState("none");
-    const MAXDAYS = 20;
+    const MAXDAYS = 10;
     let calendar = useRef();
     let days = [];
     let today = new Date();
     let leftScroll = null;
     let rightScroll = null;
 
-    for (let i = -MAXDAYS; i < MAXDAYS + 1; i++) {
+    for (let i = -MAXDAYS; i <= MAXDAYS + 1; i++) {
         let thisDate = new Date(today.getTime() + (DAY * i));
         let thisDay = <CalendarDay date={thisDate} key={i + 10} isToday={i === 0} />
         days.push(thisDay);
     }
+
+    useEffect(() => {
+        // Scrolls the calendar to the current day
+        calendar.current.scrollLeft = 220;
+    }, []);
 
     const scrollLeft = () => {
         console.log("scrolling left");
@@ -33,7 +38,6 @@ const Calendar = (props) => {
         }, 10)
         console.log(calendar.current.scrollLeft);
     }
-
     const clearScrollLeft = () => {
         clearInterval(leftScroll);
     }
