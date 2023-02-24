@@ -1,0 +1,39 @@
+.calendar-day {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.calendar-day__weekday {
+    font-weight: 400;
+    color: #666666;
+    font-size: 15px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.calendar-day__date {
+    font-weight: 900;
+    color: #2b3149;
+    font-size: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.calendar-day.today {
+    background-color: #15745c;
+}
+
+.calendar-day.today .calendar-day__weekday {
+    color: gainsboro;
+}
+
+.calendar-day.today .calendar-day__date {
+    color: white;
+}
