@@ -12,7 +12,7 @@ const firstTask = {
   name: "Math",
   description: "Build • 3h • Every day",
   type: "Counter",
-  theme: "orange",
+  theme: "",
   goal: 10,
   emoji: "➗",
 }

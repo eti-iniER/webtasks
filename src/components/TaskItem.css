@@ -1,8 +1,43 @@
+:root {
+    /* Define the colours for all the themes */
+
+    --fontColor: #2e2e2e;
+    --accentColor: #2b3149;
+    --activeProgressBar: #ffffff;
+    --activeProgressBarBackground: #ffffff50;
+
+    --blueBorder: #5ca7eda1;
+    --blueActiveBackground: #5ba6ec;
+    --blueItemShadow: #bfd2eb8a;
+    --blueProgressBar: #5ba6ec;
+    --blueProgressBarBackground: #5ba6ec50;
+
+    --orangeActiveBackground: #da8d35;
+    --orangeProgressBar: #e79c45;
+    --orangeBorder: #da8d35b6;
+    --orangeProgressBarBackground: #e9a14f57;
+    --orangeItemShadow: #e0995f3d;
+
+    --redActiveBackground: #e05a39;
+    --redBorderColor: #dd5c3bd0;
+    --redItemShadow: #e6876f48;
+    --redProgressBarBackground: #eb765946;
+    --redProgressBar: #db6c50d5;
+
+    --greenBorder: #279e5983;
+    --greenActiveBackground: #279e59;
+    --greenItemShadow: #55e28428;
+    --greenProgressBarBackground: #3ad17950;
+    --greenProgressBar: #1ca857c4;
+
+}
+
+
 .task-item {
     display: flex;
     flex-direction: column;
-    border: 2px solid #5ba6eca1;
-    box-shadow: 0px 0px 5px 5px #bfd2eb8a;
+    border: 2px solid var(--blueBorder);
+    box-shadow: 0px 0px 5px 5px var(--blueItemShadow);
     border-radius: 10px;
     width: 200px;
     height: 200px;
@@ -10,43 +45,41 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
     transition-duration: 0.5s;
-    /* border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px; */
     position: relative;
-    color: #2e2e2e;
+    color: var(--fontColor);
 }
 
 .task-item.orange {
-    border-color: #da8d35b6;
-    box-shadow: 0px 0px 5px 5px #e0995f3d;
+    border-color: var(--orangeBorder);
+    box-shadow: 0px 0px 5px 5px var(--orangeItemShadow);
 }
 
 .task-item.red {
-    border-color: #dd5c3bd0;
-    box-shadow: 0px 0px 5px 5px #e6876f48;
+    border-color: var(--redBorderColor);
+    box-shadow: 0px 0px 5px 5px var(--redItemShadow);
 }
 
 .task-item.green {
-    border-color: #279e5983;
-    box-shadow: 0px 0px 5px 5px #55e28428;
+    border-color: var(--greenBorder);
+    box-shadow: 0px 0px 5px 5px var(--greenItemShadow);
 }
 
 .task-item.active {
     transition-duration: 0.5s;
-    background-color: #5ba6ec;
+    background-color: var(--blueActiveBackground);
     color: white;
 }
 
 .task-item.orange.active {
-    background-color: #da8d35;
+    background-color: var(--orangeActiveBackground);
 }
 
 .task-item.green.active {
-    background-color: #279e59;
+    background-color: var(--greenActiveBackground);
 }
 
 .task-item.red.active {
-    background-color: #e05a39;
+    background-color: var(--redActiveBackground);
 }
 
 .task-item__details {
@@ -89,46 +122,46 @@
     width: 70%;
     bottom: 5px;
     height: 2px;
-    background-color: #5ba6ec50;
+    background-color: var(--blueProgressBarBackground);
 }
 
 .task-item__progress-bar.orange {
-    background-color: #e9a14f57;
+    background-color: var(--orangeProgressBarBackground);
 }
 
 .task-item__progress-bar.green {
-    background-color: #3ad17950;
+    background-color: var(--greenProgressBarBackground);
 }
 
 .task-item__progress-bar.red {
-    background-color: #eb765946;
+    background-color: var(--redProgressBarBackground);
 }
 
 .task-item__progress-bar.active {
-    background-color: #ffffff50;
+    background-color: var(--activeProgressBarBackground);
 }
 
 .task-item__progress-bar-bar {
     transition-duration: 0.2s;
     height: 100%;
     width: 0%;
-    background-color: #5ba6ec;
+    background-color: var(--blueProgressBar);
 }
 
 .task-item__progress-bar-bar.orange {
-    background-color: #e79c45;
+    background-color: var(--orangeProgressBar);
 }
 
 .task-item__progress-bar-bar.green {
-    background-color: #1ca857c4;
+    background-color: var(--greenProgressBar);
 }
 
 .task-item__progress-bar-bar.red {
-    background-color: #db6c50d5;
+    background-color: var(--redProgressBar);
 }
 
 .task-item__progress-bar-bar.active {
-    background-color: white;
+    background-color: var(--activeProgressBar);
 }
 
 .task-item__menu {
@@ -141,13 +174,13 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    color: #2e2e2e;
+    color: var(--fontColor);
     border-radius: 5px;
     padding: 5px;
 }
 
 .task-item__menu:hover {
-    color: #2b3149;
+    color: var(--accentColor);
 }
 
 .task-item.active .task-item__menu {

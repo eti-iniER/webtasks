@@ -4,9 +4,10 @@ import TaskSetupSelectorChoice from "./TaskSetupSelectorChoice";
 import ChoicePage from "./ChoicePage";
 
 import { useState } from "react";
+import TaskConfigPage from "./TaskConfigPage";
 
 const CreateTask = (props) => {
-    const [taskCreationProgress, setTaskCreationProgress] = useState(1);
+    const [taskCreationProgress, setTaskCreationProgress] = useState(0);
 
     let newTask = {};
     let buildLeftIcon = <span className="task-setup-selector-choice__icon fa-regular fa-circle-check" style={{ color: "#0a8d45" }}></span>;
@@ -16,7 +17,7 @@ const CreateTask = (props) => {
     let simpleLeftIcon = <span className="task-setup-selector-choice__icon fa-solid fa-chart-simple" style={{ color: "orangered" }}></span>;
 
     const close = () => {
-        setTaskCreationProgress(1);
+        // setTaskCreationProgress(1);
         props.close();
     }
 
@@ -49,9 +50,11 @@ const CreateTask = (props) => {
             </ChoicePage>
 
             <ChoicePage displayState={taskCreationProgress === 2 ? "flex" : "none"}>
-                <h2 className="create-task-header">How do you want to track it</h2>
+                <h2 className="create-task-header">How do you want to track it?</h2>
             </ChoicePage>
             <a className="cancel" onClick={close}>Cancel</a>
+
+            <TaskConfigPage />
         </div>
     )
 }

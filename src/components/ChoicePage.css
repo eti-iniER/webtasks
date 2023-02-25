@@ -1,4 +1,4 @@
 .choice-page {
-    display: flex;
+    display: none;
     flex-direction: column;
 }
