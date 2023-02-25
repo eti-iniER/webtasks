@@ -45,3 +45,13 @@
     color: white;
     background-color: #dd5b3b;
 }
+
+.task-checkbox__checkbox.purple {
+    border-color: #962a96;
+    color: #962a96;
+}
+
+.task-checkbox__checkbox.purple.checked {
+    color: white;
+    background-color: #962a96;
+}

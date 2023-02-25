@@ -16,7 +16,7 @@ const TaskItem = (props) => {
             setBarWidth(100);
             return
         }
-        let newBarWidth = value / props.data.goal * 100;
+        let newBarWidth = Math.floor(value / props.data.goal * 100);
         // console.log(`Bar width is ${newBarWidth}`);
         setBarWidth(newBarWidth);
     }

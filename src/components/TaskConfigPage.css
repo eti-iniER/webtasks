@@ -7,6 +7,7 @@
     color: #5a5a5a;
     font-size: 16px;
     font-weight: 700;
+    user-select: none;
 }
 
 .task-config-form__field {
@@ -15,7 +16,8 @@
     margin: 10px;
 }
 
-.task-config-form__field input {
+.task-config-form__field input,
+.form-input {
     padding: 10px;
     outline: none;
     border: 1px solid #818a9e;
@@ -25,6 +27,7 @@
     font-size: 16px;
     font-weight: 600;
     color: #2e2e2e;
+    position: relative;
 }
 
 .task-config-form__field input:focus {
@@ -52,6 +55,7 @@
 }
 
 .task-config-form__emoji-picker {
+    user-select: none;
     width: 50px;
     height: 50px;
     display: flex;
@@ -63,12 +67,35 @@
     border: 1px solid #818a9e;
     text-align: center;
     padding: 0px;
-    position: relative;
 }
 
 .task-config-form__emoji-picker-emoji {
-    position: absolute;
-    top: 11px;
     text-align: center;
-    line-height: 25px;
+}
+
+.task-config-form__dropdown {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2e2e2e;
+}
+
+.task-config-form__dropdown-icon {
+    position: absolute;
+    right: 10px;
+}
+
+.task-config-form__dropdown-content {
+    transition-duration: 2s;
+    display: none;
+    position: absolute;
+    top: 50px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px #a1a1a159;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90%;
+    margin-top: 0px;
+    list-style-type: none;
 }

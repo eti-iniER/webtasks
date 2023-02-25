@@ -3,7 +3,10 @@ import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59"];
+    // blue, red, orange, green, 
     const [currentColor, setCurrentColor] = useState(0);
+    const [periodDropdownDisplay, setPeriodDropdownDisplay] = useState("none");
+
     let taskConfig = {
         buildOrQuit: "",
         name: "",
@@ -16,6 +19,14 @@ const TaskConfigPage = (props) => {
 
     const cycleColor = () => {
         setCurrentColor((currentColor + 1) % colors.length);
+    }
+
+    const togglePeriodDropdown = () => {
+        if (periodDropdownDisplay === "none") {
+            setPeriodDropdownDisplay("flex");
+        } else {
+            setPeriodDropdownDisplay("none");
+        }
     }
     return (
         <div className="task-config-page">
@@ -32,7 +43,14 @@ const TaskConfigPage = (props) => {
 
                 <div className="task-config-form__field">
                     <label>PERIOD</label>
-                    <input type="text" placeholder="Tap to select period..."></input>
+                    <div className="task-config-form__dropdown form-input" onClick={togglePeriodDropdown}>
+                        Every day
+                        {periodDropdownDisplay === "none" ? <span className="task-config-form__dropdown-icon fa-solid fa-chevron-down"></span> :
+                            <span className="task-config-form__dropdown-icon fa-solid fa-chevron-up"></span>}
+                        <ul className="task-config-form__dropdown-content" style={{ display: periodDropdownDisplay }}>
+                            <li>Hello</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div className="task-config-form__emoji-colour-container">
