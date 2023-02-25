@@ -20,7 +20,7 @@ const Calendar = (props) => {
 
     useEffect(() => {
         // Scrolls the calendar to the current day
-        calendar.current.scrollLeft = 220;
+        calendar.current.scrollLeft = 220 * Math.ceil(MAXDAYS / 10);
     }, []);
 
     const scrollLeft = () => {

@@ -25,7 +25,7 @@
     margin-top: 5px;
     height: 25px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 550;
     color: #2e2e2e;
     position: relative;
 }
@@ -98,4 +98,16 @@
     width: 90%;
     margin-top: 0px;
     list-style-type: none;
+}
+
+.task-config-form__submit {
+    margin: 10px;
+    border: 0px;
+    padding: 10px;
+    height: 50px;
+    font-size: 16px;
+    color: white;
+    background-color: #eea047;
+    border-radius: 10px;
+    font-weight: bold;
 }

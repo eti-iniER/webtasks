@@ -12,7 +12,7 @@ const firstTask = {
   name: "Math",
   description: "Build • 3h • Every day",
   type: "Counter",
-  theme: "purple",
+  theme: "green",
   goal: 10,
   emoji: "➗",
 }
@@ -21,7 +21,7 @@ const secondTask = {
   name: "Fill forms",
   description: "Only today",
   type: "Timer",
-  theme: "purple",
+  theme: "",
   goal: 30,
   emoji: "💻",
 }
