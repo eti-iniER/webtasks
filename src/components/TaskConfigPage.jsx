@@ -14,7 +14,7 @@ const TaskConfigPage = (props) => {
         reminders: [],
     };
 
-    defaultTask = { ...props.presets };
+    defaultTask = { ...defaultTask, ...props.previousChoices };
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
@@ -33,7 +33,6 @@ const TaskConfigPage = (props) => {
 
     useEffect(() => {
         setTaskGoal(Number(hours * 3600) + Number(minutes * 60) + Number(seconds));
-
     }, [hours, minutes, seconds])
 
     const cycleColor = () => {
@@ -69,15 +68,48 @@ const TaskConfigPage = (props) => {
         setHours(event.target.value);
     };
 
+    const makeShortTime = () => {
+        let h = Number(hours);
+        let m = Number(minutes);
+        let s = Number(seconds);
+
+        let d = "";
+        if (h > 0) {
+            d += hours;
+            d += "h"
+        }
+        if (m > 0) {
+            d += minutes;
+            d += "m"
+        }
+        if (s > 0) {
+            d += seconds;
+            d += "s"
+        }
+        return d;
+    }
+    const makeDescription = () => {
+        let middle = "";
+        if (taskType === "Timer") {
+            return props.previousChoices.buildOrQuit + " • " + makeShortTime() + " • " + "Every day";
+        } else if (taskType === "Counter") {
+            return props.previousChoices.buildOrQuit + " • " + taskGoal + " • " + "Every day";
+        } else {
+            return props.previousChoices.buildOrQuit + " • " + "Every day";
+        }
+    }
+
     const saveTask = () => {
         let task = {
             name: taskName,
-            description: taskDescription,
+            description: makeDescription(),
             theme: taskTheme,
             goal: taskGoal,
             type: taskType,
             emoji: taskEmoji,
         }
+
+
         props.createTask(task);
 
     }
@@ -86,7 +118,7 @@ const TaskConfigPage = (props) => {
             <div className="task-config-form">
                 <div className="task-config-form__field">
                     <label>BUILD OR QUIT THIS HABIT?</label>
-                    <input type="text" value={props.previousChoices.buildOrQuit}></input>
+                    <input type="text" value={props.previousChoices.buildOrQuit} readOnly></input>
                 </div>
 
                 <div className="task-config-form__field">
