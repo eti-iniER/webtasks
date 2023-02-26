@@ -3,6 +3,7 @@ import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
+    const colorThemes = ["blue", "red", "orange", "green", "purple"];
     // blue, red, orange, green, purple
     const [currentColor, setCurrentColor] = useState(0);
     const [periodDropdownDisplay, setPeriodDropdownDisplay] = useState("none");
@@ -15,7 +16,7 @@ const TaskConfigPage = (props) => {
         name: "",
         period: "",
         emoji: "",
-        color: "",
+        theme: "",
         start: "",
         goal: null,
         reminders: [],
@@ -28,6 +29,7 @@ const TaskConfigPage = (props) => {
     }, [hours, minutes, seconds])
 
     const cycleColor = () => {
+        taskConfig.theme = colorThemes[(currentColor + 1) % colors.length];
         setCurrentColor((currentColor + 1) % colors.length);
     }
 
@@ -120,8 +122,7 @@ const TaskConfigPage = (props) => {
                 </div>
                 <div className="task-config-form__field">
                     <label>AMOUNT PER PERIOD</label>
-                    <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }} value={taskConfig.goal
-                    }></input>
+                    <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }}></input>
                 </div>
 
                 <button className="task-config-form__submit" type="submit">Create Task</button>
