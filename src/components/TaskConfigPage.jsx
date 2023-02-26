@@ -111,6 +111,7 @@ const TaskConfigPage = (props) => {
 
 
         props.createTask(task);
+        props.closeSidebar();
 
     }
     return (

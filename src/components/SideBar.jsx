@@ -9,7 +9,6 @@ import TaskConfigPage from "./TaskConfigPage";
 const SideBar = (props) => {
     let defaultChoices = {
         buildOrQuit: "Build",
-        type: "Timer"
     }
     const [taskCreationProgress, setTaskCreationProgress] = useState(1);
     const [choices, setChoices] = useState(defaultChoices);
@@ -53,12 +52,13 @@ const SideBar = (props) => {
         nextPage();
     }
     const createTask = (taskData) => {
-        console.log(`From inside Sidebar, taskData is: `);
-        console.log(taskData);
+        let defaultChoices = {
+            buildOrQuit: "Build",
+        }
         props.createTask(taskData);
     }
     return (
-        <div className="create-task" style={{ display: props.displayState }}>
+        <div className="sidebar" style={{ display: props.displayState }}>
             <ChoicePage displayState={taskCreationProgress === 1 ? "flex" : "none"}>
                 <h2 className="create-task-header">What do you want to do?</h2>
                 <TaskSetupSelectorChoice title="Build a habit" leftIcon={buildLeftIcon} rightIcon={rightIcon}
@@ -87,7 +87,7 @@ const SideBar = (props) => {
 
                 <TaskSetupSelectorChoice title="Track your do's or dont's" leftIcon={doDontLeftIcon} rightIcon={rightIcon}
                     description={
-                        "For example - sobriety, flossing, laundry,, no fap, watering plants, etc"
+                        "For example - sobriety, flossing, laundry, no fap, watering plants, etc"
                     } action={setToCheckbox} />
 
                 <TaskSetupSelectorChoice title="Track specific amount" leftIcon={amountLeftIcon} rightIcon={rightIcon}
@@ -102,7 +102,7 @@ const SideBar = (props) => {
 
             </ChoicePage>
 
-            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} /> : ""}
+            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close} /> : ""}
 
             <a className="cancel" onClick={close}>Cancel</a>
         </div>

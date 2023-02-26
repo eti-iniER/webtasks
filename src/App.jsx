@@ -10,35 +10,17 @@ import { useState } from "react";
 let tasks = [
   {
     name: "Math",
-    description: "Build • 3h • Every day",
+    description: "Build • 10 • Every day",
     type: "Counter",
-    theme: "red",
+    theme: "blue",
     goal: 10,
     emoji: "➗",
   },
-
-  {
-    name: "Fill forms",
-    description: "Only today",
-    type: "Timer",
-    theme: "blue",
-    goal: 60,
-    emoji: "💻",
-  },
-
-  {
-    name: "Sing a song",
-    description: "Every day",
-    type: "Checkbox",
-    theme: "green",
-    goal: 1,
-    emoji: "🕺"
-  }
 ];
 
 function App() {
   const [menuState, setMenuState] = useState("none");
-  const [createMenuDisplayState, setCreateMenuDisplayState] = useState("none");
+  const [sideBarDisplayState, setSideBarDisplayState] = useState("none");
   const [currentTask, setCurrentTask] = useState(tasks[0]);
   const [visibleTasks, setvisibleTasks] = useState(tasks);
 
@@ -51,12 +33,12 @@ function App() {
     }
   }
 
-  const toggleCreateMenu = () => {
-    if (createMenuDisplayState === "flex") {
-      setCreateMenuDisplayState("none")
+  const toggleSideBar = () => {
+    if (sideBarDisplayState === "flex") {
+      setSideBarDisplayState("none");
     }
     else {
-      setCreateMenuDisplayState("flex")
+      setSideBarDisplayState("flex");
     }
   };
 
@@ -88,9 +70,9 @@ function App() {
         {[allTasks]}
       </TaskGrid>
 
-      <TaskCreateButton toggleCreateMenu={toggleCreateMenu} />
+      <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} />
-      <SideBar displayState={createMenuDisplayState} close={toggleCreateMenu} createTask={saveTaskHandler} />
+      <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} />
     </div>
   )
 }

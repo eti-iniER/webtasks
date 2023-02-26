@@ -1,8 +1,10 @@
 .task-config-page {
-    overflow-y: scroll;
+    margin: 0px;
+    width: 100%;
 }
 
 .task-config-form {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

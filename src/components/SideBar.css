@@ -1,6 +1,6 @@
-.create-task {
+.sidebar {
     width: 35vw;
-    height: 100vh;
+    height: 100%;
     position: fixed;
     right: 0px;
     top: 0px;
@@ -8,12 +8,11 @@
     box-shadow: 0px 0px 5px 5px #4e4e4e3d;
     display: flex;
     flex-direction: column;
-    padding: 10px;
     animation-name: slide-in;
     animation-duration: 0.2s;
     animation-timing-function: ease-out;
-    justify-content: center;
-    padding-top: 0px;
+    align-items: center;
+    padding: 10px;
 }
 
 .cancel {
@@ -23,6 +22,8 @@
     cursor: default;
     text-align: center;
     padding: 10px;
+    position: absolute;
+    bottom: 30px;
 }
 
 .create-task-header {
