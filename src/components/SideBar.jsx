@@ -7,7 +7,12 @@ import { useState } from "react";
 import TaskConfigPage from "./TaskConfigPage";
 
 const SideBar = (props) => {
+    let defaultChoices = {
+        buildOrQuit: "Build",
+        type: "Timer"
+    }
     const [taskCreationProgress, setTaskCreationProgress] = useState(1);
+    const [choices, setChoices] = useState(defaultChoices);
 
     let buildLeftIcon = <span className="task-setup-selector-choice__icon fa-regular fa-circle-check" style={{ color: "#0a8d45" }}></span>;
     let rightIcon = <span className="task-setup-selector-choice__icon fa-solid fa-chevron-right"></span>;
@@ -26,6 +31,32 @@ const SideBar = (props) => {
     const nextPage = () => {
         setTaskCreationProgress(taskCreationProgress + 1);
     }
+
+    const setToBuild = () => {
+        setChoices({ ...choices, buildOrQuit: "Build" })
+        nextPage();
+    }
+    const setToQuit = () => {
+        setChoices({ ...choices, buildOrQuit: "Quit" })
+        nextPage();
+    }
+    const setToCounter = () => {
+        setChoices({ ...choices, type: "Counter" })
+        nextPage()
+    }
+    const setToTimer = () => {
+        setChoices({ ...choices, type: "Timer" })
+        nextPage();
+    }
+    const setToCheckbox = () => {
+        setChoices({ ...choices, type: "Checkbox" })
+        nextPage();
+    }
+    const createTask = (taskData) => {
+        console.log(`From inside Sidebar, taskData is: `);
+        console.log(taskData);
+        props.createTask(taskData);
+    }
     return (
         <div className="create-task" style={{ display: props.displayState }}>
             <ChoicePage displayState={taskCreationProgress === 1 ? "flex" : "none"}>
@@ -33,11 +64,11 @@ const SideBar = (props) => {
                 <TaskSetupSelectorChoice title="Build a habit" leftIcon={buildLeftIcon} rightIcon={rightIcon}
                     description={
                         "Something you want to do - successful if the goal you set is reached"
-                    } action={nextPage} />
+                    } action={setToBuild} />
                 <TaskSetupSelectorChoice title="Quit a habit" leftIcon={quitLeftIcon} rightIcon={rightIcon}
                     description={
                         "Something you want to stop doing - successful if the goal you set is NOT reached"
-                    } action={nextPage} />
+                    } action={setToQuit} />
 
                 <TaskSetupSelectorChoice title="Track progress" leftIcon={trackLeftIcon} rightIcon={rightIcon}
                     description={
@@ -57,21 +88,21 @@ const SideBar = (props) => {
                 <TaskSetupSelectorChoice title="Track your do's or dont's" leftIcon={doDontLeftIcon} rightIcon={rightIcon}
                     description={
                         "For example - sobriety, flossing, laundry,, no fap, watering plants, etc"
-                    } action={nextPage} />
+                    } action={setToCheckbox} />
 
                 <TaskSetupSelectorChoice title="Track specific amount" leftIcon={amountLeftIcon} rightIcon={rightIcon}
                     description={
                         "For example - glasses of water, cups of coffee, pushups, situps, cigarettes, etc"
-                    } action={nextPage} />
+                    } action={setToCounter} />
 
                 <TaskSetupSelectorChoice title="Track specific time" leftIcon={timeLeftIcon} rightIcon={rightIcon}
                     description={
                         "For example - studying, fasting, gaming, working out, on social media, meditation, etc."
-                    } action={nextPage} />
+                    } action={setToTimer} />
 
             </ChoicePage>
 
-            {taskCreationProgress === 3 ? <TaskConfigPage createTask={props.createTask} /> : ""}
+            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} /> : ""}
 
             <a className="cancel" onClick={close}>Cancel</a>
         </div>

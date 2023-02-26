@@ -2,6 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
+    let defaultTask = {
+        buildOrQuit: "",
+        name: "",
+        description: "Build • 3h • Every day",
+        type: "Counter",
+        emoji: "💻",
+        theme: "blue",
+        start: "",
+        goal: 0,
+        reminders: [],
+    };
+
+    defaultTask = { ...props.presets };
+
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
     // blue, red, orange, green, purple
@@ -10,28 +24,20 @@ const TaskConfigPage = (props) => {
     const [seconds, setSeconds] = useState("");
     const [minutes, setMinutes] = useState("");
     const [hours, setHours] = useState("");
-
-    let taskConfig = {
-        buildOrQuit: "",
-        name: "",
-        description: "Hello, new task",
-        type: "Counter",
-        period: "",
-        emoji: "%",
-        theme: "blue",
-        start: "",
-        goal: null,
-        reminders: [],
-    }
+    const [taskName, setTaskName] = useState(defaultTask.name);
+    const [taskDescription, setTaskDescription] = useState(defaultTask.description);
+    const [taskGoal, setTaskGoal] = useState(defaultTask.goal);
+    const [taskTheme, setTaskTheme] = useState(defaultTask.theme);
+    const [taskType, setTaskType] = useState(defaultTask.type);
+    const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
 
     useEffect(() => {
-        taskConfig.goal = Number(hours * 3600) + Number(minutes * 60) + Number(seconds);
-        console.log(`The total time is ${taskConfig.goal} seconds`);
+        setTaskGoal(Number(hours * 3600) + Number(minutes * 60) + Number(seconds));
 
     }, [hours, minutes, seconds])
 
     const cycleColor = () => {
-        taskConfig.theme = colorThemes[(currentColor + 1) % colors.length];
+        setTaskTheme(colorThemes[(currentColor + 1) % colors.length]);
         setCurrentColor((currentColor + 1) % colors.length);
     }
 
@@ -44,13 +50,11 @@ const TaskConfigPage = (props) => {
     }
 
     const handleNameInput = (event) => {
-        taskConfig.name = event.target.value;
-        console.log(`The name is ${taskConfig.name}`)
+        setTaskName(event.target.value);
     }
 
     const handleAmountInput = (event) => {
-        taskConfig.goal = Number(event.target.value);
-        console.log(`The name is ${taskConfig.goal}`)
+        setTaskGoal(event.target.value);
     }
 
     const handleSecondsInput = (event) => {
@@ -66,8 +70,15 @@ const TaskConfigPage = (props) => {
     };
 
     const saveTask = () => {
-        console.log("Task has been created");
-        props.createTask(taskConfig);
+        let task = {
+            name: taskName,
+            description: taskDescription,
+            theme: taskTheme,
+            goal: taskGoal,
+            type: taskType,
+            emoji: taskEmoji,
+        }
+        props.createTask(task);
 
     }
     return (
@@ -75,7 +86,7 @@ const TaskConfigPage = (props) => {
             <div className="task-config-form">
                 <div className="task-config-form__field">
                     <label>BUILD OR QUIT THIS HABIT?</label>
-                    <input type="text"></input>
+                    <input type="text" value={props.previousChoices.buildOrQuit}></input>
                 </div>
 
                 <div className="task-config-form__field">
@@ -83,20 +94,27 @@ const TaskConfigPage = (props) => {
                     <input type="text" onChange={(event) => { handleNameInput(event) }}></input>
                 </div>
 
-                <div className="task-config-form__field time-container">
-                    <span className="task-config-form__label">LENGTH OF TIME</span>
-                    <div className="task-config-form__time">
-                        <div className="task-config-form__field">
-                            <input type="number" placeholder="hours" onChange={(event) => { handleHoursInput(event) }} min={0} max={100} value={hours}></input>
+                {props.previousChoices.type === "Timer" ?
+                    <div className="task-config-form__field time-container">
+                        <span className="task-config-form__label">LENGTH OF TIME</span>
+                        <div className="task-config-form__time">
+                            <div className="task-config-form__field">
+                                <input type="number" placeholder="hours" onChange={(event) => { handleHoursInput(event) }} min={0} max={100} value={hours}></input>
+                            </div>
+                            <div className="task-config-form__field">
+                                <input type="number" placeholder="minutes" onChange={(event) => { handleMinutesInput(event) }} min={0} max={59} value={minutes}></input>
+                            </div>
+                            <div className="task-config-form__field">
+                                <input type="number" placeholder="seconds" onChange={(event) => { handleSecondsInput(event) }} min={0} max={59} value={seconds}></input>
+                            </div>
                         </div>
-                        <div className="task-config-form__field">
-                            <input type="number" placeholder="minutes" onChange={(event) => { handleMinutesInput(event) }} min={0} max={59} value={minutes}></input>
-                        </div>
-                        <div className="task-config-form__field">
-                            <input type="number" placeholder="seconds" onChange={(event) => { handleSecondsInput(event) }} min={0} max={59} value={seconds}></input>
-                        </div>
-                    </div>
-                </div>
+                    </div> : ""}
+
+                {props.previousChoices.type === "Counter" ?
+                    <div className="task-config-form__field">
+                        <label>AMOUNT PER PERIOD</label>
+                        <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }}></input>
+                    </div> : ""}
 
                 <div className="task-config-form__field">
                     <label>PERIOD</label>
@@ -128,10 +146,7 @@ const TaskConfigPage = (props) => {
                     </div>
 
                 </div>
-                <div className="task-config-form__field">
-                    <label>AMOUNT PER PERIOD</label>
-                    <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }}></input>
-                </div>
+
 
                 <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>
             </div>
