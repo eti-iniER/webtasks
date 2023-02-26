@@ -36,17 +36,18 @@
 .task-item {
     display: flex;
     flex-direction: column;
+    float: left;
     border: 2px solid var(--blueBorder);
     box-shadow: 0px 0px 5px 5px var(--blueItemShadow);
     border-radius: 10px;
-    width: 200px;
-    height: 200px;
     background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
     transition-duration: 0.5s;
     position: relative;
     color: var(--fontColor);
+    width: 200px;
+    height: 200px;
 }
 
 .task-item.orange {

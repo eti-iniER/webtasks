@@ -24,7 +24,6 @@ const Calendar = (props) => {
     }, []);
 
     const scrollLeft = () => {
-        console.log("scrolling left");
         leftScroll = setInterval(() => {
             calendar.current.scrollLeft -= 2;
         }, 10)
@@ -32,7 +31,6 @@ const Calendar = (props) => {
     };
 
     const scrollRight = () => {
-        console.log("scrolling right");
         rightScroll = setInterval(() => {
             calendar.current.scrollLeft += 2;
         }, 10)

@@ -71,7 +71,7 @@ const SideBar = (props) => {
 
             </ChoicePage>
 
-            {taskCreationProgress === 3 ? <TaskConfigPage /> : ""}
+            {taskCreationProgress === 3 ? <TaskConfigPage createTask={props.createTask} /> : ""}
 
             <a className="cancel" onClick={close}>Cancel</a>
         </div>

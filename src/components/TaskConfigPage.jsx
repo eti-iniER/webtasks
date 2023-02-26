@@ -14,9 +14,11 @@ const TaskConfigPage = (props) => {
     let taskConfig = {
         buildOrQuit: "",
         name: "",
+        description: "Hello, new task",
+        type: "Counter",
         period: "",
-        emoji: "",
-        theme: "",
+        emoji: "%",
+        theme: "blue",
         start: "",
         goal: null,
         reminders: [],
@@ -61,10 +63,16 @@ const TaskConfigPage = (props) => {
 
     const handleHoursInput = (event) => {
         setHours(event.target.value);
+    };
+
+    const saveTask = () => {
+        console.log("Task has been created");
+        props.createTask(taskConfig);
+
     }
     return (
         <div className="task-config-page">
-            <form className="task-config-form">
+            <div className="task-config-form">
                 <div className="task-config-form__field">
                     <label>BUILD OR QUIT THIS HABIT?</label>
                     <input type="text"></input>
@@ -125,8 +133,8 @@ const TaskConfigPage = (props) => {
                     <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }}></input>
                 </div>
 
-                <button className="task-config-form__submit" type="submit">Create Task</button>
-            </form>
+                <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>
+            </div>
         </div>
     )
 }
