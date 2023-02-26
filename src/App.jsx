@@ -1,4 +1,4 @@
-import CreateTask from "./components/CreateTask";
+import SideBar from "./components/SideBar";
 import TaskItem from "./components/TaskItem";
 import TaskItemMenu from "./components/TaskItemMenu";
 import TaskCreateButton from "./components/UI/TaskCreateButton";
@@ -12,7 +12,7 @@ const firstTask = {
   name: "Math",
   description: "Build • 3h • Every day",
   type: "Counter",
-  theme: "green",
+  theme: "blue",
   goal: 10,
   emoji: "➗",
 }
@@ -21,8 +21,8 @@ const secondTask = {
   name: "Fill forms",
   description: "Only today",
   type: "Timer",
-  theme: "",
-  goal: 30,
+  theme: "green",
+  goal: 60,
   emoji: "💻",
 }
 
@@ -30,8 +30,8 @@ const thirdTask = {
   name: "Sing a song",
   description: "Every day",
   type: "Checkbox",
-  theme: "purple",
-  goal: true,
+  theme: "red",
+  goal: 1,
   emoji: "🕺"
 }
 
@@ -72,7 +72,7 @@ function App() {
       </TaskGrid>
       <TaskCreateButton toggleCreateMenu={toggleCreateMenu} />
       <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} />
-      <CreateTask displayState={createMenuDisplayState} close={toggleCreateMenu} />
+      <SideBar displayState={createMenuDisplayState} close={toggleCreateMenu} />
     </div>
   )
 }
