@@ -7,9 +7,9 @@ const TaskConfigPage = (props) => {
     // blue, red, orange, green, purple
     const [currentColor, setCurrentColor] = useState(0);
     const [periodDropdownDisplay, setPeriodDropdownDisplay] = useState("none");
-    const [seconds, setSeconds] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [hours, setHours] = useState(0);
+    const [seconds, setSeconds] = useState("");
+    const [minutes, setMinutes] = useState("");
+    const [hours, setHours] = useState("");
 
     let taskConfig = {
         buildOrQuit: "",
@@ -23,7 +23,7 @@ const TaskConfigPage = (props) => {
     }
 
     useEffect(() => {
-        taskConfig.goal = (hours * 3600) + (minutes * 60) + (seconds);
+        taskConfig.goal = Number(hours * 3600) + Number(minutes * 60) + Number(seconds);
         console.log(`The total time is ${taskConfig.goal} seconds`);
 
     }, [hours, minutes, seconds])
@@ -52,15 +52,15 @@ const TaskConfigPage = (props) => {
     }
 
     const handleSecondsInput = (event) => {
-        setSeconds(Number(event.target.value));
+        setSeconds(event.target.value);
     }
 
     const handleMinutesInput = (event) => {
-        setMinutes(Number(event.target.value));
+        setMinutes(event.target.value);
     }
 
     const handleHoursInput = (event) => {
-        setHours(Number(event.target.value));
+        setHours(event.target.value);
     }
     return (
         <div className="task-config-page">
@@ -79,13 +79,13 @@ const TaskConfigPage = (props) => {
                     <span className="task-config-form__label">LENGTH OF TIME</span>
                     <div className="task-config-form__time">
                         <div className="task-config-form__field">
-                            <input type="number" placeholder="hours" onChange={(event) => { handleHoursInput(event) }}></input>
+                            <input type="number" placeholder="hours" onChange={(event) => { handleHoursInput(event) }} min={0} max={100} value={hours}></input>
                         </div>
                         <div className="task-config-form__field">
-                            <input type="number" placeholder="minutes" onChange={(event) => { handleMinutesInput(event) }}></input>
+                            <input type="number" placeholder="minutes" onChange={(event) => { handleMinutesInput(event) }} min={0} max={59} value={minutes}></input>
                         </div>
                         <div className="task-config-form__field">
-                            <input type="number" placeholder="seconds" onChange={(event) => { handleSecondsInput(event) }}></input>
+                            <input type="number" placeholder="seconds" onChange={(event) => { handleSecondsInput(event) }} min={0} max={59} value={seconds}></input>
                         </div>
                     </div>
                 </div>
