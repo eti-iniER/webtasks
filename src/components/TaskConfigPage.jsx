@@ -12,6 +12,7 @@ const TaskConfigPage = (props) => {
         start: "",
         goal: 0,
         reminders: [],
+        frequency: "Every day",
     };
 
     defaultTask = { ...defaultTask, ...props.previousChoices };
@@ -30,6 +31,7 @@ const TaskConfigPage = (props) => {
     const [taskTheme, setTaskTheme] = useState(defaultTask.theme);
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
+    const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
 
     useEffect(() => {
         setTaskGoal(Number(hours * 3600) + Number(minutes * 60) + Number(seconds));
@@ -114,6 +116,17 @@ const TaskConfigPage = (props) => {
         props.closeSidebar();
 
     }
+
+    const changeFrequency = (choice) => {
+        if (choice === "Select week days") {
+            showWeekDaySelector();
+        } else if (choice === "Every X days") {
+            showAmountSelector();
+        } else {
+            ;
+        }
+        setTaskFrequency(choice);
+    }
     return (
         <div className="task-config-page">
             <div className="task-config-form">
@@ -146,23 +159,22 @@ const TaskConfigPage = (props) => {
                 {props.previousChoices.type === "Counter" ?
                     <div className="task-config-form__field">
                         <label>AMOUNT PER PERIOD</label>
-                        <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }}></input>
+                        <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }} value={taskGoal}></input>
                     </div> : ""}
 
                 <div className="task-config-form__field">
                     <label>PERIOD</label>
                     <div className="task-config-form__dropdown form-input" onClick={togglePeriodDropdown}>
-                        Every day
+                        {taskFrequency}
                         {periodDropdownDisplay === "none" ? <span className="task-config-form__dropdown-icon fa-solid fa-chevron-down"></span> :
                             <span className="task-config-form__dropdown-icon fa-solid fa-chevron-up"></span>}
                         <ul className="task-config-form__dropdown-content" style={{ display: periodDropdownDisplay }}>
-                            <li>Every day</li>
-                            <li>Every week</li>
-                            <li>Every month</li>
-                            <li>Every year</li>
-                            <li>Select week days</li>
-                            <li>Every X days</li>
-                            <li>X times per Y</li>
+                            <li onClick={(event) => { changeFrequency("Every day") }}>Every day</li>
+                            <li onClick={(event) => { changeFrequency("Every week") }}>Every week</li>
+                            <li onClick={(event) => { changeFrequency("Every month") }}>Every month</li>
+                            <li onClick={(event) => { changeFrequency("Every year") }}>Every year</li>
+                            <li onClick={(event) => { changeFrequency("Select week days") }}>Select week days</li>
+                            <li onClick={(event) => { changeFrequency("Every X days") }}>Every X days</li>
                         </ul>
                     </div>
                 </div>
