@@ -53,7 +53,7 @@ const TaskConfigPage = (props) => {
         );
 
         picmoEmojiPicker.addEventListener("emoji:select", (EmojiSelection) => saveEmoji(EmojiSelection));
-    })
+    });
 
     const saveEmoji = (EmojiSelection) => {
         setTaskEmoji(EmojiSelection.emoji);
