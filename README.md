@@ -8,7 +8,7 @@ Webtasks is a habit tracking application, built as a practice clone of an app ca
 - MySQL
 - Git/GitHub
 
-## SKILLS I LEARNT FROM THIS PROJECT
+## What I learnt
 1. **Vite:** For this project, instead of using Create-React-App for the initial setup, I decided to use Vite, a configuration package I had heard good things about. It's my preferred choice now.
 
 2. **Using third-party libraries:** Case-in-point, the emoji selection menu. I used a library called Picmo, which Ifound after a little digging. It turned out to be really simple, and I got it working within a few minutes. However, I faced a frustrating bug regarding positioning the emoji picker, and I struggled with it for several hours until I fixed it with the useEffect hook.
