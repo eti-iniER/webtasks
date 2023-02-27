@@ -3,9 +3,9 @@ import "./Calendar.css";
 import CalendarDay from "./CalendarDay";
 
 const Calendar = (props) => {
-    const DAY = 86400000;
+    const DAY = 86400000;       // milliseconds in a day
     const [showResetButton, setShowResetButton] = useState("none");
-    const MAXDAYS = 50;            // Days on either side of the current day!
+    const MAXDAYS = 20;            // Days on either side of the current day!
     let calendar = useRef();
     let days = [];
     let today = new Date();
@@ -21,7 +21,6 @@ const Calendar = (props) => {
     useEffect(() => {
         // Centers the calendar to the current day. Magic, actually
         calendar.current.scrollLeft = (calendar.current.scrollWidth / 2) - 400;
-        console.log(calendar);
     }, []);
 
     const scrollLeft = () => {

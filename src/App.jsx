@@ -23,6 +23,7 @@ function App() {
   const [sideBarDisplayState, setSideBarDisplayState] = useState("none");
   const [currentTask, setCurrentTask] = useState(null);
   const [visibleTasks, setvisibleTasks] = useState([]);
+  const [sideBarAnimation, setSideBarAnimation] = useState("slide-in");
 
   const toggleMenu = () => {
     if (menuState === "flex") {
@@ -35,9 +36,14 @@ function App() {
 
   const toggleSideBar = () => {
     if (sideBarDisplayState === "flex") {
-      setSideBarDisplayState("none");
+      // hide the taskbar
+      setSideBarAnimation("slide-out");
+      setTimeout(() => {
+        setSideBarDisplayState("none");
+      }, 150)
     }
     else {
+      setSideBarAnimation("slide-in");
       setSideBarDisplayState("flex");
     }
   };
@@ -72,7 +78,7 @@ function App() {
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} /> : ""}
-      <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} />
+      <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation} />
     </div>
   )
 }

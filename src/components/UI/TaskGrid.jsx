@@ -1,7 +1,6 @@
 import "./TaskGrid.css";
 
 const TaskGrid = (props) => {
-    console.log(props.children);
     return (
         <div className="task-grid">
             {props.children.length > 0 ? props.children :

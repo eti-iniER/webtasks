@@ -58,7 +58,7 @@ const SideBar = (props) => {
         props.createTask(taskData);
     }
     return (
-        <div className="sidebar" style={{ display: props.displayState }}>
+        <div className="sidebar" style={{ display: props.displayState, animationName: props.animation }}>
             <ChoicePage displayState={taskCreationProgress === 1 ? "flex" : "none"}>
                 <h2 className="create-task-header">What do you want to do?</h2>
                 <TaskSetupSelectorChoice title="Build a habit" leftIcon={buildLeftIcon} rightIcon={rightIcon}
