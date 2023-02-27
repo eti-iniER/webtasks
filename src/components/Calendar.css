@@ -1,6 +1,6 @@
 .calendar-main-container {
     height: fit-content;
-    width: 50vw;
+    width: 60vw;
     position: relative;
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
 .calendar {
     display: flex;
     flex-direction: row;
-    width: 50vw;
+    width: 60vw;
     overflow-x: hidden;
 }
 

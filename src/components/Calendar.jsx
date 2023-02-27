@@ -5,22 +5,23 @@ import CalendarDay from "./CalendarDay";
 const Calendar = (props) => {
     const DAY = 86400000;
     const [showResetButton, setShowResetButton] = useState("none");
-    const MAXDAYS = 10;
+    const MAXDAYS = 50;            // Days on either side of the current day!
     let calendar = useRef();
     let days = [];
     let today = new Date();
     let leftScroll = null;
     let rightScroll = null;
 
-    for (let i = -MAXDAYS; i <= MAXDAYS + 1; i++) {
+    for (let i = -MAXDAYS; i <= MAXDAYS; i++) {
         let thisDate = new Date(today.getTime() + (DAY * i));
         let thisDay = <CalendarDay date={thisDate} key={i + 10} isToday={i === 0} />
         days.push(thisDay);
     }
 
     useEffect(() => {
-        // Scrolls the calendar to the current day
-        calendar.current.scrollLeft = 220 * Math.ceil(MAXDAYS / 10);
+        // Centers the calendar to the current day. Magic, actually
+        calendar.current.scrollLeft = (calendar.current.scrollWidth / 2) - 400;
+        console.log(calendar);
     }, []);
 
     const scrollLeft = () => {

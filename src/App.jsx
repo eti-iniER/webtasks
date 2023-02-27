@@ -8,21 +8,21 @@ import Calendar from "./components/Calendar";
 import { useState } from "react";
 
 let tasks = [
-  {
-    name: "Math",
-    description: "Build • 10 • Every day",
-    type: "Counter",
-    theme: "blue",
-    goal: 10,
-    emoji: "➗",
-  },
+  // {
+  //   name: "Math",
+  //   description: "Build • 10 • Every day",
+  //   type: "Counter",
+  //   theme: "blue",
+  //   goal: 10,
+  //   emoji: "➗",
+  // },
 ];
 
 function App() {
   const [menuState, setMenuState] = useState("none");
   const [sideBarDisplayState, setSideBarDisplayState] = useState("none");
-  const [currentTask, setCurrentTask] = useState(tasks[0]);
-  const [visibleTasks, setvisibleTasks] = useState(tasks);
+  const [currentTask, setCurrentTask] = useState(null);
+  const [visibleTasks, setvisibleTasks] = useState([]);
 
   const toggleMenu = () => {
     if (menuState === "flex") {
@@ -53,12 +53,12 @@ function App() {
     setvisibleTasks([...visibleTasks, taskData]);
   }
 
-  console.log("Visible tasks are:");
-  console.log(visibleTasks);
   let allTasks = [];
 
 
   for (let i = 0; i < visibleTasks.length; i++) {
+    console.log(visibleTasks.length);
+    console.log("Visible tasks is running");
     let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} />;
     allTasks.push(thisTask);
   }
@@ -66,12 +66,12 @@ function App() {
   return (
     <div className="App">
       <Calendar />
-      <TaskGrid>
-        {[allTasks]}
+      <TaskGrid sideBar={toggleSideBar}>
+        {allTasks}
       </TaskGrid>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} />
+      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} />
     </div>
   )

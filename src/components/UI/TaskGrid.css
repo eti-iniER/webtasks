@@ -1,4 +1,25 @@
 .task-grid {
-    width: 60%;
+    width: 60vw;
     position: relative;
+}
+
+.task-grid__no-tasks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #2b3149;
+}
+
+.task-grid__create-task-button {
+    width: 200px;
+    border: 0px;
+    background-color: #2b3149;
+    color: white;
+    padding: 10px;
+    font-weight: 500;
+    border-radius: 10px;
+}
+
+.task-grid__create-task-button:active {
+    background-color: #1f2333;
 }
