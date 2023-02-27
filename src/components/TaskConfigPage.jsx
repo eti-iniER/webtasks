@@ -1,4 +1,8 @@
 import { useEffect, useRef, useState } from "react";
+import { createPicker } from "picmo";
+import { createPopup } from "@picmo/popup-picker";
+
+
 import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
@@ -7,7 +11,7 @@ const TaskConfigPage = (props) => {
         name: "",
         description: "Build • 3h • Every day",
         type: "Counter",
-        emoji: "💻",
+        emoji: "",
         theme: "blue",
         start: "",
         goal: 0,
@@ -32,6 +36,22 @@ const TaskConfigPage = (props) => {
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
+
+    const emojiContainer = useRef();
+    const picmoEmojiPicker = createPopup(undefined,
+        {
+            referenceElement: emojiContainer.current,
+            triggerElement: emojiContainer.current,
+            onPositionLost: "close",
+            position: { right: true }
+        }
+    );
+
+    picmoEmojiPicker.addEventListener("emoji:select", (EmojiSelection) => saveEmoji(EmojiSelection));
+
+    const saveEmoji = (EmojiSelection) => {
+        setTaskEmoji(EmojiSelection.emoji);
+    };
 
     useEffect(() => {
         setTaskGoal(Number(hours * 3600) + Number(minutes * 60) + Number(seconds));
@@ -127,6 +147,10 @@ const TaskConfigPage = (props) => {
         }
         setTaskFrequency(choice);
     }
+
+    const openEmojiPicker = () => {
+        picmoEmojiPicker.open();
+    }
     return (
         <div className="task-config-page">
             <div className="task-config-form">
@@ -180,9 +204,9 @@ const TaskConfigPage = (props) => {
                 </div>
 
                 <div className="task-config-form__emoji-colour-container">
-                    <div className="task-config-form__field color">
+                    <div className="task-config-form__field emoji">
                         <label>EMOJI</label>
-                        <div className="task-config-form__emoji-picker"><span className="task-config-form__emoji-picker-emoji">➗</span></div>
+                        <div className="task-config-form__emoji-picker" onClick={openEmojiPicker} ref={emojiContainer}><span className="task-config-form__emoji-picker-emoji">{taskEmoji}</span></div>
                     </div>
 
                     <div className="task-config-form__field color">
