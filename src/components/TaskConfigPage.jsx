@@ -11,7 +11,7 @@ const TaskConfigPage = (props) => {
         name: "",
         description: "Build • 3h • Every day",
         type: "Counter",
-        emoji: "",
+        emoji: "⭐️",
         theme: "blue",
         start: "",
         goal: 0,
@@ -38,16 +38,22 @@ const TaskConfigPage = (props) => {
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
 
     const emojiContainer = useRef();
-    const picmoEmojiPicker = createPopup(undefined,
-        {
-            referenceElement: emojiContainer.current,
-            triggerElement: emojiContainer.current,
-            onPositionLost: "close",
-            position: { right: true }
-        }
-    );
+    let picmoEmojiPicker = null;
 
-    picmoEmojiPicker.addEventListener("emoji:select", (EmojiSelection) => saveEmoji(EmojiSelection));
+    useEffect(() => {
+        picmoEmojiPicker = createPopup(
+            {
+                visibleRows: 4,
+            },
+            {
+                referenceElement: emojiContainer.current || document.querySelector("App"),
+                triggerElement: emojiContainer.current,
+                onPositionLost: "close",
+            }
+        );
+
+        picmoEmojiPicker.addEventListener("emoji:select", (EmojiSelection) => saveEmoji(EmojiSelection));
+    })
 
     const saveEmoji = (EmojiSelection) => {
         setTaskEmoji(EmojiSelection.emoji);
