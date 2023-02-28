@@ -6,12 +6,12 @@ import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
     const emptyTask = {
-        buildOrQuit: "",
+        buildOrQuit: "Build",
         name: "",
         description: "",
         type: "",
         emoji: "⭐️",
-        theme: "",
+        theme: "blue",
         start: "",
         goal: "0",
         reminders: [],
@@ -37,7 +37,7 @@ const TaskConfigPage = (props) => {
     const [taskName, setTaskName] = useState(defaultTask.name);
     const [taskDescription, setTaskDescription] = useState(defaultTask.description);
     const [taskGoal, setTaskGoal] = useState(defaultTask.goal);
-    const [taskTheme, setTaskTheme] = useState(defaultTask.theme);
+    const [taskTheme, setTaskTheme] = useState(colorThemes.indexOf(defaultTask.theme));
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
@@ -123,13 +123,12 @@ const TaskConfigPage = (props) => {
         return d;
     }
     const makeDescription = () => {
-        let middle = "";
         if (taskType === "Timer") {
-            return props.previousChoices.buildOrQuit + " • " + makeShortTime() + " • " + "Every day";
+            return defaultTask.buildOrQuit + " • " + makeShortTime() + " • " + taskFrequency;
         } else if (taskType === "Counter") {
-            return props.previousChoices.buildOrQuit + " • " + taskGoal + " • " + "Every day";
+            return defaultTask.buildOrQuit + " • " + taskGoal + " • " + taskFrequency;
         } else {
-            return props.previousChoices.buildOrQuit + " • " + "Every day";
+            return defaultTask.buildOrQuit + " • " + taskFrequency;
         }
     }
 
@@ -145,6 +144,7 @@ const TaskConfigPage = (props) => {
             hours: hours,
             minutes: minutes,
             seconds: seconds,
+            frequency: taskFrequency,
         }
 
         props.createTask(task);
@@ -176,6 +176,7 @@ const TaskConfigPage = (props) => {
             hours: hours,
             minutes: minutes,
             seconds: seconds,
+            frequency: taskFrequency,
         }
 
         props.saveEdit(task);

@@ -5,9 +5,14 @@ const TaskItemMenu = (props) => {
         console.log(`Editing task with ID ${props.task.id}`);
         props.showEditMenu(props.task.id);
     }
-
+    let menuWidth = "100vw"
+    if (props.sideBarState === "flex") {
+        menuWidth = "65vw";
+    } else {
+        menuWidth = "100vw";
+    }
     return (
-        <div className="task-item-menu__container" style={{ display: props.displayState }} onClick={props.close}>
+        <div className="task-item-menu__container" style={{ display: props.displayState, width: menuWidth }} onClick={props.close}>
             <div className="task-item-menu">
                 <h1 className="task-item-menu__task-name">{props.task.name}</h1>
                 <button className="task-item-menu__close-button" onClick={props.close}>

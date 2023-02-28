@@ -1,5 +1,5 @@
 .task-item-menu__container {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     position: absolute;
     background-color: #4e4e4e81;

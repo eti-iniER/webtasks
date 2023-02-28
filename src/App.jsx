@@ -101,7 +101,7 @@ function App() {
       </TaskGrid>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} /> : ""}
+      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>

@@ -33,10 +33,9 @@ const SideBar = (props) => {
     let timeLeftIcon = <span className="task-setup-selector-choice__icon fa-regular fa-clock" style={{ color: "#329b4d" }}></span>;
 
     const close = () => {
-        setTaskCreationProgress(1);
         props.close();
+        setTaskCreationProgress(1);
     }
-
     const nextPage = () => {
         setTaskCreationProgress(taskCreationProgress + 1);
     }
@@ -126,5 +125,4 @@ const SideBar = (props) => {
         </div>
     )
 }
-
-export default SideBar;
+export default SideBar
