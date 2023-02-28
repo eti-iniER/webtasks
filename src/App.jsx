@@ -34,6 +34,7 @@ function App() {
   const toggleSideBar = () => {
     if (sideBarDisplayState === "flex") {
       // hide the taskbar
+      setIsTaskEdit(false);
       setSideBarAnimation("slide-out");
       setTimeout(() => {
         setSideBarDisplayState("none");
@@ -66,6 +67,7 @@ function App() {
   const saveEditHandler = (editedTaskData) => {
     console.log("We are saving the newly edited task");
     console.log(editedTaskData);
+    setIsTaskEdit(false);
     const tasksAfterEdit = visibleTasks.map(task => {
       console.log("Now dealing with task at:");
       console.log(task.id);

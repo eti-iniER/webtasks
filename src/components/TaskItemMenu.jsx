@@ -5,6 +5,7 @@ const TaskItemMenu = (props) => {
         console.log(`Editing task with ID ${props.task.id}`);
         props.showEditMenu(props.task.id);
     }
+
     return (
         <div className="task-item-menu__container" style={{ display: props.displayState }} onClick={props.close}>
             <div className="task-item-menu">

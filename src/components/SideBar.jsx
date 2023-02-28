@@ -19,7 +19,6 @@ const SideBar = (props) => {
     useEffect(() => {
         if (props.isEdit === true) {
             setTaskToBeEdited(props.getTask(props.taskIndex));
-
             setTaskCreationProgress(3);
         }
     })
@@ -70,7 +69,8 @@ const SideBar = (props) => {
     }
 
     const saveEditHandler = (taskData) => {
-
+        setTaskToBeEdited({})
+        setTaskCreationProgress(1);
         props.saveEdit({ ...taskData, id: props.taskIndex });
     }
 
@@ -119,7 +119,7 @@ const SideBar = (props) => {
 
             </ChoicePage>
 
-            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close}
+            {taskCreationProgress === 3 || props.thisIsAnEdit ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close}
                 preconfigs={taskToBeEdited} thisIsAnEdit={props.isEdit} saveEdit={saveEditHandler} /> : ""}
 
             <a className="cancel" onClick={close}>Cancel</a>

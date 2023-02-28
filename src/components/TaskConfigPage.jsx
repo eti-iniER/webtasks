@@ -5,30 +5,26 @@ import { TwemojiRenderer } from "@picmo/renderer-twemoji";
 import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
-    let defaultTask = {
+    const emptyTask = {
         buildOrQuit: "",
         name: "",
-        description: "Build • 3h • Every day",
-        type: "Counter",
+        description: "",
+        type: "",
         emoji: "⭐️",
-        theme: "blue",
+        theme: "",
         start: "",
         goal: "0",
         reminders: [],
-        frequency: "Every day",
+        frequency: "",
         seconds: "",
         minutes: "",
         hours: "",
     };
 
-    defaultTask = {
-        ...defaultTask, ...props.previousChoices, ...props.preconfigs,
-    };
-
-    useEffect(() => {
-        console.log("Props.preconfigs are :");
-        console.log(props.preconfigs);
-    }, []);
+    let defaultTask = { ...emptyTask, ...props.previousChoices };
+    if (props.thisIsAnEdit) {
+        defaultTask = { ...emptyTask, ...props.previousChoices, ...props.preconfigs }
+    }
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
@@ -137,6 +133,7 @@ const TaskConfigPage = (props) => {
         }
     }
 
+
     const saveTask = () => {
         let task = {
             name: taskName,
@@ -176,6 +173,9 @@ const TaskConfigPage = (props) => {
             goal: taskGoal,
             type: taskType,
             emoji: taskEmoji,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
         }
 
         props.saveEdit(task);
@@ -194,7 +194,7 @@ const TaskConfigPage = (props) => {
                     <input type="text" onChange={(event) => { handleNameInput(event) }} value={taskName}></input>
                 </div>
 
-                {props.previousChoices.type === "Timer" ?
+                {defaultTask.type === "Timer" ?
                     <div className="task-config-form__field time-container">
                         <span className="task-config-form__label">LENGTH OF TIME</span>
                         <div className="task-config-form__time">
@@ -210,7 +210,7 @@ const TaskConfigPage = (props) => {
                         </div>
                     </div> : ""}
 
-                {props.previousChoices.type === "Counter" ?
+                {defaultTask.type === "Counter" ?
                     <div className="task-config-form__field">
                         <label>AMOUNT PER PERIOD</label>
                         <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }} value={taskGoal}></input>
