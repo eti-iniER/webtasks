@@ -1,7 +1,10 @@
 import "./TaskItemMenu.css"
 
 const TaskItemMenu = (props) => {
-
+    const editTaskHandler = () => {
+        console.log(`Editing task with ID ${props.task.id}`);
+        props.showEditMenu(props.task.id);
+    }
     return (
         <div className="task-item-menu__container" style={{ display: props.displayState }} onClick={props.close}>
             <div className="task-item-menu">
@@ -10,7 +13,7 @@ const TaskItemMenu = (props) => {
                     <span className="fa-solid fa-close"></span>
                 </button>
                 <ul className="task-item-menu__actions">
-                    <li>
+                    <li onClick={editTaskHandler}>
                         <span className="fa-regular fa-pen-to-square"></span>
                         <p className="task-item-menu__action-name">Edit</p>
                     </li>

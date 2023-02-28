@@ -10,12 +10,14 @@ const TaskItem = (props) => {
     const [barWidth, setBarWidth] = useState(0);
     let activeClass = "";
 
-    const update = (value) => {
-        if (value === true) {
-            // for the checkbox-type of task. This is a potential bug if you don't use ===
+    const toggleCheckbox = (state) => {
+        if (state === true) {
             setBarWidth(100);
-            return
+        } else {
+            setBarWidth(0);
         }
+    }
+    const update = (value) => {
         let newBarWidth = Math.floor(value / props.data.goal * 100);
         // console.log(`Bar width is ${newBarWidth}`);
         setBarWidth(newBarWidth);
@@ -30,7 +32,7 @@ const TaskItem = (props) => {
     }
 
     const toggleMenu = () => {
-        props.menu(props.data)
+        props.menu(props.id)
     }
     return (
         <div className={"task-item" + " " + props.data.theme + " " + activeClass} >
@@ -45,7 +47,7 @@ const TaskItem = (props) => {
             <div className="task-item__action">
                 {props.data.type === "Counter" ? <TaskCounter goal={props.goal} change={update} theme={props.data.theme} /> : ""}
                 {props.data.type === "Timer" ? <TaskTimer flip={doActivity} goal={props.goal} change={update} theme={props.data.theme} /> : ""}
-                {props.data.type === "Checkbox" ? <TaskCheckbox goal={props.goal} change={update} theme={props.data.theme} /> : ""}
+                {props.data.type === "Checkbox" ? <TaskCheckbox goal={props.goal} change={toggleCheckbox} theme={props.data.theme} /> : ""}
             </div>
             <div className="task-item__progress-bar-container">
                 <div className={"task-item__progress-bar" + " " + props.data.theme + " " + activeClass}>

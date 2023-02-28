@@ -7,16 +7,6 @@ import Calendar from "./components/Calendar";
 
 import { useState } from "react";
 
-let tasks = [
-  // {
-  //   name: "Math",
-  //   description: "Build • 10 • Every day",
-  //   type: "Counter",
-  //   theme: "blue",
-  //   goal: 10,
-  //   emoji: "➗",
-  // },
-];
 
 function App() {
   const [menuState, setMenuState] = useState("none");
@@ -24,6 +14,8 @@ function App() {
   const [currentTask, setCurrentTask] = useState(null);
   const [visibleTasks, setvisibleTasks] = useState([]);
   const [sideBarAnimation, setSideBarAnimation] = useState("slide-in");
+  const [isTaskEdit, setIsTaskEdit] = useState(false);
+  const [taskToBeEdited, setTaskToBeEdited] = useState(null);
 
   const toggleMenu = () => {
     if (menuState === "flex") {
@@ -33,6 +25,11 @@ function App() {
       setMenuState("flex")
     }
   }
+
+  const openSideBar = () => {
+    setSideBarAnimation("slide-in");
+    setSideBarDisplayState("flex");
+  };
 
   const toggleSideBar = () => {
     if (sideBarDisplayState === "flex") {
@@ -48,24 +45,49 @@ function App() {
     }
   };
 
-  const showMenu = (taskData) => {
-    setCurrentTask(taskData);
+  const showMenu = (taskKey) => {
+    setCurrentTask(visibleTasks[taskKey]);
     toggleMenu()
   };
 
   const saveTaskHandler = (taskData) => {
-    console.log("Saving task");
-    console.log(taskData);
-    setvisibleTasks([...visibleTasks, taskData]);
+    console.log("Saving task from APP.js");
+    let taskDataWithID = { ...taskData, id: visibleTasks.length };
+    console.log(taskDataWithID);
+    setvisibleTasks([...visibleTasks, taskDataWithID]);
   }
 
+  const editTask = (taskID) => {
+    setIsTaskEdit(true);
+    setTaskToBeEdited(taskID);
+    openSideBar();
+  }
+
+  const saveEditHandler = (editedTaskData) => {
+    console.log("We are saving the newly edited task");
+    console.log(editedTaskData);
+    const tasksAfterEdit = visibleTasks.map(task => {
+      console.log("Now dealing with task at:");
+      console.log(task.id);
+      if (task.id === editedTaskData.id) {
+        console.log("We found another task with the same id");
+        return editedTaskData;
+      } else {
+        return task;
+      }
+    });
+    console.log("Visible tasks after edit is");
+    console.log(tasksAfterEdit);
+    setvisibleTasks(tasksAfterEdit);
+  }
   let allTasks = [];
 
+  const getTaskHandler = (taskID) => {
+    return visibleTasks[taskID];
+  }
 
   for (let i = 0; i < visibleTasks.length; i++) {
-    console.log(visibleTasks.length);
-    console.log("Visible tasks is running");
-    let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} />;
+    let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} id={i} />;
     allTasks.push(thisTask);
   }
 
@@ -77,8 +99,9 @@ function App() {
       </TaskGrid>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} /> : ""}
-      <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation} />
+      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} /> : ""}
+      <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
+        getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>
   )
 }

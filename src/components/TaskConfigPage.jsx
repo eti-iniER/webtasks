@@ -13,21 +13,31 @@ const TaskConfigPage = (props) => {
         emoji: "⭐️",
         theme: "blue",
         start: "",
-        goal: 0,
+        goal: "0",
         reminders: [],
         frequency: "Every day",
+        seconds: "",
+        minutes: "",
+        hours: "",
     };
 
-    defaultTask = { ...defaultTask, ...props.previousChoices, ...props.preconfigs };
+    defaultTask = {
+        ...defaultTask, ...props.previousChoices, ...props.preconfigs,
+    };
+
+    useEffect(() => {
+        console.log("Props.preconfigs are :");
+        console.log(props.preconfigs);
+    }, []);
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
     // blue, red, orange, green, purple
-    const [currentColor, setCurrentColor] = useState(0);
+    const [currentColor, setCurrentColor] = useState(colorThemes.indexOf(defaultTask.theme));
     const [periodDropdownDisplay, setPeriodDropdownDisplay] = useState("none");
-    const [seconds, setSeconds] = useState("");
-    const [minutes, setMinutes] = useState("");
-    const [hours, setHours] = useState("");
+    const [seconds, setSeconds] = useState(defaultTask.seconds);
+    const [minutes, setMinutes] = useState(defaultTask.minutes);
+    const [hours, setHours] = useState(defaultTask.hours);
     const [taskName, setTaskName] = useState(defaultTask.name);
     const [taskDescription, setTaskDescription] = useState(defaultTask.description);
     const [taskGoal, setTaskGoal] = useState(defaultTask.goal);
@@ -37,8 +47,8 @@ const TaskConfigPage = (props) => {
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
 
     const emojiContainer = useRef();
-    let picmoEmojiPicker = null;
 
+    let picmoEmojiPicker = null;
     useEffect(() => {
         picmoEmojiPicker = createPopup(
             {
@@ -135,8 +145,10 @@ const TaskConfigPage = (props) => {
             goal: taskGoal,
             type: taskType,
             emoji: taskEmoji,
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
         }
-
 
         props.createTask(task);
         props.closeSidebar();
@@ -146,16 +158,28 @@ const TaskConfigPage = (props) => {
     const changeFrequency = (choice) => {
         if (choice === "Select week days") {
             showWeekDaySelector();
-        } else if (choice === "Every X days") {
-            showAmountSelector();
         } else {
-            ;
+            setTaskFrequency(choice);
         }
-        setTaskFrequency(choice);
+
     }
 
     const openEmojiPicker = () => {
         picmoEmojiPicker.open();
+    }
+
+    const saveTaskEdits = () => {
+        let task = {
+            name: taskName,
+            description: makeDescription(),
+            theme: taskTheme,
+            goal: taskGoal,
+            type: taskType,
+            emoji: taskEmoji,
+        }
+
+        props.saveEdit(task);
+        props.closeSidebar();
     }
     return (
         <div className="task-config-page">
@@ -223,7 +247,9 @@ const TaskConfigPage = (props) => {
                 </div>
 
 
-                <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>
+                {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save Edits</button> :
+                    <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>}
+
             </div>
         </div>
     )

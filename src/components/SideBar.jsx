@@ -3,15 +3,26 @@ import "./SideBar.css";
 import TaskSetupSelectorChoice from "./TaskSetupSelectorChoice";
 import ChoicePage from "./ChoicePage";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskConfigPage from "./TaskConfigPage";
 
 const SideBar = (props) => {
     let defaultChoices = {
         buildOrQuit: "Build",
     }
+
+
     const [taskCreationProgress, setTaskCreationProgress] = useState(1);
     const [choices, setChoices] = useState(defaultChoices);
+    const [taskToBeEdited, setTaskToBeEdited] = useState({});
+
+    useEffect(() => {
+        if (props.isEdit === true) {
+            setTaskToBeEdited(props.getTask(props.taskIndex));
+
+            setTaskCreationProgress(3);
+        }
+    })
 
     let buildLeftIcon = <span className="task-setup-selector-choice__icon fa-regular fa-circle-check" style={{ color: "#0a8d45" }}></span>;
     let rightIcon = <span className="task-setup-selector-choice__icon fa-solid fa-chevron-right"></span>;
@@ -57,6 +68,12 @@ const SideBar = (props) => {
         }
         props.createTask(taskData);
     }
+
+    const saveEditHandler = (taskData) => {
+
+        props.saveEdit({ ...taskData, id: props.taskIndex });
+    }
+
     return (
         <div className="sidebar" style={{ display: props.displayState, animationName: props.animation }}>
             <ChoicePage displayState={taskCreationProgress === 1 ? "flex" : "none"}>
@@ -72,12 +89,12 @@ const SideBar = (props) => {
 
                 <TaskSetupSelectorChoice title="Track progress" leftIcon={trackLeftIcon} rightIcon={rightIcon}
                     description={
-                        "Track your progress over time (weight, savings, etc)"
+                        "Track your progress over time (weight, savings, distances etc)"
                     } action={nextPage} />
 
                 <TaskSetupSelectorChoice title="Simply track a habit" leftIcon={simpleLeftIcon} rightIcon={rightIcon}
                     description={
-                        "No goal or limit - just tracking what you're doing"
+                        "No goal or limit - just tracking what you're doing at the moment"
                     } action={nextPage} />
 
             </ChoicePage>
@@ -102,7 +119,8 @@ const SideBar = (props) => {
 
             </ChoicePage>
 
-            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close} /> : ""}
+            {taskCreationProgress === 3 ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close}
+                preconfigs={taskToBeEdited} thisIsAnEdit={props.isEdit} saveEdit={saveEditHandler} /> : ""}
 
             <a className="cancel" onClick={close}>Cancel</a>
         </div>

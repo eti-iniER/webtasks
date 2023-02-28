@@ -5,7 +5,7 @@ const TaskCheckbox = (props) => {
     const [checkbox, setCheckbox] = useState(false);
     let checkboxClass = "";
     const mark = () => {
-        props.change(!checkbox)
+        props.change(!checkbox);
         setCheckbox(!checkbox);
     }
     if (checkbox) {
