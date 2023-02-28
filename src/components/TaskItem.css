@@ -90,7 +90,8 @@
 }
 
 .task-item__emoji {
-    font-size: 20px;
+    font-size: 25px;
+    font-family: 'Noto Color Emoji';
 }
 
 .task-item__name {

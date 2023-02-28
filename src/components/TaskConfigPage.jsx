@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { createPicker } from "picmo";
 import { createPopup } from "@picmo/popup-picker";
-
+import { TwemojiRenderer } from "@picmo/renderer-twemoji";
 
 import "./TaskConfigPage.css";
 
@@ -19,7 +18,7 @@ const TaskConfigPage = (props) => {
         frequency: "Every day",
     };
 
-    defaultTask = { ...defaultTask, ...props.previousChoices };
+    defaultTask = { ...defaultTask, ...props.previousChoices, ...props.preconfigs };
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
@@ -43,6 +42,7 @@ const TaskConfigPage = (props) => {
     useEffect(() => {
         picmoEmojiPicker = createPopup(
             {
+                renderer: new TwemojiRenderer(),
                 visibleRows: 4,
             },
             {
@@ -167,7 +167,7 @@ const TaskConfigPage = (props) => {
 
                 <div className="task-config-form__field">
                     <label>HABIT NAME</label>
-                    <input type="text" onChange={(event) => { handleNameInput(event) }}></input>
+                    <input type="text" onChange={(event) => { handleNameInput(event) }} value={taskName}></input>
                 </div>
 
                 {props.previousChoices.type === "Timer" ?
