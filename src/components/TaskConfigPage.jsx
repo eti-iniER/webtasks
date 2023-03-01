@@ -8,6 +8,9 @@ import "./TaskConfigPage.css";
 const TaskConfigPage = (props) => {
 
     const arrayEquals = (a1, a2) => {
+        if (a1 == undefined || a2 == undefined) {
+            return false;
+        }
         console.log("array equals is running");
         for (let i = 0; i < a1.length; i++) {
             if (a1[i] !== a2[i]) {
@@ -143,7 +146,7 @@ const TaskConfigPage = (props) => {
             freq = "";
             freq = taskWeekdays.selected.filter((x) => x != "").join(" ");
 
-            if (freq.length === 13) {
+            if (freq.length === 15) {
                 // the user selected every single day
                 freq = "Every day";
             }
@@ -173,7 +176,7 @@ const TaskConfigPage = (props) => {
             frequency: taskFrequency,
             weekdays: taskWeekdays
         }
-        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "T", "F", "S"])) {
+        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
             console.log("Every day was chosen indirectly");
             task.frequency = "Every day"
             task.weekdays = {}
@@ -213,7 +216,7 @@ const TaskConfigPage = (props) => {
         }
 
 
-        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "T", "F", "S"])) {
+        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
             console.log("Every day was chosen indirectly");
             task.frequency = "Every day"
             task.weekdays = {}

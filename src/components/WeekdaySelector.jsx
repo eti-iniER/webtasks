@@ -23,6 +23,12 @@ const WeekdaySelector = (props) => {
         // here I took advantage of some weird JavaScript syntax...
         if (newSelectedDays[day] === true) {
             newSelectedDays.selected[index] = day[0].toUpperCase();
+            if (day === "thu") {
+                newSelectedDays.selected[index] = "Th"
+            }
+            if (day === "sat") {
+                newSelectedDays.selected[index] = "Sa"
+            }
         } else {
             newSelectedDays.selected[index] = "";
         }
