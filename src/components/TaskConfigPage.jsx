@@ -52,7 +52,7 @@ const TaskConfigPage = (props) => {
     const [taskName, setTaskName] = useState(defaultTask.name);
     const [taskDescription, setTaskDescription] = useState(defaultTask.description);
     const [taskGoal, setTaskGoal] = useState(defaultTask.goal);
-    const [taskTheme, setTaskTheme] = useState(colorThemes.indexOf(defaultTask.theme));
+    const [taskTheme, setTaskTheme] = useState(defaultTask.theme);
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency);
