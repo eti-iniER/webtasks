@@ -37,9 +37,12 @@ const TaskConfigPage = (props) => {
     };
 
     let defaultTask = { ...emptyTask, ...props.previousChoices };
-    if (props.thisIsAnEdit) {
-        defaultTask = { ...emptyTask, ...props.previousChoices, ...props.preconfigs }
-    }
+    if (props.thisIsAnEdit === true) {
+        defaultTask = { ...defaultTask, ...props.preconfigs };
+        console.log("This is an edit: ");
+        console.log(defaultTask);
+        console.log(defaultTask.goal);
+    };
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
     const colorThemes = ["blue", "red", "orange", "green", "purple"];
@@ -50,7 +53,6 @@ const TaskConfigPage = (props) => {
     const [minutes, setMinutes] = useState(defaultTask.minutes);
     const [hours, setHours] = useState(defaultTask.hours);
     const [taskName, setTaskName] = useState(defaultTask.name);
-    const [taskDescription, setTaskDescription] = useState(defaultTask.description);
     const [taskGoal, setTaskGoal] = useState(defaultTask.goal);
     const [taskTheme, setTaskTheme] = useState(defaultTask.theme);
     const [taskType, setTaskType] = useState(defaultTask.type);
@@ -61,6 +63,7 @@ const TaskConfigPage = (props) => {
     const emojiContainer = useRef();
 
     let picmoEmojiPicker = null;
+
     useEffect(() => {
         picmoEmojiPicker = createPopup(
             {
@@ -80,10 +83,6 @@ const TaskConfigPage = (props) => {
     const saveEmoji = (EmojiSelection) => {
         setTaskEmoji(EmojiSelection.emoji);
     };
-
-    useEffect(() => {
-        setTaskGoal(Number(hours * 3600) + Number(minutes * 60) + Number(seconds));
-    }, [hours, minutes, seconds])
 
     const cycleColor = () => {
         setTaskTheme(colorThemes[(currentColor + 1) % colors.length]);
@@ -163,11 +162,17 @@ const TaskConfigPage = (props) => {
     }
 
     const saveTask = () => {
+        let genericGoal = taskGoal;
+        if (taskType === "Timer") {
+            genericGoal = Number(hours * 3600) + Number(minutes * 60) + Number(seconds)
+            setTaskGoal(String(genericGoal));
+        };
+
         let task = {
             name: taskName,
             description: makeDescription(),
             theme: taskTheme,
-            goal: taskGoal,
+            goal: genericGoal,
             type: taskType,
             emoji: taskEmoji,
             hours: hours,
@@ -177,7 +182,6 @@ const TaskConfigPage = (props) => {
             weekdays: taskWeekdays
         }
         if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
-            console.log("Every day was chosen indirectly");
             task.frequency = "Every day"
             task.weekdays = {}
         }
@@ -201,11 +205,17 @@ const TaskConfigPage = (props) => {
     }
 
     const saveTaskEdits = () => {
+        let genericGoal = taskGoal
+        if (taskType === "Timer") {
+            genericGoal = Number(hours * 3600) + Number(minutes * 60) + Number(seconds)
+            setTaskGoal(String(genericGoal));
+        };
+
         let task = {
             name: taskName,
             description: makeDescription(),
             theme: taskTheme,
-            goal: taskGoal,
+            goal: genericGoal,
             type: taskType,
             emoji: taskEmoji,
             hours: hours,
@@ -262,7 +272,7 @@ const TaskConfigPage = (props) => {
                 {defaultTask.type === "Counter" ?
                     <div className="task-config-form__field">
                         <label>AMOUNT PER PERIOD</label>
-                        <input type="number" min={1} onChange={(event) => { handleAmountInput(event) }} value={taskGoal}></input>
+                        <input type="number" min="1" max="100" onChange={(event) => { handleAmountInput(event) }} value={taskGoal}></input>
                     </div> : ""}
 
                 <div className="task-config-form__field">

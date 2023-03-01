@@ -68,9 +68,10 @@ const SideBar = (props) => {
     }
 
     const saveEditHandler = (taskData) => {
+        console.log(taskData);
+        props.saveEdit({ ...taskData, id: props.taskIndex });
         setTaskToBeEdited({})
         setTaskCreationProgress(1);
-        props.saveEdit({ ...taskData, id: props.taskIndex });
     }
 
     return (
