@@ -2,7 +2,6 @@ import "./TaskItemMenu.css"
 
 const TaskItemMenu = (props) => {
     const editTaskHandler = () => {
-        console.log(`Editing task with ID ${props.task.id}`);
         props.showEditMenu(props.task.id);
     }
     let menuWidth = "100vw"

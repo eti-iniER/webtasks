@@ -6,6 +6,17 @@ import WeekdaySelector from "./WeekdaySelector";
 import "./TaskConfigPage.css";
 
 const TaskConfigPage = (props) => {
+
+    const arrayEquals = (a1, a2) => {
+        console.log("array equals is running");
+        for (let i = 0; i < a1.length; i++) {
+            if (a1[i] !== a2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const emptyTask = {
         buildOrQuit: "Build",
         name: "",
@@ -125,19 +136,28 @@ const TaskConfigPage = (props) => {
         return d;
     }
     const makeDescription = () => {
-        if (taskType === "Timer") {
-            return defaultTask.buildOrQuit + " • " + makeShortTime() + " • " + taskFrequency;
-        } else if (taskType === "Counter") {
-            return defaultTask.buildOrQuit + " • " + taskGoal + " • " + taskFrequency;
-        } else if (taskWeekdays != {}) {
-            // there are weekdays to save;
-            let chosenDays = taskWeekdays.selected.filter((x) => x != "").join(" ");
-            return defaultTask.buildOrQuit + " • " + taskGoal + " • " + chosenDays;
-        } else {
-            return defaultTask.buildOrQuit + " • " + taskFrequency;
-        }
-    }
+        let freq = taskFrequency;
 
+        if (taskFrequency === "Select week days") {
+            // there are weekdays to save;
+            freq = "";
+            freq = taskWeekdays.selected.filter((x) => x != "").join(" ");
+
+            if (freq.length === 13) {
+                // the user selected every single day
+                freq = "Every day";
+            }
+        }
+
+        if (taskType === "Timer") {
+            return defaultTask.buildOrQuit + " • " + makeShortTime() + " • " + freq;
+        } else if (taskType === "Counter") {
+            return defaultTask.buildOrQuit + " • " + taskGoal + " • " + freq;
+        } else if (taskType === "Checkbox") {
+            return defaultTask.buildOrQuit + " • " + freq;
+        }
+
+    }
 
     const saveTask = () => {
         let task = {
@@ -151,7 +171,12 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
-            weekdays: {},
+            weekdays: taskWeekdays
+        }
+        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "T", "F", "S"])) {
+            console.log("Every day was chosen indirectly");
+            task.frequency = "Every day"
+            task.weekdays = {}
         }
 
         props.createTask(task);
@@ -184,7 +209,14 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
-            weekdays: {},
+            weekdays: taskWeekdays
+        }
+
+
+        if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "T", "F", "S"])) {
+            console.log("Every day was chosen indirectly");
+            task.frequency = "Every day"
+            task.weekdays = {}
         }
 
         props.saveEdit(task);
@@ -247,7 +279,7 @@ const TaskConfigPage = (props) => {
                     </div>
                 </div>
 
-                {taskFrequency === "Select week days" ? <WeekdaySelector saveSelectedDays={saveSelectedDaysHandler} /> : ""}
+                {taskFrequency === "Select week days" ? <WeekdaySelector saveSelectedDays={saveSelectedDaysHandler} loadWeekdays={defaultTask.weekdays} /> : ""}
 
                 <div className="task-config-form__emoji-colour-container">
                     <div className="task-config-form__field emoji">

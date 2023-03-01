@@ -52,9 +52,7 @@ function App() {
   };
 
   const saveTaskHandler = (taskData) => {
-    console.log("Saving task from APP.js");
     let taskDataWithID = { ...taskData, id: visibleTasks.length };
-    console.log(taskDataWithID);
     setvisibleTasks([...visibleTasks, taskDataWithID]);
   }
 
@@ -65,21 +63,14 @@ function App() {
   }
 
   const saveEditHandler = (editedTaskData) => {
-    console.log("We are saving the newly edited task");
-    console.log(editedTaskData);
     setIsTaskEdit(false);
     const tasksAfterEdit = visibleTasks.map(task => {
-      console.log("Now dealing with task at:");
-      console.log(task.id);
       if (task.id === editedTaskData.id) {
-        console.log("We found another task with the same id");
         return editedTaskData;
       } else {
         return task;
       }
     });
-    console.log("Visible tasks after edit is");
-    console.log(tasksAfterEdit);
     setvisibleTasks(tasksAfterEdit);
   }
   let allTasks = [];

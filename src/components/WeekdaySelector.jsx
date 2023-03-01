@@ -13,7 +13,7 @@ const WeekdaySelector = (props) => {
         selected: ["", "", "", "", "", "", ""],
     }
 
-    const [selectedDays, setSelectedDays] = useState(emptyDays);
+    const [selectedDays, setSelectedDays] = useState({ ...emptyDays, ...props.loadWeekdays });
 
     const selectWeekday = (day, index) => {
         // Basically write the selected days as an object, and keep track of the letters
