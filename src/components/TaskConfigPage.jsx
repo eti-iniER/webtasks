@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { createPopup } from "@picmo/popup-picker";
 import { TwemojiRenderer } from "@picmo/renderer-twemoji";
+import WeekdaySelector from "./WeekdaySelector";
 
 import "./TaskConfigPage.css";
 
@@ -14,7 +15,7 @@ const TaskConfigPage = (props) => {
         theme: "blue",
         start: "",
         goal: "0",
-        reminders: [],
+        weekdays: {},
         frequency: "",
         seconds: "",
         minutes: "",
@@ -40,7 +41,8 @@ const TaskConfigPage = (props) => {
     const [taskTheme, setTaskTheme] = useState(colorThemes.indexOf(defaultTask.theme));
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
-    const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency)
+    const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency);
+    const [taskWeekdays, setTaskWeekdays] = useState({})
 
     const emojiContainer = useRef();
 
@@ -127,6 +129,10 @@ const TaskConfigPage = (props) => {
             return defaultTask.buildOrQuit + " • " + makeShortTime() + " • " + taskFrequency;
         } else if (taskType === "Counter") {
             return defaultTask.buildOrQuit + " • " + taskGoal + " • " + taskFrequency;
+        } else if (taskWeekdays != {}) {
+            // there are weekdays to save;
+            let chosenDays = taskWeekdays.selected.filter((x) => x != "").join(" ");
+            return defaultTask.buildOrQuit + " • " + taskGoal + " • " + chosenDays;
         } else {
             return defaultTask.buildOrQuit + " • " + taskFrequency;
         }
@@ -145,6 +151,7 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
+            weekdays: {},
         }
 
         props.createTask(task);
@@ -154,11 +161,11 @@ const TaskConfigPage = (props) => {
 
     const changeFrequency = (choice) => {
         if (choice === "Select week days") {
-            showWeekDaySelector();
+            ;
         } else {
-            setTaskFrequency(choice);
+            setTaskWeekdays({})
         }
-
+        setTaskFrequency(choice);
     }
 
     const openEmojiPicker = () => {
@@ -177,11 +184,17 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
+            weekdays: {},
         }
 
         props.saveEdit(task);
         props.closeSidebar();
     }
+
+    const saveSelectedDaysHandler = (selectedDays) => {
+        setTaskWeekdays(selectedDays);
+    }
+
     return (
         <div className="task-config-page">
             <div className="task-config-form">
@@ -233,6 +246,8 @@ const TaskConfigPage = (props) => {
                         </ul>
                     </div>
                 </div>
+
+                {taskFrequency === "Select week days" ? <WeekdaySelector saveSelectedDays={saveSelectedDaysHandler} /> : ""}
 
                 <div className="task-config-form__emoji-colour-container">
                     <div className="task-config-form__field emoji">

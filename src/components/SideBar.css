@@ -13,6 +13,8 @@
     animation-timing-function: ease-out;
     align-items: center;
     padding: 10px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
 }
 
 .cancel {
@@ -22,8 +24,7 @@
     cursor: default;
     text-align: center;
     padding: 10px;
-    position: absolute;
-    bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .create-task-header {
