@@ -44,8 +44,8 @@ const TaskConfigPage = (props) => {
         console.log(defaultTask.goal);
     };
 
-    const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96"];
-    const colorThemes = ["blue", "red", "orange", "green", "purple"];
+    const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96", "#232628"];
+    const colorThemes = ["blue", "red", "orange", "green", "purple", "black"];
     // blue, red, orange, green, purple
     const [currentColor, setCurrentColor] = useState(colorThemes.indexOf(defaultTask.theme));
     const [periodDropdownDisplay, setPeriodDropdownDisplay] = useState("none");

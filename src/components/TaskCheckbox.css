@@ -51,6 +51,16 @@
     color: #962a96;
 }
 
+.task-checkbox__checkbox.black {
+    border-color: #383838;
+    color: #383838;
+}
+
+.task-checkbox__checkbox.black.checked {
+    color: white;
+    background-color: #383838;
+}
+
 .task-checkbox__checkbox.purple.checked {
     color: white;
     background-color: #962a96;

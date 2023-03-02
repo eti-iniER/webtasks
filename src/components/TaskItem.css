@@ -6,6 +6,12 @@
     --activeProgressBar: #ffffff;
     --activeProgressBarBackground: #ffffff50;
 
+    --blackBorder: #232628b7;
+    --blackItemShadow: #2326281a;
+    --blackProgressBar: #525355;
+    --blackActiveBackground: #232628;
+    --blackProgressBarBackground: #464b4e5e;
+
     --blueBorder: #5ca7eda1;
     --blueActiveBackground: #5ba6ec;
     --blueItemShadow: #bfd2eb8a;
@@ -65,10 +71,19 @@
     box-shadow: 0px 0px 5px 5px var(--greenItemShadow);
 }
 
+.task-item.black {
+    border-color: var(--blackBorder);
+    box-shadow: 0px 0px 5px 5px var(--blackItemShadow);
+}
+
 .task-item.active {
     transition-duration: 0.5s;
     background-color: var(--blueActiveBackground);
     color: white;
+}
+
+.task-item.black.active {
+    background-color: var(--blackActiveBackground);
 }
 
 .task-item.orange.active {
@@ -136,6 +151,10 @@
     background-color: var(--orangeProgressBarBackground);
 }
 
+.task-item__progress-bar.black {
+    background-color: var(--blackProgressBarBackground);
+}
+
 .task-item__progress-bar.green {
     background-color: var(--greenProgressBarBackground);
 }
@@ -153,6 +172,10 @@
     height: 100%;
     width: 0%;
     background-color: var(--blueProgressBar);
+}
+
+.task-item__progress-bar-bar.black {
+    background-color: var(--blackProgressBar);
 }
 
 .task-item__progress-bar-bar.orange {
