@@ -34,6 +34,7 @@ const TaskConfigPage = (props) => {
         seconds: "",
         minutes: "",
         hours: "",
+        occurence: 2,
     };
 
     let defaultTask = { ...emptyTask, ...props.previousChoices };
@@ -58,7 +59,8 @@ const TaskConfigPage = (props) => {
     const [taskType, setTaskType] = useState(defaultTask.type);
     const [taskEmoji, setTaskEmoji] = useState(defaultTask.emoji);
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency);
-    const [taskWeekdays, setTaskWeekdays] = useState({})
+    const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
+    const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
 
     const emojiContainer = useRef();
 
@@ -139,7 +141,6 @@ const TaskConfigPage = (props) => {
     }
     const makeDescription = () => {
         let freq = taskFrequency;
-
         if (taskFrequency === "Select week days") {
             // there are weekdays to save;
             freq = "";
@@ -149,6 +150,8 @@ const TaskConfigPage = (props) => {
                 // the user selected every single day
                 freq = "Every day";
             }
+        } else if (taskFrequency === "Every X days") {
+            freq = "Every " + taskOccurence + " days";
         }
 
         if (taskType === "Timer") {
@@ -179,7 +182,8 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
-            weekdays: taskWeekdays
+            weekdays: taskWeekdays,
+            occurence: taskOccurence,
         }
         if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
             task.frequency = "Every day"
@@ -204,6 +208,9 @@ const TaskConfigPage = (props) => {
         picmoEmojiPicker.open();
     }
 
+    const handleOccurenceInput = (event) => {
+        setTaskOccurence(event.target.value);
+    }
     const saveTaskEdits = () => {
         let genericGoal = taskGoal
         if (taskType === "Timer") {
@@ -222,7 +229,8 @@ const TaskConfigPage = (props) => {
             minutes: minutes,
             seconds: seconds,
             frequency: taskFrequency,
-            weekdays: taskWeekdays
+            weekdays: taskWeekdays,
+            occurence: taskOccurence,
         }
 
 
@@ -293,6 +301,12 @@ const TaskConfigPage = (props) => {
                 </div>
 
                 {taskFrequency === "Select week days" ? <WeekdaySelector saveSelectedDays={saveSelectedDaysHandler} loadWeekdays={defaultTask.weekdays} /> : ""}
+
+                {taskFrequency === "Every X days" ?
+                    <div className="task-config-form__field">
+                        <label>FREQUENCY</label>
+                        <input type="number" min={2} max={6} value={taskOccurence} onChange={(e) => handleOccurenceInput(e)}></input>
+                    </div> : ""}
 
                 <div className="task-config-form__emoji-colour-container">
                     <div className="task-config-form__field emoji">
