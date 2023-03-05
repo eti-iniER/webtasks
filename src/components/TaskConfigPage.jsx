@@ -40,9 +40,6 @@ const TaskConfigPage = (props) => {
     let defaultTask = { ...emptyTask, ...props.previousChoices };
     if (props.thisIsAnEdit === true) {
         defaultTask = { ...defaultTask, ...props.preconfigs };
-        console.log("This is an edit: ");
-        console.log(defaultTask);
-        console.log(defaultTask.goal);
     };
 
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96", "#232628"];
@@ -87,7 +84,7 @@ const TaskConfigPage = (props) => {
     };
 
     const cycleColor = () => {
-        setTaskTheme(colorThemes[(currentColor + 1) % colors.length]);
+        setTaskTheme(colorThemes[(currentColor + 1) % colorThemes.length]);
         setCurrentColor((currentColor + 1) % colors.length);
     }
 
