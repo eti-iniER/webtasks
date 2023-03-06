@@ -11,17 +11,7 @@
 }
 
 .task-item-menu {
-    color: #2e2e2e;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
     width: 300px;
-    box-shadow: 0px 0px 5px 5px #4e4e4e3d;
-    padding: 0px;
 }
 
 .task-item-menu__actions {
@@ -34,7 +24,9 @@
 .task-item-menu__task-name {
     width: fit-content;
     text-align: center;
-    margin-bottom: 10px;
+    margin: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
     color: #2b3149;
     border-bottom: 1px dashed #2b3149;
 }

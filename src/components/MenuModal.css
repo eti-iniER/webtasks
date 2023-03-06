@@ -1,0 +1,38 @@
+.menu-background {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    background-color: #4e4e4e81;
+    top: 0px;
+    left: 0px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-content {
+    color: #2e2e2e;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    box-shadow: 0px 0px 5px 5px #4e4e4e3d;
+}
+
+.menu-close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 0px;
+    background-color: transparent;
+    font-size: 20px;
+    color: #2b3149;
+}
+
+.menu-close-button:hover {
+    color: tomato;
+}

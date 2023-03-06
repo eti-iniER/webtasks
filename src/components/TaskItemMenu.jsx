@@ -1,4 +1,5 @@
 import "./TaskItemMenu.css"
+import MenuModal from "./MenuModal";
 
 const TaskItemMenu = (props) => {
     const editTaskHandler = () => {
@@ -17,12 +18,9 @@ const TaskItemMenu = (props) => {
     }
 
     return (
-        <div className="task-item-menu__container" style={{ display: props.displayState, width: menuWidth }} onClick={props.close}>
+        <MenuModal isVisible={true}>
             <div className="task-item-menu">
                 <h1 className="task-item-menu__task-name">{props.task.name}</h1>
-                <button className="task-item-menu__close-button" onClick={props.close}>
-                    <span className="fa-solid fa-close"></span>
-                </button>
                 <ul className="task-item-menu__actions">
                     <li onClick={editTaskHandler}>
                         <span className="fa-regular fa-pen-to-square"></span>
@@ -46,7 +44,7 @@ const TaskItemMenu = (props) => {
                     </li>
                 </ul>
             </div>
-        </div>
+        </MenuModal>
     )
 }
 
