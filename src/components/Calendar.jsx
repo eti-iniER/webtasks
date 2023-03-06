@@ -62,7 +62,7 @@ const Calendar = (props) => {
                 </div>
             </div>
         </div >
-    )
+    );
 }
 
 export default Calendar;
