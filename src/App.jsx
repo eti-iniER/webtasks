@@ -79,6 +79,17 @@ function App() {
     return visibleTasks[taskID];
   }
 
+  const deleteTaskHandler = (taskID) => {
+    let newVisibleTasks = visibleTasks.filter((t) => {
+      if (t.id == taskID) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setvisibleTasks(newVisibleTasks);
+  }
+
   for (let i = 0; i < visibleTasks.length; i++) {
     let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} id={i} />;
     allTasks.push(thisTask);
@@ -92,7 +103,7 @@ function App() {
       </TaskGrid>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} /> : ""}
+      {currentTask ? <TaskItemMenu displayState={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>
