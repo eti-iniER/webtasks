@@ -4,10 +4,12 @@ import MenuModal from "./MenuModal";
 const TaskItemMenu = (props) => {
     const editTaskHandler = () => {
         props.showEditMenu(props.task.id);
+        props.close()
     };
 
     const deleteTaskHandler = () => {
-        props.deleteTask(props.task.id)
+        props.deleteTask(props.task.id);
+        props.close()
     };
 
     let menuWidth = "100vw"
@@ -18,7 +20,7 @@ const TaskItemMenu = (props) => {
     }
 
     return (
-        <MenuModal isVisible={true}>
+        <MenuModal isVisible={props.visible === "flex" ? true : false} close={props.close} width={menuWidth}>
             <div className="task-item-menu">
                 <h1 className="task-item-menu__task-name">{props.task.name}</h1>
                 <ul className="task-item-menu__actions">

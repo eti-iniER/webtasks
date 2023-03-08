@@ -19,7 +19,7 @@ function App() {
 
   const toggleMenu = () => {
     if (menuState === "flex") {
-      setMenuState("none")
+      setMenuState("none");
     }
     else {
       setMenuState("flex")
@@ -103,7 +103,7 @@ function App() {
       </TaskGrid>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} /> : ""}
+      {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>
