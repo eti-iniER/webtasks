@@ -138,7 +138,6 @@
 }
 
 .task-item__progress-bar {
-    transition-timing-function: linear;
     display: flex;
     position: absolute;
     width: 70%;

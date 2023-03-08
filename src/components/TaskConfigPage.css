@@ -98,6 +98,10 @@
     z-index: 1;
 }
 
+.task-config-form__dropdown:active {
+    border-color: #eea047;
+}
+
 .task-config-form__dropdown-icon {
     position: absolute;
     right: 10px;
