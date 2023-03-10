@@ -5,15 +5,24 @@ const TaskCounter = (props) => {
     const [count, setCount] = useState(0);
 
     const increaseCount = () => {
+        console.log(props.goal);
         setCount(count + 1);
+        if (count + 1 >= props.goal) {
+            // the user has reached the goal
+            props.onCompleteGoal(true);
+        }
         props.change(count + 1);
     };
 
     const decreaseCount = () => {
+        if (count - 1 < props.goal) {
+            props.onCompleteGoal(false);
+        }
         if (count > 0) {
             setCount(count - 1);
             props.change(count - 1);
         }
+
     }
     return (
         <div className="task-counter">

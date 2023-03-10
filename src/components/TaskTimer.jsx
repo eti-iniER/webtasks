@@ -25,6 +25,11 @@ const TaskTimer = (props) => {
         if (timerRunning) {
             // console.log("Timer has started");
             setTimeout(() => {
+                if (secondsElapsed + 1 >= props.goal) {
+                    props.onCompleteGoal(true);
+                } else {
+                    props.onCompleteGoal(false);
+                }
                 props.change(secondsElapsed + 1)
                 setSecondsElapsed(secondsElapsed + 1);
             }, 1000)

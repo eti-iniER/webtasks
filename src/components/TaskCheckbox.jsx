@@ -6,6 +6,7 @@ const TaskCheckbox = (props) => {
     let checkboxClass = "";
     const mark = () => {
         props.change(!checkbox);
+        props.onCompleteGoal(!checkbox);
         setCheckbox(!checkbox);
     }
     if (checkbox) {
