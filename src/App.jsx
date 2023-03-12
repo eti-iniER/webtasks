@@ -4,7 +4,6 @@ import TaskItemMenu from "./components/TaskItemMenu";
 import TaskCreateButton from "./components/UI/TaskCreateButton";
 import TaskGrid from "./components/UI/TaskGrid";
 import Calendar from "./components/Calendar";
-import FloatingControlPanel from "./components/FloatingControlPanel";
 
 import { useState } from "react";
 
@@ -102,8 +101,6 @@ function App() {
       <TaskGrid sideBar={toggleSideBar}>
         {allTasks}
       </TaskGrid>
-
-      <FloatingControlPanel></FloatingControlPanel>
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} /> : ""}
