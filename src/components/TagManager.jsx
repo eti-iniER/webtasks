@@ -8,14 +8,11 @@ const TagManager = (props) => {
     const [tags, setTags] = useState(props.task.tags);
 
     let visibleTags = [];
-
-    useEffect(() => {
-        visibleTags = tags.map((tagName, index) => {
-            return <TaskTag name={tagName} key={index} />
-        });
-        console.log("Visible tags is now:");
-        console.log(visibleTags);
-    }, [tags]);
+    visibleTags = tags.map((tagName, index) => {
+        return <TaskTag name={tagName} key={index} />
+    });
+    console.log("Visible tags is now:");
+    console.log(visibleTags);
 
     const deleteTag = (tagID) => {
         props.deleteTag(tagID);
@@ -33,8 +30,12 @@ const TagManager = (props) => {
         setNewTagName(event.target.value);
     }
 
+    const closeHandler = () => {
+        props.close();
+    }
+
     return (
-        <MenuModal isVisible={true} width={props.width}>
+        <MenuModal isVisible={true} width={props.width} close={closeHandler}>
             <div className="tag-manager">
                 <h2 className="tag-manager-description">Editing tags for {props.task.name}</h2>
                 <div className="current-tags">

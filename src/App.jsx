@@ -118,6 +118,10 @@ function App() {
     setvisibleTasks(newVisibleTasks);
   }
 
+  const tagModalCloseHandler = () => {
+    setIsEditingTags(false);
+  }
+
   for (let i = 0; i < visibleTasks.length; i++) {
     let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} id={i} />;
     allTasks.push(thisTask);
@@ -132,7 +136,7 @@ function App() {
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} /> : ""}
-      {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} width={menuWidth} /> : ""}
+      {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} width={menuWidth} close={tagModalCloseHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>

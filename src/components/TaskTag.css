@@ -1,4 +1,25 @@
 .task-tag {
-    border: 1px solid black;
-    color: red;
+    display: inline-block;
+    justify-content: space-between;
+    background-color: gainsboro;
+    color: #1d1d1d;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+}
+
+.task-tag__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    background-color: transparent;
+    border: 0px;
+    color: #1d1d1d;
+    border-radius: 50%;
+    text-align: center;
+    height: 100%;
 }
