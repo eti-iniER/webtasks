@@ -82,6 +82,7 @@ function App() {
         return task;
       }
     });
+    setCurrentTask(editedTaskData);
     setvisibleTasks(tasksAfterEdit);
   }
   let allTasks = [];
