@@ -183,6 +183,7 @@ const TaskConfigPage = (props) => {
             frequency: taskFrequency,
             weekdays: taskWeekdays,
             occurence: taskOccurence,
+            tags: taskTags,
         }
         if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
             task.frequency = "Every day"
@@ -230,6 +231,7 @@ const TaskConfigPage = (props) => {
             frequency: taskFrequency,
             weekdays: taskWeekdays,
             occurence: taskOccurence,
+            tags: taskTags,
         }
 
 

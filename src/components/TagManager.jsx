@@ -8,7 +8,7 @@ const TagManager = (props) => {
     };
 
     let tags = [];
-    for (let i = 0; i < props.tags.length; i++) {
+    for (let i = 0; i < props.task.tags.length; i++) {
         tags.push(<TaskTag name={t} onDelete={deleteTag} id={i} />);
     }
     return (

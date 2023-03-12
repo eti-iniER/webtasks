@@ -111,7 +111,7 @@ function App() {
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} /> : ""}
-      {isEditingTags ? <TagManager />}
+      {isEditingTags ? <TagManager task={currentTask} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>
