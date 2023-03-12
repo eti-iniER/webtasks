@@ -97,14 +97,13 @@ function App() {
   }
 
   const saveTagsHandler = (taskID, newTags) => {
-    let newVisibleTasks = visibleTasks.map(t => {
-      if (t.id === taskID) {
-        return { ...t, tags: newTags }
-      } else {
-        return t;
+    let thisTask = null;
+    for (task of visibleTasks) {
+      if (task.id === taskID) {
+        thisTask = { ...task, tags: newTags }
       }
-    });
-    console.log(newVisibleTasks);
+    }
+    saveEditHandler(thisTask);
   };
 
   const deleteTaskHandler = (taskID) => {
