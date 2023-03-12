@@ -256,11 +256,3 @@
     color: white;
     text-shadow: #232628;
 }
-
-.task-item.completed {
-    background-image: url("../assets/images/trophy.png");
-    backdrop-filter: blur(20px, 20px);
-    background-position: center;
-    background-size: cover;
-    backdrop-filter: blur(2px);
-}

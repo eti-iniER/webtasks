@@ -41,7 +41,6 @@ const TaskItem = (props) => {
     }
     return (
         <div className={`${"task-item" + " " + props.data.theme + " " + activeClass} ${goalComplete ? "completed" : ""} `} >
-            {goalComplete ? <img src="src/assets/images/trophy.png" className="background"></img> : ""}
             <div className="task-item__details">
                 <div className="task-item__emoji">{props.data.emoji}</div>
                 <h1 className="task-item__name">{props.data.name}</h1>
