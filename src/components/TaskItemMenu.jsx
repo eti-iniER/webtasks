@@ -2,6 +2,10 @@ import "./TaskItemMenu.css"
 import MenuModal from "./MenuModal";
 
 const TaskItemMenu = (props) => {
+    const editTagHandler = () => {
+        props.editTags(props.task.id);
+        props.close();
+    }
     const editTaskHandler = () => {
         props.showEditMenu(props.task.id);
         props.close()
@@ -28,7 +32,7 @@ const TaskItemMenu = (props) => {
                         <span className="fa-regular fa-pen-to-square"></span>
                         <p className="task-item-menu__action-name">Edit</p>
                     </li>
-                    <li>
+                    <li onClick={editTagHandler}>
                         <span className="fa-solid fa-filter"></span>
                         <p className="task-item-menu__action-name">Manage tags</p>
                     </li>

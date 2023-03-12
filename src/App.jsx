@@ -22,11 +22,9 @@ function App() {
   const toggleMenu = () => {
     if (menuState === "flex") {
       setMenuState("none");
-      setIsEditingTags(false);
     }
     else {
-      setMenuState("flex")
-      set
+      setMenuState("flex");
     }
   }
 
@@ -85,7 +83,10 @@ function App() {
 
   const editTagsHandler = (tagID) => {
     setIsEditingTags(true);
+    setCurrentTask(visibleTasks[tagID]);
+    console.log("We are editing tags");
   }
+
   const deleteTaskHandler = (taskID) => {
     let newVisibleTasks = visibleTasks.filter((t) => {
       if (t.id == taskID) {

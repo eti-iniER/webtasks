@@ -1,0 +1,46 @@
+.tag-manager {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag-manager-description {
+    text-align: center;
+}
+
+.current-tags {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgb(187, 187, 187);
+    margin: 10px;
+    margin-bottom: 0px;
+    height: 100px;
+}
+
+.tag-manager__tag-input-form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.tag-input-form__input {
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #1d1d1d;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.tag-input-save-button {
+    outline: 0px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: #eea047;
+    border: none;
+    border-radius: 10px;
+    margin-top: 5px;
+    color: white;
+    font-weight: bold;
+    height: 50px;
+}
