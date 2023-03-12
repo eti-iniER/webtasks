@@ -35,6 +35,7 @@ const TaskConfigPage = (props) => {
         minutes: "",
         hours: "",
         occurence: 2,
+        tags: [],
     };
 
     let defaultTask = { ...emptyTask, ...props.previousChoices };
@@ -58,6 +59,7 @@ const TaskConfigPage = (props) => {
     const [taskFrequency, setTaskFrequency] = useState(defaultTask.frequency);
     const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
     const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
+    const [taskTags, setTaskTags] = useState(defaultTask.tags);
 
     const emojiContainer = useRef();
 
