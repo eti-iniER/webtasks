@@ -100,6 +100,8 @@ function App() {
     let thisTask = null;
     for (let task of visibleTasks) {
       if (task.id === taskID) {
+        console.log("You are editing task");
+        console.log(task);
         thisTask = { ...task, tags: newTags }
       }
     }

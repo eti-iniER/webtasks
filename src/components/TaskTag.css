@@ -1,20 +1,16 @@
 .task-tag {
-    display: inline-block;
-    justify-content: space-between;
+    display: flex;
     background-color: gainsboro;
     color: #1d1d1d;
     margin: 2px;
     padding: 5px;
     border-radius: 10px;
-    justify-content: center;
-    align-items: center;
     height: min-content;
+    width: fit-content;
 }
 
 .task-tag__close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    float: right;
     outline: none;
     background-color: transparent;
     border: 0px;

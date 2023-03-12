@@ -14,6 +14,11 @@
 }
 
 .current-tags {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    flex-wrap: wrap;
+    overflow-y: auto;
     padding: 10px;
     border-radius: 5px;
     background-color: rgb(187, 187, 187);
@@ -21,8 +26,6 @@
     margin-bottom: 0px;
     height: 100px;
     box-shadow: inset 0px 0px 3px 5px rgb(180, 180, 180);
-    display: flex;
-    flex-direction: row;
 }
 
 .tag-manager__tag-input-form {

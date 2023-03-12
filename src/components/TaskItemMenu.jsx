@@ -26,7 +26,7 @@ const TaskItemMenu = (props) => {
     return (
         <MenuModal isVisible={props.visible === "flex" ? true : false} close={props.close} width={menuWidth}>
             <div className="task-item-menu">
-                <h1 className="task-item-menu__task-name">{props.task.name}</h1>
+                <h2 className="task-item-menu__task-name">{props.task.name}</h2>
                 <ul className="task-item-menu__actions">
                     <li onClick={editTaskHandler}>
                         <span className="fa-regular fa-pen-to-square"></span>

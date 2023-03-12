@@ -24,6 +24,7 @@ const TagManager = (props) => {
         newTags.push(newTagName);
         setTags(newTags);
         props.saveTags(props.task.id, newTags);
+        setNewTagName("");
     }
 
     const tagNameInputHandler = (event) => {
@@ -37,7 +38,7 @@ const TagManager = (props) => {
     return (
         <MenuModal isVisible={true} width={props.width} close={closeHandler}>
             <div className="tag-manager">
-                <h2 className="tag-manager-description">Editing tags for {props.task.name}</h2>
+                <h2 className="tag-manager-description">{props.task.name}</h2>
                 <div className="current-tags">
                     {visibleTags}
                 </div>

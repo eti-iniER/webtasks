@@ -24,7 +24,7 @@
 .task-item-menu__task-name {
     width: fit-content;
     text-align: center;
-    margin: 15px auto;
+    margin: 20px auto;
     color: #2b3149;
     border-bottom: 1px dashed #2b3149;
 }
