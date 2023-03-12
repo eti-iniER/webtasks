@@ -5,25 +5,23 @@ import { useState, useEffect } from "react";
 
 const TagManager = (props) => {
     const [newTagName, setNewTagName] = useState("");
+    const [tags, setTags] = useState(props.task.tags);
+
     const deleteTag = (tagID) => {
         props.deleteTag(tagID);
     };
 
     const saveNewTag = () => {
-
+        newTags = tags.slice();
+        newTags.push(newTagName);
+        console.log(newTags);
+        props.saveTags(props.task.id, newTags);
     }
 
     const tagNameInputHandler = (event) => {
         setNewTagName(event.target.value);
     }
-    let tags = [];
 
-    useEffect(() => {
-        let tags = [];
-        for (let i = 0; i < props.task.tags.length; i++) {
-            tags.push(<TaskTag name={t} onDelete={deleteTag} id={i} />);
-        }
-    }, tags)
     return (
         <MenuModal isVisible={true}>
             <div className="tag-manager">

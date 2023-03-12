@@ -87,6 +87,17 @@ function App() {
     console.log("We are editing tags");
   }
 
+  const saveTagsHandler = (taskID, newTags) => {
+    let newVisibleTasks = visibleTasks.map(t => {
+      if (t.id === taskID) {
+        return { ...t, tags: newTags }
+      } else {
+        return t;
+      }
+    });
+    console.log(newVisibleTasks);
+  };
+
   const deleteTaskHandler = (taskID) => {
     let newVisibleTasks = visibleTasks.filter((t) => {
       if (t.id == taskID) {
@@ -112,7 +123,7 @@ function App() {
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} /> : ""}
-      {isEditingTags ? <TagManager task={currentTask} /> : ""}
+      {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>
