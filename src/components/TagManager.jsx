@@ -7,14 +7,25 @@ const TagManager = (props) => {
     const [newTagName, setNewTagName] = useState("");
     const [tags, setTags] = useState(props.task.tags);
 
+    let visibleTags = [];
+
+    useEffect(() => {
+        visibleTags = tags.map((tagName, index) => {
+            return <TaskTag name={tagName} key={index} />
+        });
+        console.log("Visible tags is now:");
+        console.log(visibleTags);
+    }, [tags]);
+
     const deleteTag = (tagID) => {
         props.deleteTag(tagID);
     };
 
-    const saveNewTag = () => {
-        newTags = tags.slice();
+    const saveNewTag = (e) => {
+        e.preventDefault();
+        let newTags = tags.slice();
         newTags.push(newTagName);
-        console.log(newTags);
+        setTags(newTags);
         props.saveTags(props.task.id, newTags);
     }
 
@@ -23,15 +34,15 @@ const TagManager = (props) => {
     }
 
     return (
-        <MenuModal isVisible={true}>
+        <MenuModal isVisible={true} width={props.width}>
             <div className="tag-manager">
                 <h2 className="tag-manager-description">Editing tags for {props.task.name}</h2>
                 <div className="current-tags">
-                    {tags}
+                    {visibleTags}
                 </div>
                 <form className="tag-manager__tag-input-form">
                     <input type="text" placeholder="Enter tag name" className="tag-input-form__input" onChange={e => tagNameInputHandler(e)} value={newTagName}></input>
-                    <button className="tag-input-save-button" onClick={saveNewTag}>Save tag</button>
+                    <button className="tag-input-save-button" onClick={e => saveNewTag(e)}>Save tag</button>
                 </form>
             </div>
         </MenuModal>

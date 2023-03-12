@@ -6,7 +6,7 @@ import TaskGrid from "./components/UI/TaskGrid";
 import Calendar from "./components/Calendar";
 import TagManager from "./components/TagManager";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
   const [isTaskEdit, setIsTaskEdit] = useState(false);
   const [taskToBeEdited, setTaskToBeEdited] = useState(null);
   const [isEditingTags, setIsEditingTags] = useState(false);
+  const [menuWidth, setMenuWidth] = useState("100vw");
 
   const toggleMenu = () => {
     if (menuState === "flex") {
@@ -28,6 +29,14 @@ function App() {
     }
   }
 
+  useEffect(() => {
+    if (sideBarDisplayState === "flex") {
+      // the sidebar is open
+      setMenuWidth("70vw");
+    } else {
+      setMenuWidth("100vw");
+    }
+  }, [sideBarDisplayState])
   const openSideBar = () => {
     setSideBarAnimation("slide-in");
     setSideBarDisplayState("flex");
@@ -123,7 +132,7 @@ function App() {
 
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
       {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} /> : ""}
-      {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} /> : ""}
+      {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} width={menuWidth} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
     </div>

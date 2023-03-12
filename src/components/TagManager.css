@@ -1,5 +1,5 @@
 .tag-manager {
-    margin: 10px;
+    margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,6 +7,10 @@
 
 .tag-manager-description {
     text-align: center;
+    color: #2b3149;
+    border-bottom: 1px dashed #2b3149;
+    width: fit-content;
+    margin: 10px auto;
 }
 
 .current-tags {
@@ -16,6 +20,7 @@
     margin: 10px;
     margin-bottom: 0px;
     height: 100px;
+    box-shadow: inset 0px 0px 3px 5px rgb(180, 180, 180);
 }
 
 .tag-manager__tag-input-form {
@@ -27,9 +32,9 @@
 .tag-input-form__input {
     border-radius: 10px;
     outline: none;
-    border: 1px solid #1d1d1d;
-    font-size: 20px;
-    padding: 10px;
+    border: 1px solid #818a9e;
+    font-size: 16px;
+    padding: 15px;
 }
 
 .tag-input-save-button {
