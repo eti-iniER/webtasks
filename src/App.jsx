@@ -82,7 +82,6 @@ function App() {
         return task;
       }
     });
-    setCurrentTask(editedTaskData);
     setvisibleTasks(tasksAfterEdit);
   }
   let allTasks = [];
@@ -99,12 +98,15 @@ function App() {
 
   const saveTagsHandler = (taskID, newTags) => {
     let thisTask = null;
-    for (task of visibleTasks) {
+    for (let task of visibleTasks) {
       if (task.id === taskID) {
         thisTask = { ...task, tags: newTags }
       }
     }
+    console.log("This task is ");
+    console.log(thisTask)
     saveEditHandler(thisTask);
+    setCurrentTask(thisTask);
   };
 
   const deleteTaskHandler = (taskID) => {
