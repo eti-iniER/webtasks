@@ -46,7 +46,7 @@
     border: 2px solid var(--blueBorder);
     box-shadow: 0px 0px 5px 5px var(--blueItemShadow);
     border-radius: 10px;
-    background-color: #ffffff;
+    background: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
     transition-duration: 0.5s;
@@ -74,6 +74,15 @@
 .task-item.black {
     border-color: var(--blackBorder);
     box-shadow: 0px 0px 5px 5px var(--blackItemShadow);
+}
+
+.task-item.completed {
+    background: linear-gradient(45deg, #c5dff78c, #6fa5d8);
+}
+
+.task-item.green.completed {
+    transition-duration: 2s;
+    background: linear-gradient(45deg, #73ddab80, #40b173);
 }
 
 .task-item.active {
@@ -232,27 +241,4 @@
 .task-item.active .task-item__menu {
     transition-duration: 0.5s;
     display: none;
-}
-
-.task-item-completed {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    background-color: var(--blueActiveBackground);
-    padding: 10px;
-    border-bottom-right-radius: 8px;
-    border-top-left-radius: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-}
-
-.task-item-completed-trophy {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    color: white;
-    text-shadow: #232628;
 }
