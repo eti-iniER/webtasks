@@ -15,6 +15,7 @@
 
 .current-tags {
     display: flex;
+    justify-items: start;
     flex-direction: row;
     width: 300px;
     flex-wrap: wrap;

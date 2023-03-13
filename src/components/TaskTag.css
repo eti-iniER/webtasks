@@ -7,6 +7,7 @@
     border-radius: 10px;
     height: min-content;
     width: fit-content;
+    box-shadow: 0px 0px 2px 2px rgb(175, 175, 175);
 }
 
 .task-tag__close {
