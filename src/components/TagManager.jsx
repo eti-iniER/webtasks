@@ -47,7 +47,7 @@ const TagManager = (props) => {
             <div className="tag-manager">
                 <h2 className="tag-manager-description">{props.task.name}</h2>
                 <div className="current-tags">
-                    {visibleTags}
+                    {visibleTags.length > 0 ? visibleTags : <span className="no-tags">No saved tags</span>}
                 </div>
                 <form className="tag-manager__tag-input-form">
                     <input type="text" placeholder="Enter tag name" className="tag-input-form__input" onChange={e => tagNameInputHandler(e)} value={newTagName}></input>

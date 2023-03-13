@@ -55,3 +55,7 @@
     font-weight: bold;
     height: 50px;
 }
+
+.no-tags {
+    color: rgb(92, 92, 92);
+}
