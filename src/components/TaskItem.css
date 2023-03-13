@@ -49,6 +49,7 @@
     background: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
+    transition: background-color 2s ease-out;
     transition-duration: 0.5s;
     position: relative;
     color: var(--fontColor);
@@ -81,8 +82,23 @@
 }
 
 .task-item.green.completed {
-    transition-duration: 2s;
     background: linear-gradient(45deg, #73ddab80, #40b173);
+}
+
+.task-item.red.completed {
+    background: linear-gradient(45deg, #e98b6ea9, #c9663e);
+}
+
+.task-item.orange.completed {
+    background: linear-gradient(45deg, #f1ca75c7, #e49759);
+}
+
+.task-item.purple.completed {
+    background: linear-gradient(45deg, #bb73ddb6, #84349c);
+}
+
+.task-item.black.completed {
+    background: linear-gradient(45deg, #909794be, #585c5a);
 }
 
 .task-item.active {
