@@ -2,7 +2,7 @@ import "./TaskTag.css";
 
 const TaskTag = (props) => {
     const removeSelf = () => {
-        props.onDelete(props.id);
+        props.onDelete(props.name);
     };
 
     return (

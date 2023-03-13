@@ -7,8 +7,15 @@ const TagManager = (props) => {
     const [newTagName, setNewTagName] = useState("");
     const [tags, setTags] = useState(props.task.tags);
 
-    const deleteTag = (tagID) => {
-        let newTags = tags.filter((t) => { t.id != tagID });
+    const deleteTag = (tagToBeDeleted) => {
+        // filter the tag array so that only those tags with a different name remain
+        let newTags = tags.filter((tagName) => {
+            if (tagName === tagToBeDeleted) {
+                return false;
+            } else {
+                return true;
+            }
+        });
         setTags(newTags);
         props.saveTags(props.task.id, newTags);
     };
@@ -32,7 +39,7 @@ const TagManager = (props) => {
 
     let visibleTags = [];
     visibleTags = tags.map((tagName, index) => {
-        return <TaskTag name={tagName} id={index} key={index} onDelete={deleteTag} />
+        return <TaskTag name={tagName} id={btoa(tagName)} key={index} onDelete={deleteTag} />
     });
 
     return (
