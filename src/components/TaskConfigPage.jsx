@@ -237,8 +237,8 @@ const TaskConfigPage = (props) => {
 
         if (arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])) {
             console.log("Every day was chosen indirectly");
-            task.frequency = "Every day"
-            task.weekdays = {}
+            task.frequency = "Every day";
+            task.weekdays = {};
         }
 
         props.saveEdit(task);
@@ -323,7 +323,7 @@ const TaskConfigPage = (props) => {
                 </div>
 
 
-                {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save Edits</button> :
+                {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save edits</button> :
                     <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>}
 
             </div>

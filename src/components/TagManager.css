@@ -43,6 +43,10 @@
     padding: 15px;
 }
 
+.tag-input-form__input:focus {
+    border-color: #eea047;
+}
+
 .tag-input-save-button {
     outline: 0px;
     padding: 5px;

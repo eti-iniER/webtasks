@@ -86,7 +86,7 @@
 }
 
 .task-item.red.completed {
-    background: linear-gradient(45deg, #e98b6ea9, #c9663e);
+    background: linear-gradient(45deg, #e98b6ea9, #e27e57);
 }
 
 .task-item.orange.completed {
@@ -94,11 +94,11 @@
 }
 
 .task-item.purple.completed {
-    background: linear-gradient(45deg, #bb73ddb6, #84349c);
+    background: linear-gradient(45deg, #bb73ddb6, #8a3da1);
 }
 
 .task-item.black.completed {
-    background: linear-gradient(45deg, #909794be, #585c5a);
+    background: linear-gradient(45deg, #8d8d8dbe, #757575);
 }
 
 .task-item.active {
