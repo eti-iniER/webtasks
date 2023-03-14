@@ -7,7 +7,7 @@ import Calendar from "./components/Calendar";
 import TagManager from "./components/TagManager";
 
 import { useEffect, useState } from "react";
-import TaskStatsPage from "./components/TaskStatsPage";
+import TaskDataPage from "./components/TaskDataPage";
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
   const [isTaskEdit, setIsTaskEdit] = useState(false);
   const [taskToBeEdited, setTaskToBeEdited] = useState(null);
   const [isEditingTags, setIsEditingTags] = useState(false);
-  const [isViewingStats, setIsViewingStats] = useState(false);
+  const [isViewingData, setIsViewingData] = useState(false);
   const [menuWidth, setMenuWidth] = useState("100vw");
 
   const toggleMenu = () => {
@@ -128,13 +128,13 @@ function App() {
     setIsEditingTags(false);
   }
 
-  const viewStatsHandler = (tagID) => {
+  const viewDataHandler = (tagID) => {
     setCurrentTask(visibleTasks[tagID])
-    setIsViewingStats(true);
+    setIsViewingData(true);
   }
 
   const statsCloseHandler = () => {
-    setIsViewingStats(false);
+    setIsViewingData(false);
   }
   for (let i = 0; i < visibleTasks.length; i++) {
     let thisTask = <TaskItem data={visibleTasks[i]} menu={showMenu} key={i} id={i} />;
@@ -148,9 +148,9 @@ function App() {
         {allTasks}
       </TaskGrid>
 
-      {isViewingStats ? <TaskStatsPage visible={isViewingStats} task={currentTask} close={statsCloseHandler}></TaskStatsPage> : ""}
+      {isViewingData ? <TaskDataPage visible={isViewingData} task={currentTask} close={statsCloseHandler}></TaskDataPage> : ""}
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} viewStats={viewStatsHandler} /> : ""}
+      {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} viewData={viewDataHandler} /> : ""}
       {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} width={menuWidth} close={tagModalCloseHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />

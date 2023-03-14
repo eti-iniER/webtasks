@@ -1,0 +1,25 @@
+.task-data-page {
+    width: 90vw;
+    height: 80vh;
+    padding: 10px;
+}
+
+.task-data-page__menu {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.task-data-page__menu-item {
+    color: grey;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.task-data-page__menu-item.active {
+    color: #2b3149;
+    border-bottom: 1px dashed #2b3149;
+}

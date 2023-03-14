@@ -16,9 +16,9 @@ const TaskItemMenu = (props) => {
         props.close()
     };
 
-    const viewStatsHandler = () => {
+    const viewDataHandler = () => {
         console.log(`We are viewing stats for ${props.task.name}`);
-        props.viewStats(props.task.id);
+        props.viewData(props.task.id);
         props.close();
     }
     let menuWidth = "100vw"
@@ -37,9 +37,9 @@ const TaskItemMenu = (props) => {
                         <span className="fa-regular fa-pen-to-square"></span>
                         <p className="task-item-menu__action-name">Edit</p>
                     </li>
-                    <li onClick={viewStatsHandler}>
+                    <li onClick={viewDataHandler}>
                         <span className="fa-solid fa-chart-pie"></span>
-                        <p className="task-item-menu__action-name">View stats</p>
+                        <p className="task-item-menu__action-name">View data</p>
                     </li>
                     <li onClick={editTagHandler}>
                         <span className="fa-solid fa-filter"></span>
