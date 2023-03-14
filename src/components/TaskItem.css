@@ -46,10 +46,9 @@
     border: 2px solid var(--blueBorder);
     box-shadow: 0px 0px 5px 5px var(--blueItemShadow);
     border-radius: 10px;
-    background: white;
+    background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
-    transition: background-color 2s ease-out;
     transition-duration: 0.5s;
     position: relative;
     color: var(--fontColor);
@@ -67,6 +66,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: white;
     transition: opacity 0.3s linear;
     opacity: 0;
     z-index: -1;
@@ -117,9 +117,9 @@
     background: linear-gradient(45deg, #a772c0b6, #962a96);
 }
 
-.task-item.black.completed {
+.task-item.black.completed::before {
     opacity: 1;
-    background: linear-gradient(45deg, #8d8d8dbe, #575757);
+    background: linear-gradient(45deg, #8d8d8dbe, #4d4d4d);
 }
 
 .task-item.active {

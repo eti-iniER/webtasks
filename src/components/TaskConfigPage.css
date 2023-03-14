@@ -1,6 +1,7 @@
 .task-config-page {
     margin: 0px;
     width: 100%;
+    max-height: 95vh;
 }
 
 .task-config-form {

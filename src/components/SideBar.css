@@ -15,7 +15,6 @@
     padding: 10px;
     overflow-y: scroll;
     margin-bottom: 20px;
-    overflow-x: hidden;
 }
 
 .cancel {
@@ -25,7 +24,6 @@
     cursor: default;
     text-align: center;
     padding: 10px;
-    margin-bottom: 20px;
 }
 
 .create-task-header {
