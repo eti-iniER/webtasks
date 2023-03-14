@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     if (sideBarDisplayState === "flex") {
       // the sidebar is open
-      setMenuWidth("70vw");
+      setMenuWidth("65vw");
     } else {
       setMenuWidth("100vw");
     }

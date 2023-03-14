@@ -46,7 +46,7 @@
     border: 2px solid var(--blueBorder);
     box-shadow: 0px 0px 5px 5px var(--blueItemShadow);
     border-radius: 10px;
-    background: #ffffff;
+    background: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 10px;
     transition: background-color 2s ease-out;
@@ -55,6 +55,21 @@
     color: var(--fontColor);
     width: 200px;
     height: 200px;
+    z-index: 1;
+}
+
+.task-item::before {
+    position: absolute;
+    border-radius: 8px;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    transition: all 0.5s linear;
+    opacity: 0;
+    z-index: -1;
 }
 
 .task-item.orange {
@@ -77,27 +92,33 @@
     box-shadow: 0px 0px 5px 5px var(--blackItemShadow);
 }
 
-.task-item.completed {
+.task-item.completed::before {
+    opacity: 1;
     background: linear-gradient(45deg, #c5dff78c, #6fa5d8);
 }
 
-.task-item.green.completed {
+.task-item.green.completed::before {
+    opacity: 1;
     background: linear-gradient(45deg, #73ddab80, #40b173);
 }
 
-.task-item.red.completed {
+.task-item.red.completed::before {
+    opacity: 1;
     background: linear-gradient(45deg, #e98b6ea9, #e27e57);
 }
 
-.task-item.orange.completed {
+.task-item.orange.completed::before {
+    opacity: 1;
     background: linear-gradient(45deg, #f1ca75c7, #e49759);
 }
 
-.task-item.purple.completed {
+.task-item.purple.completed::before {
+    opacity: 1;
     background: linear-gradient(45deg, #bb73ddb6, #994ab1);
 }
 
 .task-item.black.completed {
+    opacity: 1;
     background: linear-gradient(45deg, #8d8d8dbe, #575757);
 }
 
