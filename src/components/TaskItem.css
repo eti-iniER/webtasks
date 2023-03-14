@@ -58,7 +58,8 @@
     z-index: 1;
 }
 
-.task-item::before {
+.task-item::before,
+.task-item.completed::before {
     position: absolute;
     border-radius: 8px;
     content: "";
@@ -66,8 +67,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: white;
-    transition: all 0.5s linear;
+    transition: opacity 0.3s linear;
     opacity: 0;
     z-index: -1;
 }

@@ -18,7 +18,7 @@ const TaskItemMenu = (props) => {
 
     let menuWidth = "100vw"
     if (props.sideBarState === "flex") {
-        menuWidth = "65vw";
+        menuWidth = "63.5vw";
     } else {
         menuWidth = "100vw";
     }
