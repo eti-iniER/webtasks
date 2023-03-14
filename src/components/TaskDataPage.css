@@ -1,7 +1,12 @@
 .task-data-page {
+    display: flex;
+    flex-direction: row;
     width: 90vw;
     height: 80vh;
     padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    justify-content: space-between;
 }
 
 .task-data-page__menu {
@@ -22,4 +27,39 @@
 .task-data-page__menu-item.active {
     color: #2b3149;
     border-bottom: 1px dashed #2b3149;
+}
+
+.task-data-page__overview {
+    padding: 10px;
+}
+
+.task-data-page__section {
+    display: flex;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(172, 172, 172, 0.411);
+    padding: 10px;
+}
+
+.task-data-page__section-header {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: 5px;
+}
+
+.section-title {
+    color: #2e2e2e;
+    width: fit-content;
+    height: fit-content;
+}
+
+.section-title-icon {
+    text-align: center;
+    margin: auto;
+    padding: 5px;
+    font-size: 20px;
 }
