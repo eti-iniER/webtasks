@@ -114,7 +114,7 @@
 
 .task-item.purple.completed::before {
     opacity: 1;
-    background: linear-gradient(45deg, #bb73ddb6, #994ab1);
+    background: linear-gradient(45deg, #a772c0b6, #962a96);
 }
 
 .task-item.black.completed {
