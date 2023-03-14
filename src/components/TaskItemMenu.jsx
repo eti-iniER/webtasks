@@ -16,6 +16,11 @@ const TaskItemMenu = (props) => {
         props.close()
     };
 
+    const viewStatsHandler = () => {
+        console.log(`We are viewing stats for ${props.task.name}`);
+        props.viewStats(props.task.id);
+        props.close();
+    }
     let menuWidth = "100vw"
     if (props.sideBarState === "flex") {
         menuWidth = "63.5vw";
@@ -31,6 +36,10 @@ const TaskItemMenu = (props) => {
                     <li onClick={editTaskHandler}>
                         <span className="fa-regular fa-pen-to-square"></span>
                         <p className="task-item-menu__action-name">Edit</p>
+                    </li>
+                    <li onClick={viewStatsHandler}>
+                        <span className="fa-solid fa-chart-pie"></span>
+                        <p className="task-item-menu__action-name">View stats</p>
                     </li>
                     <li onClick={editTagHandler}>
                         <span className="fa-solid fa-filter"></span>
