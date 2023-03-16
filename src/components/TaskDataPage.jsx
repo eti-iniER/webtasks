@@ -15,7 +15,8 @@ const TaskDataPage = (props) => {
                         <li className="task-data-page__menu-item">Notes</li>
                         <li className="task-data-page__menu-item">History</li>
                     </ul>
-                    <h1>{props.task.name}</h1>
+                    <h1 className="task-data-page__task-name">{props.task.name}</h1>
+                    <p className="task-data-page__task-description">{props.task.description}</p>
                 </div>
                 <div className="task-data-page__section-container">
                     <div className="task-data-page__section">

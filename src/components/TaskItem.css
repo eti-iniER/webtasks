@@ -60,7 +60,7 @@
 .task-item::before,
 .task-item.completed::before {
     position: absolute;
-    border-radius: 8px;
+    border-radius: 7.5px;
     content: "";
     top: 0;
     left: 0;
