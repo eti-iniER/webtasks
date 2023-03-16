@@ -1,12 +1,12 @@
 .task-data-page {
     display: flex;
-    flex-direction: row;
-    width: 50vw;
+    flex-direction: column;
+    width: 61vw;
     height: 80vh;
     padding: 10px;
-    background-color: aliceblue;
+    background: linear-gradient(45deg, #c5dff78c, #6fa5d8);
+    /* background-color: aliceblue; */
     border-radius: 10px;
-    justify-content: space-between;
 }
 
 .task-data-page__menu {
@@ -36,29 +36,44 @@
     padding: 10px;
 }
 
+.task-data-page__section-container {
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+}
+
 .task-data-page__section {
-    display: flex;
+    display: inline-block;
     justify-content: center;
     width: 250px;
-    height: 250px;
+    height: 150px;
     background-color: #ffffff;
     border: 2px solid rgba(128, 128, 128, 0.486);
     border-radius: 10px;
     /* box-shadow: 0px 0px 5px 3px rgba(112, 112, 112, 0.329); */
-    padding: 10px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .task-data-page__section-header {
     display: flex;
     flex-direction: row;
-    height: fit-content;
-    margin: 5px;
+    height: min-content;
+    margin: auto;
+    padding: 10px;
+    align-items: start;
+    justify-content: center;
+    width: fit-content;
 }
 
 .section-title {
-    color: #2e2e2e;
+    color: #464646;
     width: fit-content;
-    height: fit-content;
+    height: min-content;
+    font-size: 20px;
+    font-weight: 500;
+    margin: auto;
 }
 
 .section-title-icon {
