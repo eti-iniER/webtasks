@@ -41,7 +41,8 @@
 }
 
 .task-data-page__section-container {
-    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
     width: 100%;
 }
 
@@ -68,6 +69,18 @@
 
 .section-title-icon.orange {
     color: rgb(228, 141, 43);
+}
+
+.task-data-page.red {
+    background-color: rgb(255, 238, 237);
+}
+
+.task-data-page__section.red {
+    border: 2px solid rgba(219, 66, 46, 0.514);
+}
+
+.section-title-icon.red {
+    color: rgb(228, 71, 43);
 }
 
 .task-data-page__section-header {
