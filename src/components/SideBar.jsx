@@ -41,11 +41,15 @@ const SideBar = (props) => {
     }
 
     const setToBuild = () => {
-        setChoices({ ...choices, buildOrQuit: "Build" })
+        setChoices({ ...choices, buildOrQuit: "Build" });
         nextPage();
     }
     const setToQuit = () => {
-        setChoices({ ...choices, buildOrQuit: "Quit" })
+        setChoices({ ...choices, buildOrQuit: "Quit" });
+        nextPage();
+    }
+    const setToTrack = () => {
+        setChoices({ ...choices, buildOrQuit: "Track" });
         nextPage();
     }
     const setToCounter = () => {
@@ -90,12 +94,12 @@ const SideBar = (props) => {
                 <TaskSetupSelectorChoice title="Track progress" leftIcon={trackLeftIcon} rightIcon={rightIcon}
                     description={
                         "Track your progress over time (weight, savings, distances etc)"
-                    } action={nextPage} />
+                    } action={setToTrack} />
 
                 <TaskSetupSelectorChoice title="Simply track a habit" leftIcon={simpleLeftIcon} rightIcon={rightIcon}
                     description={
                         "No goal or limit - just tracking what you're doing at the moment"
-                    } action={nextPage} />
+                    } action={setToTrack} />
 
             </ChoicePage>
 
