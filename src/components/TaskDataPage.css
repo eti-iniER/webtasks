@@ -28,7 +28,7 @@
 }
 
 .task-data-page__menu-item:hover {
-    color: lightgrey;
+    color: rgb(73, 73, 73);
 }
 
 .task-data-page__menu-item.active {
@@ -41,8 +41,6 @@
 }
 
 .task-data-page__section-container {
-    justify-content: space-around;
-    align-items: center;
     margin: auto;
     width: 100%;
 }
@@ -58,6 +56,18 @@
     /* box-shadow: 0px 0px 5px 3px rgba(112, 112, 112, 0.329); */
     padding: 5px;
     margin: 5px;
+}
+
+.task-data-page.orange {
+    background-color: rgb(255, 238, 206);
+}
+
+.task-data-page__section.orange {
+    border: 2px solid rgba(223, 157, 34, 0.637);
+}
+
+.section-title-icon.orange {
+    color: rgb(228, 141, 43);
 }
 
 .task-data-page__section-header {

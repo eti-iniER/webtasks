@@ -8,7 +8,7 @@ import TaskConfigPage from "./TaskConfigPage";
 
 const SideBar = (props) => {
     let defaultChoices = {
-        buildOrQuit: "Build",
+        buildOrQuit: "",
     }
 
 

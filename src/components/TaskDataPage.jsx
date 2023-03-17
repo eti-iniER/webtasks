@@ -8,7 +8,7 @@ const TaskDataPage = (props) => {
     }
     return (
         <MenuModal isVisible={props.visible} close={closeSelf}>
-            <div className="task-data-page">
+            <div className={`task-data-page ${props.task.theme}`}>
                 <div className="task-data-page__overview">
                     <ul className="task-data-page__menu">
                         <li className="task-data-page__menu-item active">Stats</li>
@@ -19,39 +19,21 @@ const TaskDataPage = (props) => {
                     <p className="task-data-page__task-description">{props.task.description}</p>
                 </div>
                 <div className="task-data-page__section-container">
-                    <div className="task-data-page__section">
+                    <div className={`task-data-page__section ${props.task.theme}`}>
                         <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-solid fa-fire"></span>
+                            <span className={`section-title-icon ${props.task.theme} fa-solid fa-fire`}></span>
                             <h2 className="section-title">Streaks</h2>
                         </div>
                     </div>
-                    <div className="task-data-page__section">
+                    <div className={`task-data-page__section ${props.task.theme}`}>
                         <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-regular fa-circle-check"></span>
+                            <span className={`section-title-icon ${props.task.theme} fa-regular fa-circle-check`}></span>
                             <h2 className="section-title">Success rate</h2>
                         </div>
                     </div>
-                    <div className="task-data-page__section">
+                    <div className={`task-data-page__section ${props.task.theme}`}>
                         <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-solid fa-chart-simple"></span>
-                            <h2 className="section-title">History</h2>
-                        </div>
-                    </div>
-                    <div className="task-data-page__section">
-                        <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-solid fa-fire"></span>
-                            <h2 className="section-title">Streaks</h2>
-                        </div>
-                    </div>
-                    <div className="task-data-page__section">
-                        <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-regular fa-circle-check"></span>
-                            <h2 className="section-title">Success rate</h2>
-                        </div>
-                    </div>
-                    <div className="task-data-page__section">
-                        <div className="task-data-page__section-header">
-                            <span className="section-title-icon fa-solid fa-chart-simple"></span>
+                            <span className={`section-title-icon ${props.task.theme} fa-solid fa-chart-simple`}></span>
                             <h2 className="section-title">History</h2>
                         </div>
                     </div>
