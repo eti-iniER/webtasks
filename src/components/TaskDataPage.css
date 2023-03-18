@@ -16,13 +16,14 @@
     margin: 10px;
     text-align: left;
     padding: 0px;
+    margin-left: 8px;
+    font-weight: 500;
 }
 
 .task-data-page__menu-item {
     color: rgb(134, 134, 134);
     margin-right: 10px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     transition-duration: 0.2s;
 }
@@ -38,6 +39,7 @@
 
 .task-data-page__overview {
     padding: 10px;
+    color: #2b3149;
 }
 
 .task-data-page__section-container {
@@ -81,6 +83,42 @@
 
 .section-title-icon.red {
     color: rgb(228, 71, 43);
+}
+
+.task-data-page.green {
+    background-color: rgb(219, 255, 233);
+}
+
+.task-data-page__section.green {
+    border: 2px solid rgba(37, 173, 105, 0.514);
+}
+
+.section-title-icon.green {
+    color: rgb(23, 207, 106);
+}
+
+.task-data-page.purple {
+    background-color: rgb(255, 224, 255);
+}
+
+.task-data-page__section.purple {
+    border: 2px solid rgba(212, 70, 224, 0.514);
+}
+
+.section-title-icon.purple {
+    color: rgb(168, 54, 190);
+}
+
+.task-data-page.black {
+    background-color: rgb(243, 243, 243);
+}
+
+.task-data-page__section.black {
+    border: 2px solid rgba(96, 96, 97, 0.514);
+}
+
+.section-title-icon.black {
+    color: rgb(82, 82, 82);
 }
 
 .task-data-page__section-header {
