@@ -43,6 +43,11 @@ const TaskConfigPage = (props) => {
         defaultTask = { ...defaultTask, ...props.preconfigs };
     };
 
+    const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"];
+    const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let today = new Date;
+    let todayString = `${DAYS[today.getDay()]}, ${today.getDate()} ${MONTHS[today.getMonth()]} ${today.getFullYear()}`;
     const colors = ["#5ba6ec", "#e05a39", "#da8d35", "#279e59", "#962a96", "#232628"];
     const colorThemes = ["blue", "red", "orange", "green", "purple", "black"];
     // blue, red, orange, green, purple
@@ -60,6 +65,7 @@ const TaskConfigPage = (props) => {
     const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
     const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
     const [taskTags, setTaskTags] = useState(defaultTask.tags);
+    const [taskStartDate, setTaskStartDate] = useState(today);
 
     const emojiContainer = useRef();
 
@@ -211,6 +217,11 @@ const TaskConfigPage = (props) => {
     const handleOccurenceInput = (event) => {
         setTaskOccurence(event.target.value);
     }
+
+    const handleStartDateInput = (event) => {
+        console.log(taskStartDate);
+        console.setTaskStartDate(event.target.value);
+    }
     const saveTaskEdits = () => {
         let genericGoal = taskGoal
         if (taskType === "Timer") {
@@ -322,6 +333,10 @@ const TaskConfigPage = (props) => {
 
                 </div>
 
+                <div className="task-config-form__field">
+                    <label>START DATE</label>
+                    <input type="date" value={taskStartDate} onChange={(e) => handleStartDateInput(e)}></input>
+                </div>
 
                 {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save edits</button> :
                     <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>}
