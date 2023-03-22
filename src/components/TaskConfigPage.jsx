@@ -65,7 +65,7 @@ const TaskConfigPage = (props) => {
     const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
     const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
     const [taskTags, setTaskTags] = useState(defaultTask.tags);
-    const [taskStartDate, setTaskStartDate] = useState(today);
+    const [taskStartDate, setTaskStartDate] = useState(today.toISOString());
 
     const emojiContainer = useRef();
 
@@ -220,7 +220,7 @@ const TaskConfigPage = (props) => {
 
     const handleStartDateInput = (event) => {
         console.log(taskStartDate);
-        console.setTaskStartDate(event.target.value);
+        console.setTaskStartDate(event.target.value.toISOString());
     }
     const saveTaskEdits = () => {
         let genericGoal = taskGoal
