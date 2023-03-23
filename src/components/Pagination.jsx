@@ -8,7 +8,7 @@ const Pagination = (props) => {
     for (let i = 1; i <= props.count; i++) {
         // this starts from page 1 to props.count
         let circle = <div className={`circle ${props.current === i ? "active" : ""}`}>
-            {props.current === i ? <span className="fa-solid fa-circle"></span> : <span className="fa-regular fa-circle"></span>}
+            {props.current === i ? <span className="fa-solid fa-circle-dot"></span> : <span className="fa-regular fa-circle"></span>}
         </ div>;
 
         circles.push(circle);
