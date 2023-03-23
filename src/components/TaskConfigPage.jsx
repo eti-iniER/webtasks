@@ -333,11 +333,6 @@ const TaskConfigPage = (props) => {
 
                 </div>
 
-                <div className="task-config-form__field">
-                    <label>START DATE</label>
-                    <input type="date" value={taskStartDate} onChange={(e) => handleStartDateInput(e)}></input>
-                </div>
-
                 {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save edits</button> :
                     <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>}
 
