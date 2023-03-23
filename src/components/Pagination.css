@@ -1,1 +1,44 @@
-.pagination-container {}
+.pagination-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    background-color: transparent;
+    width: fit-content;
+    height: 30px;
+    align-items: center;
+}
+
+.circle {
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    margin: 5px 3px;
+    height: min-content;
+    text-align: center;
+    color: rgb(180, 180, 180);
+    width: fit-content;
+    height: fit-content;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.circle.active {
+    color: rgb(47, 194, 150);
+    text-shadow: 0px 0px 2px rgba(41, 41, 41, 0.623);
+}
+
+.pagination-progress-container {
+    width: 100%;
+    background-color: rgb(180, 180, 180);
+    border-radius: 10px;
+    position: absolute;
+    height: 2px;
+}
+
+.pagination-progress-bar {
+    width: 50%;
+    background-color: red;
+}

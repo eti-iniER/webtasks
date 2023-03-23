@@ -4,6 +4,7 @@ import { TwemojiRenderer } from "@picmo/renderer-twemoji";
 import WeekdaySelector from "./WeekdaySelector";
 
 import "./TaskConfigPage.css";
+import Pagination from "./Pagination";
 
 const TaskConfigPage = (props) => {
 
@@ -262,6 +263,7 @@ const TaskConfigPage = (props) => {
 
     return (
         <div className="task-config-page">
+            <Pagination count={3} current={1}></Pagination>
             <div className="task-config-form">
                 <div className="task-config-form__field">
                     <label>BUILD OR QUIT THIS HABIT?</label>
