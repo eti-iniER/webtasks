@@ -60,6 +60,10 @@
     height: 50px;
 }
 
+.tag-input-save-button:active {
+    background-color: #d89343;
+}
+
 .no-tags {
     color: rgb(92, 92, 92);
 }

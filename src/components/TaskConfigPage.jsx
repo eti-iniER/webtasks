@@ -263,7 +263,7 @@ const TaskConfigPage = (props) => {
 
     return (
         <div className="task-config-page">
-            <Pagination count={3} current={1}></Pagination>
+            {/* <Pagination count={3} current={1}></Pagination> */}
             <div className="task-config-form">
                 <div className="task-config-form__field">
                     <label>BUILD OR QUIT THIS HABIT?</label>
