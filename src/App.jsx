@@ -115,7 +115,7 @@ function App() {
 
   const deleteTaskHandler = (taskID) => {
     let newVisibleTasks = visibleTasks.filter((t) => {
-      if (t.id == taskID) {
+      if (t.id === taskID) {
         return false;
       } else {
         return true;
@@ -124,6 +124,37 @@ function App() {
     setvisibleTasks(newVisibleTasks);
   }
 
+  const resetTaskHandler = (taskID) => {
+    let emptyTask = {
+      name: "",
+      description: "",
+      theme: "",
+      goal: 0,
+      type: "",
+      emoji: "",
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      frequency: 0,
+      weekdays: {},
+      occurence: 0,
+      tags: [],
+    }
+    console.log("We are in resetTaskHandler from app.jsx")
+    let newVisibleTasks = visibleTasks.map((t) => {
+      if (t.id === taskID) {
+        console.log("We are reseting this task")
+        return {
+          ...emptyTask, name: t.name, description: t.description,
+          goal: t.goal, frequency: t.frequency, type: t.type, theme: t.theme, weekdays:
+            t.weekdays
+        }
+      } else {
+        return t;
+      }
+    });
+    setvisibleTasks(newVisibleTasks);
+  }
   const tagModalCloseHandler = () => {
     setIsEditingTags(false);
   }
@@ -150,7 +181,7 @@ function App() {
 
       {isViewingData ? <TaskDataPage visible={isViewingData} task={currentTask} close={statsCloseHandler}></TaskDataPage> : ""}
       <TaskCreateButton toggleCreateMenu={toggleSideBar} />
-      {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} viewData={viewDataHandler} /> : ""}
+      {currentTask ? <TaskItemMenu visible={menuState} task={currentTask} close={toggleMenu} showEditMenu={editTask} sideBarState={sideBarDisplayState} deleteTask={deleteTaskHandler} editTags={editTagsHandler} viewData={viewDataHandler} resetTask={resetTaskHandler} /> : ""}
       {isEditingTags ? <TagManager task={currentTask} saveTags={saveTagsHandler} width={menuWidth} close={tagModalCloseHandler} /> : ""}
       <SideBar displayState={sideBarDisplayState} close={toggleSideBar} createTask={saveTaskHandler} animation={sideBarAnimation}
         getTask={getTaskHandler} isEdit={isTaskEdit} taskIndex={taskToBeEdited} saveEdit={saveEditHandler} />
