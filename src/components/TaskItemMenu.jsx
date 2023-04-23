@@ -22,10 +22,6 @@ const TaskItemMenu = (props) => {
         props.close();
     }
 
-    const resetTaskHandler = () => {
-        props.resetTask(props.task.id);
-        props.close();
-    }
     let menuWidth = "100vw"
     if (props.sideBarState === "flex") {
         menuWidth = "63.5vw";
@@ -54,7 +50,7 @@ const TaskItemMenu = (props) => {
                         <span className="fa-solid fa-box-archive"></span>
                         <p className="task-item-menu__action-name">Archive</p>
                     </li>
-                    <li onClick={resetTaskHandler}>
+                    <li>
                         <span className="fa-regular fa-rotate-left"></span>
                         <p className="task-item-menu__action-name">Reset</p>
                     </li>
