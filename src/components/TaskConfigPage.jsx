@@ -321,7 +321,10 @@ const TaskConfigPage = (props) => {
                         <label>FREQUENCY</label>
                         <input type="number" min={2} max={6} value={taskOccurence} onChange={(e) => handleOccurenceInput(e)}></input>
                     </div> : ""}
-
+                <div className="task-config-form__field date-input-container">
+                    <label>START DATE</label>
+                    <input type="text"></input>
+                </div>
                 <div className="task-config-form__emoji-colour-container">
                     <div className="task-config-form__field emoji">
                         <label>EMOJI</label>
@@ -334,7 +337,6 @@ const TaskConfigPage = (props) => {
                     </div>
 
                 </div>
-
                 {props.thisIsAnEdit ? <button className="task-config-form__submit" onClick={saveTaskEdits}>Save edits</button> :
                     <button className="task-config-form__submit" onClick={saveTask}>Create Task</button>}
 
