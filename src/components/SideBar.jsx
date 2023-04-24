@@ -126,7 +126,9 @@ const SideBar = (props) => {
             {taskCreationProgress === 3 || props.thisIsAnEdit ? <TaskConfigPage previousChoices={choices} createTask={createTask} closeSidebar={close}
                 preconfigs={taskToBeEdited} thisIsAnEdit={props.isEdit} saveEdit={saveEditHandler} /> : ""}
 
-            <a className="cancel" onClick={close}>Cancel</a>
+            <div className="cancel-container">
+                <a className="cancel" onClick={close}>Cancel</a>
+            </div> 
         </div>
     )
 }

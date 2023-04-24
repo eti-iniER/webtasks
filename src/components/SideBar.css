@@ -18,18 +18,17 @@
 }
 
 .cancel {
-    display: block;
-    position: relative;
     color: tomato;
     font-weight: bold;
     font-size: 16px;
     cursor: default;
     text-align: center;
-    padding: 15px;
+    padding: 14px;
     border: 1px solid tomato;
     width: 30vw;
     border-radius: 10px;
     transition-duration: 0.2s;
+    margin: 10px;
 }
 .cancel:hover {
     background-color: tomato;

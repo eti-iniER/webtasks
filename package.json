@@ -9,8 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@picmo/popup-picker": "^5.8.0",
     "@picmo/renderer-twemoji": "^5.8.0",
+    "@popperjs/core": "^2.11.7",
+    "air-datepicker": "^3.3.5",
     "picmo": "^5.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
