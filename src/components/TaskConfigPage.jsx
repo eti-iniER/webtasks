@@ -107,6 +107,7 @@ const TaskConfigPage = (props) => {
   let datePicker = null;
 
   useEffect(() => {
+    // code for the emoji picker popup
     picmoEmojiPicker = createPopup(
       {
         renderer: new TwemojiRenderer(),
@@ -125,9 +126,58 @@ const TaskConfigPage = (props) => {
     );
   });
 
-  const toggleCalendar = () => {
-    setShowDatePicker(!showDatePicker);
+  useEffect(() => {
+    datePicker = new AirDatepicker('#date-picker', {
+    container: '#scroll-container',
+    visible: false,
+    locale: localeEN,
+    position: "left center"
+    // position({$datepicker, $target, $pointer, done}) {
+    //     let popper = createPopper($target, $datepicker, {
+    //         placement: 'left',
+    //         modifiers: [
+    //             {
+    //                 name: 'flip',
+    //                 options: {
+    //                     padding: {
+    //                         top: 64
+    //                     }
+    //                 }
+    //             },
+    //             {
+    //                 name: 'offset',
+    //                 options: {
+    //                     offset: [0, 20]
+    //                 }
+    //             },
+    //             {
+    //                 name: 'arrow',
+    //                 options: {
+    //                     element: $pointer
+    //                 }
+    //             }
+    //         ]
+    //     })
+        
+    //     /*
+		//  Return function which will be called when `hide()` method is triggered,
+		//  it must necessarily call the `done()` function
+ 		//  to complete hiding process 
+		// */
+    //     return function completeHide() {
+    //         popper.destroy();
+    //         done();
+    //     }    
+    // }
+});
+  }, [])
+
+  const openDatePicker = () => {
+    datePicker.show();
   };
+  const hideDatePicker = () => {
+    datePicker.hide();
+  }
   const saveEmoji = (EmojiSelection) => {
     setTaskEmoji(EmojiSelection.emoji);
   };
@@ -477,7 +527,7 @@ const TaskConfigPage = (props) => {
         )}
         <div className="task-config-form__field date-input-container">
           <label>START DATE</label>
-          <input type="text" id="date-picker"></input>
+          <input type="text" id="date-picker" onClick={openDatePicker} onChange={hideDatePicker}placeholder="Click to choose date"></input>
         </div>
         <div className="task-config-form__emoji-colour-container">
           <div className="task-config-form__field emoji">
