@@ -23,6 +23,8 @@ const TaskConfigPage = (props) => {
     return true;
   };
 
+  let today = new Date();
+
   const emptyTask = {
     buildOrQuit: "Build",
     name: "",
@@ -39,6 +41,7 @@ const TaskConfigPage = (props) => {
     hours: "",
     occurence: 2,
     tags: [],
+    startDate: today
   };
 
   let defaultTask = { ...emptyTask, ...props.previousChoices };
@@ -69,7 +72,6 @@ const TaskConfigPage = (props) => {
     "Friday",
     "Saturday",
   ];
-  let today = new Date();
   
   const colors = [
     "#5ba6ec",
@@ -97,7 +99,7 @@ const TaskConfigPage = (props) => {
   const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
   const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
   const [taskTags, setTaskTags] = useState(defaultTask.tags);
-  const [taskStartDate, setTaskStartDate] = useState(today);
+  const [taskStartDate, setTaskStartDate] = useState(defaultTask.startDate);
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const emojiContainer = useRef();
@@ -140,9 +142,12 @@ const TaskConfigPage = (props) => {
 });
   }, [])
 
+  const getDateString = (enteredDate) => {
+    return `${DAYS[enteredDate.getDay()]}, ${enteredDate.getDate()} ${MONTHS[enteredDate.getMonth()]
+      } ${enteredDate.getFullYear()}`;
+  }
   const changeDate = (newDate) => {
-    let dateString = `${DAYS[newDate.getDay()]}, ${newDate.getDate()} ${MONTHS[newDate.getMonth()]
-      } ${newDate.getFullYear()}`;
+    let dateString = getDateString(newDate);
     datePickerContainer.current.value = dateString;
   };
 
@@ -255,6 +260,7 @@ const TaskConfigPage = (props) => {
       weekdays: taskWeekdays,
       occurence: taskOccurence,
       tags: taskTags,
+      startDate: taskStartDate,
     };
     if (
       arrayEquals(taskWeekdays.selected, ["S", "M", "T", "W", "Th", "F", "Sa"])
@@ -309,6 +315,7 @@ const TaskConfigPage = (props) => {
       weekdays: taskWeekdays,
       occurence: taskOccurence,
       tags: taskTags,
+      startDate: taskStartDate,
     };
 
     if (
@@ -501,7 +508,7 @@ const TaskConfigPage = (props) => {
         )}
         <div className="task-config-form__field date-input-container">
           <label>START DATE</label>
-          <input type="text" id="date-picker" onClick={openDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date"></input>
+          <input type="text" id="date-picker" onClick={openDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date" value={getDateString(taskStartDate)}></input>
         </div>
         <div className="task-config-form__emoji-colour-container">
           <div className="task-config-form__field emoji">
