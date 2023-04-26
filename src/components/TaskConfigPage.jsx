@@ -143,13 +143,11 @@ const TaskConfigPage = (props) => {
   const changeDate = (newDate) => {
     let dateString = `${DAYS[newDate.getDay()]}, ${newDate.getDate()} ${MONTHS[newDate.getMonth()]
       } ${newDate.getFullYear()}`;
-    console.log(dateString);
-    console.log(datePickerContainer);
     datePickerContainer.current.value = dateString;
   };
 
   const openDatePicker = () => {
-    datePicker.show();
+    datePicker ? datePicker.show(): "";
   };
   const hideDatePicker = () => {
     datePicker.hide();
