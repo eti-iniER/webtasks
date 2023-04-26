@@ -70,8 +70,7 @@ const TaskConfigPage = (props) => {
     "Saturday",
   ];
   let today = new Date();
-  let todayString = `${DAYS[today.getDay()]}, ${today.getDate()} ${MONTHS[today.getMonth()]
-    } ${today.getFullYear()}`;
+  
   const colors = [
     "#5ba6ec",
     "#e05a39",
@@ -98,11 +97,12 @@ const TaskConfigPage = (props) => {
   const [taskWeekdays, setTaskWeekdays] = useState(defaultTask.weekdays);
   const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
   const [taskTags, setTaskTags] = useState(defaultTask.tags);
-  const [taskStartDate, setTaskStartDate] = useState(today.toISOString());
+  const [taskStartDate, setTaskStartDate] = useState(today);
   const [showDatePicker, setShowDatePicker] = useState(false);
+
   const emojiContainer = useRef();
   const datePickerContainer = useRef();
-
+  
   let picmoEmojiPicker = null;
   let datePicker = null;
 
@@ -132,11 +132,21 @@ const TaskConfigPage = (props) => {
     visible: false,
     locale: localeEN,
     position: "left center",
-    onSelect({date}) {
+    onSelect({date, formattedDate, datepicker}) {
       setTaskStartDate(date);
+      changeDate(date);
+      datepicker.hide();
     },
 });
   }, [])
+
+  const changeDate = (newDate) => {
+    let dateString = `${DAYS[newDate.getDay()]}, ${newDate.getDate()} ${MONTHS[newDate.getMonth()]
+      } ${newDate.getFullYear()}`;
+    console.log(dateString);
+    console.log(datePickerContainer);
+    datePickerContainer.current.value = dateString;
+  };
 
   const openDatePicker = () => {
     datePicker.show();
@@ -493,7 +503,7 @@ const TaskConfigPage = (props) => {
         )}
         <div className="task-config-form__field date-input-container">
           <label>START DATE</label>
-          <input type="text" id="date-picker" onClick={openDatePicker} onChange={hideDatePicker}placeholder="Click to choose date"></input>
+          <input type="text" id="date-picker" onClick={openDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date"></input>
         </div>
         <div className="task-config-form__emoji-colour-container">
           <div className="task-config-form__field emoji">
