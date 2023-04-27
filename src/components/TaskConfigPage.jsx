@@ -100,13 +100,26 @@ const TaskConfigPage = (props) => {
   const [taskOccurence, setTaskOccurence] = useState(defaultTask.occurence);
   const [taskTags, setTaskTags] = useState(defaultTask.tags);
   const [taskStartDate, setTaskStartDate] = useState(defaultTask.startDate);
-  const [showDatePicker, setShowDatePicker] = useState(false);
 
   const emojiContainer = useRef();
   const datePickerContainer = useRef();
   
   let picmoEmojiPicker = null;
   let datePicker = null;
+
+  const showDatePicker = () => {
+    new AirDatepicker('#date-picker', {
+      container: '#scroll-container',
+      visible: true,
+      locale: localeEN,
+      position: "left center",
+      onSelect({ date, formattedDate, datepicker }) {
+        setTaskStartDate(date);
+        changeDate(date);
+        datepicker.destroy();
+      },
+    })
+  };
 
   useEffect(() => {
     // code for the emoji picker popup
@@ -128,19 +141,6 @@ const TaskConfigPage = (props) => {
     );
   });
 
-  useEffect(() => {
-    datePicker = new AirDatepicker('#date-picker', {
-    container: '#scroll-container',
-    visible: false,
-    locale: localeEN,
-    position: "left center",
-    onSelect({date, formattedDate, datepicker}) {
-      setTaskStartDate(date);
-      changeDate(date);
-      datepicker.hide();
-    },
-});
-  }, [])
 
   const getDateString = (enteredDate) => {
     return `${DAYS[enteredDate.getDay()]}, ${enteredDate.getDate()} ${MONTHS[enteredDate.getMonth()]
@@ -151,12 +151,6 @@ const TaskConfigPage = (props) => {
     datePickerContainer.current.value = dateString;
   };
 
-  const openDatePicker = () => {
-    datePicker ? datePicker.show(): "";
-  };
-  const hideDatePicker = () => {
-    datePicker.hide();
-  }
   const saveEmoji = (EmojiSelection) => {
     setTaskEmoji(EmojiSelection.emoji);
   };
@@ -508,7 +502,7 @@ const TaskConfigPage = (props) => {
         )}
         <div className="task-config-form__field date-input-container">
           <label>START DATE</label>
-          <input type="text" id="date-picker" onClick={openDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date" value={getDateString(taskStartDate)}></input>
+          <input type="text" id="date-picker" onClick = {showDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date" value={getDateString(taskStartDate)}></input>
         </div>
         <div className="task-config-form__emoji-colour-container">
           <div className="task-config-form__field emoji">
