@@ -107,18 +107,23 @@ const TaskConfigPage = (props) => {
   let picmoEmojiPicker = null;
   let datePicker = null;
 
-  const showDatePicker = () => {
-    new AirDatepicker('#date-picker', {
-      container: '#scroll-container',
-      visible: true,
-      locale: localeEN,
-      position: "left center",
-      onSelect({ date, formattedDate, datepicker }) {
-        setTaskStartDate(date);
-        changeDate(date);
-        datepicker.destroy();
-      },
-    })
+  const toggleDatePicker = () => {
+    if (datePicker) {
+      datePicker.destroy();
+      datePicker = null;
+    } else {
+      datePicker = new AirDatepicker('#date-picker', {
+        container: '#scroll-container',
+        visible: true,
+        locale: localeEN,
+        position: "left center",
+        onSelect({ date, formattedDate, datepicker }) {
+          setTaskStartDate(date);
+          changeDate(date);
+          datepicker.destroy();
+        },
+      })
+    }
   };
 
   useEffect(() => {
@@ -502,7 +507,7 @@ const TaskConfigPage = (props) => {
         )}
         <div className="task-config-form__field date-input-container">
           <label>START DATE</label>
-          <input type="text" id="date-picker" onClick = {showDatePicker} onChange = {changeDate} ref={datePickerContainer} placeholder="Click to choose date" value={getDateString(taskStartDate)}></input>
+          <input type="text" id="date-picker" onClick = {toggleDatePicker} readOnly ref={datePickerContainer} placeholder="Click to choose date" value={getDateString(taskStartDate)}></input>
         </div>
         <div className="task-config-form__emoji-colour-container">
           <div className="task-config-form__field emoji">
