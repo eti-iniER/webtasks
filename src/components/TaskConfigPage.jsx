@@ -496,8 +496,6 @@ const TaskConfigPage = (props) => {
             <label>FREQUENCY</label>
             <input
               type="number"
-              min={2}
-              max={6}
               value={taskOccurence}
               onChange={(e) => handleOccurenceInput(e)}
             ></input>
